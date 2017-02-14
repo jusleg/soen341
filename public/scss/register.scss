@@ -1,137 +1,3 @@
-#loginPage {
-  height: 100%;
-  width: 100%;
-  background: url(http://wallup.net/wp-content/uploads/1413914382-748x468.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
-
-#loginContainer {
-  width: 700px;
-  height: 450px;
-  border-radius: 10px;
-  display: table; }
-
-.descriptiveText {
-  margin-top: 100px;
-  margin-bottom: 20px; }
-
-#email {
-  background: url(http://sarzh.ru/i/guest.png) no-repeat 5px center;
-  -webkit-background-size: 20px 20px;
-  background-size: 20px 20px;
-  border-bottom: none;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;  }
-
-#password {
-  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
-  -webkit-background-size: 20px 20px;
-  background-size: 20px 20px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;  }
-
-.loginFormInput {
-  padding-left: 30px;
-  height: 40px;
-  width: 260px;
-  border: 1px solid #4c4c4c;
-}
-
-.loginFormInput:focus {
-  outline: none;
-  border-color: rgb(128, 0, 255);
-}
-
-#loginSubmit {
-  margin-top: 20px;
-  width: 260px;
-  border-radius: 5px;
-  border: none;
-  background-color: rgba(128, 0, 255, 0.9); }
-
-#loginSubmit:hover {
-  cursor: pointer;
-  background-color: #9e00ff; }
-
-#forgotPass {
-  font-style: italic;
-  color: #a0a0a0;
-  font-size: .7em; }
-
-#forgotPass:hover {
-  cursor: pointer;
-  color: #8c8c8c; }
-
-#createAccount {
-  background-color: #7a7a7a;
-  color: white;
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 0;
-  width: 296px;
-  height: 100px; }
-
-#createAccount:hover {
-  cursor: pointer;
-  background-color: #686868; }
-
-#loginLeftContainer {
-  padding: 40px;
-  text-align: left;
-  color: white;
-  background-color: rgba(128, 0, 255, 0.8);
-  display: table-cell;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px; }
-
-#loginRightContainer {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  display: table-cell;
-  color: #424242;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px; }
-
-#hiddenRight {
-  background-color: rgba(128, 0, 255, 0.8);
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  color: white;
-  height: 100px;
-  padding: 10px;
-  display: none;
-}
-
-@media (max-width: 700px) {
-  #loginContainer {
-    width: 310px;
-    height: 380px;
-  }
-  #loginLeftContainer {
-    display: none;
-  }
-  #loginRightContainer {
-    border-radius: 10px;
-  }
-  .descriptiveText {
-    margin-top: 40px;
-  }
-  #hiddenRight {
-    display: block;
-  }
-}
-
-.logDescLI {
-  font-weight: 300;
-  font-size: 0.9em; }
-
-.logDescIMG {
-  margin-right: 15px;
-  width: 22px;
-  height: 22px; }
-
 .centered {
   position: fixed;
   top: 50%;
@@ -140,8 +6,97 @@
   transform: translate(-50%, -50%);
 }
 
+#registerContainer {
+  width: 360px;
+  height: 470px;
+}
+
+#registerTopContainer {
+  width: 100%;
+  height: 100px;
+  background-color: rgba(128, 0, 255, 0.8);
+  color: #e8e8e8;
+  padding-top: 20px;
+  padding-left: 20px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#registerBottomContainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.formInput {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 30px;
+}
+
+.formInput:focus {
+  outline: none;
+}
+
+#registerSubmit {
+  width: 300px;
+  height: 40px;
+  box-shadow: none;
+  border-radius: 5px;
+  background-color: rgb(128, 0, 255);
+  color: white;
+  border: none;
+  margin-top: 15px;
+}
+
+#registerSubmit:hover {
+  cursor: pointer;
+  background-color: rgba(148, 0, 255, 0.8);
+}
+
+#name {
+  background: url(http://sarzh.ru/i/guest.png) no-repeat 5px center;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+  background-color: rgba(255,255,255,0.8);
+}
+
+#email {
+  background: url(http://www.iconsdb.com/icons/preview/gray/email-2-xxl.png) no-repeat 5px center;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+  background-color: rgba(255,255,255,0.8);
+}
+
+.pass {
+  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px 20px;
+  background-color: rgba(255,255,255,0.8);
+}
+
+
 input::-webkit-input-placeholder {
   font-size: .9em; }
+
+@media (max-width: 400px) {
+  #registerContainer {
+    width: 310px;
+  }
+  .formInput {
+    width: 290px;
+  }
+  #registerSubmit {
+    width: 290px;
+  }
+}
 
 .wrapper {
   background: #50a3a2;
