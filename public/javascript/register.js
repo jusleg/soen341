@@ -96,7 +96,7 @@ function submitRegister() {
         $.ajax({
             type: "POST",
             data: payload,
-            url: "../config/something.js",
+            url: "/register",
             success: function(response) {
                 //Handle callback.
             }
