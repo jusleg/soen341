@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/jusleg/soen341.png?label=ready&title=Ready)](https://waffle.io/jusleg/soen341)
 # SOEN 341
 [![Build Status](https://travis-ci.org/jusleg/soen341.svg?branch=Testing)](https://travis-ci.org/jusleg/soen341)
 
