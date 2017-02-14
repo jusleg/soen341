@@ -51,8 +51,56 @@ $(document).ready(function() {
         }
     })
     $('body').on('click', function (e) {
-        if(!$(this).is("#email")) {
+        if(!$(this).is("#email") && $(".popover-content").length > 0) {
             $("#pass").popover("hide");
         }
     })
 })
+
+function submitRegister() {
+    var check = 0
+    var pass1 = $('#pass').val();
+    var pass2 = $('#pass2').val();
+    if($('#email').val().match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/igm)) {
+        check++
+    } else {
+        $("#email").css("border-color", "red");
+    }
+    if($("#name").val().length > 1) {
+        check++
+    } else {
+        $("#name").css("border-color", "red");
+    }
+    if(pass1.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/)) {
+        check++
+    } else {
+        $("#pass").css("border-color", "red");
+    }
+    if(pass1 === pass2) {
+        check++;
+    } else {
+        $("#pass2").css("border-color", "red");
+    }
+    if($("#termCheck:checked").length > 0) {
+        check++;
+    }
+
+    if(check == 5) {
+        //Form is completely validated
+        //Make AJAX call to correct script
+        var payload = {
+            name: $("name").val(),
+            email: $("#email").val(),
+            password: $("#pass").val()
+        };
+        $.ajax({
+            type: "POST",
+            data: payload,
+            url: "../config/something.js",
+            success: function(response) {
+                //Handle callback.
+            }
+
+        })
+    }
+}

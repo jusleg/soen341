@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
     <script src="../javascript/register.js"></script>
-    <script src="../javascript/login_authentication.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -42,15 +40,13 @@
     </div>
 
     <div id="registerBottomContainer">
-        <form>
             <input class="formInput" id="name" placeholder="Name" name="name">
             <input class="formInput" id="email" type="email" placeholder="Email Address" name="email">
             <input class="formInput pass" id="pass" type="password" placeholder="Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
             <input class="formInput pass" id="pass2" type="password" placeholder="Verify Password" name="passwordRepeat"><br>
-            <input type="checkbox" name="agreeTerms" value="true"> <span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
-            <button type="submit" id="registerSubmit">Submit</button><br/>
+            <input id="termCheck" type="checkbox" name="agreeTerms" value="true"> <span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
+            <button type="submit" id="registerSubmit" onclick="submitRegister()">Submit</button><br/>
             <span style="font-size:0.75em; color:dimgray">Already have an account?<a href="../login"> Login</a>.</span>
-        </form>
     </div>
 
     <div id="registerRightContainer">
