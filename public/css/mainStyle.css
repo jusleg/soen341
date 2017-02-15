@@ -57,19 +57,21 @@
     background-color: white;
     overflow: auto;
     height: 83%; }
+    .classroom .window .message-list {
+      list-style: none; }
+      .classroom .window .message-list .sender {
+        color: darkgray;
+        font-weight: 200; }
+      .classroom .window .message-list .message {
+        display: inline-block;
+        background-color: dodgerblue;
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 2px;
+        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1); }
   .classroom .bulletPoint {
     list-style-type: none; }
-  .classroom .sender {
-    color: darkgray;
-    font-weight: 200; }
-  .classroom .message {
-    display: inline-block;
-    background-color: dodgerblue;
-    color: white;
-    padding: 5px;
-    border-radius: 10px;
-    margin-bottom: 2px;
-    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1); }
 
 .logotype {
   color: white;
@@ -316,3 +318,5 @@ body {
       margin-bottom: 0px; }
     body .content-container .content {
       height: 100%; }
+
+/*# sourceMappingURL=mainStyle.css.map */

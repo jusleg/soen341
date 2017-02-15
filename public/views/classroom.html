@@ -7,13 +7,11 @@
         <span>{{vm.classId}}</span>
     </div>
     <div class="window">
-        <ul id="messages">
-            <div class="bulletPoint">
-                <li ng-repeat="message in vm.messages">
+        <ul class="message-list">
+            <li ng-repeat="message in vm.messages">
                     <div class="sender"> {{message.user}} </div>
                     <div class="message">{{message.message}}</div>
-                </li>
-            </div>
+            </li>
         </ul>
     </div>
     <div class="sendMsg">

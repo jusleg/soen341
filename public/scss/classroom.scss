@@ -24,24 +24,27 @@
     background-color: white;
     overflow: auto;
     height: 83%;
+    .message-list{
+      list-style:none;
+      .sender{
+        color: darkgray;
+        font-weight: 200;
+      }
+
+      .message{
+        display: inline-block;
+        background-color: dodgerblue;
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 2px;
+        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 
   .bulletPoint{
     list-style-type: none;
   }
 
-  .sender{
-    color: darkgray;
-    font-weight: 200;
-  }
-
-  .message{
-    display: inline-block;
-    background-color: dodgerblue;
-    color: white;
-    padding: 5px;
-    border-radius: 10px;
-    margin-bottom: 2px;
-    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
-  }
 }
