@@ -4,7 +4,7 @@
 'use strict';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
+
 
 
 //Mongoose Schema ==============================================================================
@@ -21,20 +21,24 @@ let User = mongoose.Schema({
 // Schema methods ==============================================================================
 // Generate password hash
 User.methods.generateHash = (password) => {
-    //return bcrypt.hashSync(password, bcrypt.genSaltSync(20), null);
-    return password;
+    var hashedPassword = hashCode(password);
+    return hashedPassword;
 };
 
 // Validate password
 User.methods.validPassword = function(password) {
-    // return bcrypt.compareSync(password, this.password);
-    if(this.pass == password){
-        return password;
+    var hashedPass = hashCode(password);
+    if(this.pass == hashedPass){
+        return hashedPass;
     } else {
         return false;
     }
 };
 
+
+var hashCode = function(s){
+    return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+}
 
 
 module.exports = mongoose.model('User', User);
