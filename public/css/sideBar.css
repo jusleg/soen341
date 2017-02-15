@@ -1,16 +1,26 @@
 .sideBar {
   height: 100%;
-  padding: 0;
+  padding: 0px;
   z-index: 99;
-  background-color: #D3D6DB;
+  background-color: #474647;
   transition: transform ease-in 0.5s; }
-  .sideBar ul {
-    padding-left: 20px;
-    list-style: none; }
-    .sideBar ul li {
-      margin: 20px; }
-      .sideBar ul li span {
-        color: red; }
+
+.search-bar {
+  padding: 15px; }
+
+.class-section {
+  color: white; }
+  .class-section > div > h4 {
+    font-family: Impact; }
+  .class-section > div .list-container :hover {
+    background-color: #246EB9; }
+  .class-section > div .list-container > p {
+    background-color: #377BBF;
+    margin-right: 10px;
+    border-radius: 3px;
+    text-align: center; }
+  .class-section > div .list-container > p a {
+    color: white; }
 
 .sideBar-toggle {
   margin-left: 9px;
