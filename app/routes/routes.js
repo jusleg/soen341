@@ -37,7 +37,7 @@ module.exports = function(app, passport) {
         }));
 
     app.get('/chat', isLoggedIn, function (req, res) {
-        res.sendFile(path.join(__dirname, '/../../public/views/classroom.html'));
+        res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
 };
