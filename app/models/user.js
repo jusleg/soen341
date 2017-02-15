@@ -4,26 +4,41 @@
 'use strict';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-const db = require('../../config/db.js');
+
 
 
 //Mongoose Schema ==============================================================================
-//input the mongodb uri here
-// mongoose.connect(db);
 
-let User = mongoose.model('User', new Schema({
-    id: ObjectId,
-    username: {
-        type: String,
-        unique: true
-    },
-    email: {
-        type: String,
-        unique: true
+let User = mongoose.Schema({
+    id: String,
+    name: String,
+    pass: String,
+    online: Boolean,
+    classUser: [String],
+    classMod: [String]
+});
+
+// Schema methods ==============================================================================
+// Generate password hash
+User.methods.generateHash = (password) => {
+    var hashedPassword = hashCode(password);
+    return hashedPassword;
+};
+
+// Validate password
+User.methods.validPassword = function(password) {
+    var hashedPass = hashCode(password);
+    if(this.pass == hashedPass){
+        return true;
+    } else {
+        return false;
     }
-}));
+};
 
 
+var hashCode = function(s){
+    return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+}
 
-module.exports = User;
+
+module.exports = mongoose.model('User', User);

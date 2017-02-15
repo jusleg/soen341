@@ -5,14 +5,24 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const bodyParser = require('body-parser');
-const passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const logger = require('morgan');
 const session = require('express-session');
+const api = require('./app/routes/api');
+const flash = require('connect-flash');
+const db = require('./config/db.js');
+const cookieParser = require('cookie-parser');
 
 
+mongoose.Promise = global.Promise;
+mongoose.connect(db.uri);
+require('./config/passport')(passport);
+
+
+//Middlewares
 //in order to parse body responses
 app.use(bodyParser.urlencoded({
     extended: true
@@ -20,29 +30,27 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 //to log sever connections
 app.use(logger('dev'));
-
 // set the static files location /public/img will be /img for us
 app.use(express.static(__dirname + '/public'));
 //serve bower components
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+// for cookies (for authentication)
+app.use(cookieParser());
 
-const routes = require('./app/routes/routes');
-const api = require('./app/routes/api');
+//Passport authentication middlewares
+app.use(session({ secret: 'Harambe2k17HowBouDah' }));
+app.use(passport.initialize());
+app.use(passport.session());
+// to have a flash message for login/register
+app.use(flash());
 
-//Unprotected routes
-app.use('/', routes);
-
-//Middleware to check of user is authenticated with express-session
-app.use((req, res, next) => {
-    // if(! req.session.user){
-    //     res.redirect('/login');
-    // } else {
-        next();
-    // }
-});
+//Routes
+require('./app/routes/routes.js')(app, passport);
 
 //Api routes
 app.use('/api', api);
+
+
 
 io.on('connection', function (socket) {
     //user is connected...
