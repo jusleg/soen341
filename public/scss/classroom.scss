@@ -1,0 +1,50 @@
+.classroom{
+  height:100%;
+  .sendMsg{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:20px;
+    background-color: white;
+    form{
+
+    }
+  }
+
+  .classId{
+    color:dodgerblue;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    font-weight: bolder;
+  }
+
+  .window{
+    background-color: white;
+    overflow: auto;
+    height: 83%;
+    .message-list{
+      list-style:none;
+      .sender{
+        color: darkgray;
+        font-weight: 200;
+      }
+
+      .message{
+        display: inline-block;
+        background-color: dodgerblue;
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 2px;
+        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .bulletPoint{
+    list-style-type: none;
+  }
+
+}

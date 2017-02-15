@@ -6,16 +6,17 @@
     // Declare app level module which depends on views, and components
     angular.module('app', [
         'ngRoute',
-        'app.view2'
+        'app.classroom'
     ]).
     config(['$locationProvider', '$routeProvider','$httpProvider',
         function($locationProvider, $routeProvider,$httpProvider) {
-            console.log('app config');
             $locationProvider.hashPrefix(''); // or with '!'
-
             $routeProvider.otherwise({redirectTo: ''});
-
             // $httpProvider.defaults.useXDomain = true;
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
-        }]);
+        }])
+        .controller('appCtrl', function($scope, $rootScope) {
+            $rootScope.socket = io();
+            console.log('User connected');
+        });
 })();

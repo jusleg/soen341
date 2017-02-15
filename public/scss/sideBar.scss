@@ -1,0 +1,60 @@
+@import 'variables.scss';
+
+.sideBar {
+  height: 100%;
+  padding: 0px;
+  z-index: 99;
+  background-color: #474647;
+  transition: transform ease-in 0.5s;
+}
+
+.search-bar {
+  padding: 15px;
+}
+
+.class-section {
+  color: white;
+  > div {
+    > h4 {
+      font-family: Impact;
+    }
+    .list-container {
+      :hover{
+        background-color: #246EB9;
+      }
+      > p {
+        background-color: #377BBF;
+        margin-right: 10px;
+        border-radius: 3px;
+        text-align: center;
+
+      }
+      > p a {
+        color: white;
+      }
+    }
+
+  }
+}
+
+.sideBar-toggle {
+  margin-left: 9px;
+  float: left;
+}
+
+//for phones
+@media screen and (max-width: 767px) {
+  .sideBar {
+    width: 300px;
+    position: absolute;
+    transform: translateX(-300px);
+  }
+  .sideBarOpen {
+    opacity: 0.9;
+    transform: translateX(0px);
+  }
+  .content-container-moveX {
+    transform: translateX(300px);
+  }
+}
+

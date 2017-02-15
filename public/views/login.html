@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html ng-app="formApp">
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    <script src="../javascript/login_authentication.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Form</title>
-</head>
-<body ng-controller="mainController as vm">
-<div>
-    <form action="/login" method="post" id="login">
-        Username: <input type="text" id="username" name="username" ng-model="username"><br>
-        Password: <input type="password" id="password" name="password" ng-model="password"><br>
-        <button type="submit" value="submit" class="btn btn-primary" ng-click="vm.submit(username, password)">Login</button>
-    </form>
-</div>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script src="../javascript/login_authentication.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/animate.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
+        <title>SOEN341 - Login</title>
+    </head>
+    <body ng-controller="mainController as vm">
+    <div class="wrapper">
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+        <div id="loginContainer" class="animated fadeIn centered">
+
+            <div id="loginLeftContainer">
+                <h1 class="lead" id="loginTitle" style="font-size: 2em; font-weight: 700">SOEN341</h1>
+                <h1 style="font-size: 0.8em; font-weight: 300;">An amazing chat application</h1>
+                <hr style="border-color: white; margin-top: 30px; margin-bottom: 30px;"/>
+                <p class="logDescLI"><img class="logDescIMG" src="../images/facebook-like-24.ico"/>Get feedback from teachers</p>
+                <p class="logDescLI"><img class="logDescIMG" src="../images/rss-24.ico"/>Discuss problems during lectures</p>
+                <p class="logDescLI"><img class="logDescIMG" src="../images/key-24.ico"/>The key to success</p>
+            </div>
+
+            <div id="loginRightContainer">
+                <div id="hiddenRight">
+                    <span style="font-weight: 700; font-size: 2em;">SOEN341</span>
+                    <hr style="border-color: white; margin-top: 0; margin-bottom: 10px;"/>
+                    <h1 style="font-size: 0.8em; font-weight: 300;">An amazing chat application</h1>
+                </div>
+                <p class="descriptiveText">Enter your login credentials</p>
+                <form action="/login" method="post" id="login">
+                    <input class="loginFormInput" type="text" id="email" name="email" ng-model="email" placeholder="Email Address"><br>
+                    <input class="loginFormInput" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
+                    <button id="loginSubmit" type="submit" value="submit" class="btn btn-primary" ng-click="vm.submit(email, password)">Connect</button>
+                </form>
+                <span id="forgotPass">Forgot your password?</span>
+                <!--<div id="createAccount">Create an Account</div>-->
+            </div>
+
+        </div>
+
+
+    </body>
+</html>
