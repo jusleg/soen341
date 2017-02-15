@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .sideBar{
   height:100%;
   padding:0;
@@ -22,15 +24,15 @@
 //for phones
 @media screen and (max-width: 767px) {
   .sideBar{
-    width:300px;
+    width:80%;
     position:absolute;
-    transform:translateX(-300px);
+    transform:translateX(-100%);
   }
   .sideBarOpen{
     opacity:0.9;
-    transform:translateX(0px);
+    transform:translateX(0);
   }
   .content-container-moveX{
-    transform:translateX(300px);
+    transform:translateX(80%);
   }
 }

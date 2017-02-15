@@ -5,18 +5,21 @@
 
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const User = require('../models/user.js');
 const passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../public/app/app.html'));
-    // res.redirect('/login');
+    res.sendFile(path.join(__dirname, '../../public/views/landing.html'));
 });
 
 router.get('/login', (req,res) => {
     res.sendFile(path.join(__dirname, '../../public/views/login.html'));
+});
+
+router.get('/register', (req,res) => {
+    res.sendFile(path.join(__dirname, '../../public/views/register.html'));
 });
 
 passport.use(new LocalStrategy(
