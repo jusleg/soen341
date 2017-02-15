@@ -21,12 +21,18 @@ let User = mongoose.Schema({
 // Schema methods ==============================================================================
 // Generate password hash
 User.methods.generateHash = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(20), null);
+    //return bcrypt.hashSync(password, bcrypt.genSaltSync(20), null);
+    return password;
 };
 
 // Validate password
 User.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+    // return bcrypt.compareSync(password, this.password);
+    if(this.password == password){
+        return password;
+    } else {
+        return false;
+    }
 };
 
 

@@ -17,7 +17,7 @@ const db = require('./config/db.js');
 const cookieParser = require('cookie-parser');
 
 
-
+mongoose.Promise = global.Promise;
 mongoose.connect(db.uri);
 require('./config/passport')(passport);
 
@@ -46,7 +46,6 @@ app.use(flash());
 
 //Routes
 require('./app/routes/routes.js')(app, passport);
-// app.use('/', routes);
 
 //Api routes
 app.use('/api', api);

@@ -24,14 +24,16 @@ module.exports = function(app, passport) {
         passport.authenticate('local-login', {
             successRedirect: '/chat',
             failureRedirect: '/login',
-            failureFlash: true
+            failureFlash: true,
+            session: false
         }));
 
     app.post('/register',
         passport.authenticate('local-signup', {
             successRedirect: '/login',
             failureRedirect: '/register',
-            failureFlash: true
+            failureFlash: true,
+            session: false
         }));
 
     app.get('/chat', isLoggedIn, function (req, res) {
