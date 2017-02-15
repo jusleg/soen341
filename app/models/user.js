@@ -29,7 +29,7 @@ User.methods.generateHash = (password) => {
 User.methods.validPassword = function(password) {
     var hashedPass = hashCode(password);
     if(this.pass == hashedPass){
-        return hashedPass;
+        return true;
     } else {
         return false;
     }
