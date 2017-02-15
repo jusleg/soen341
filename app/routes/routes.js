@@ -42,10 +42,23 @@ module.exports = function(app, passport) {
 
 };
 
+
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
+    console.log(req.isAuthenticated());
+    if (req.isAuthenticated()) {
+        this.user.online = true;
         return next();
-    res.redirect('/');
+    }
+    return next(); //temporary here so that a user can be redirected to the /chat, will need to implement req.login() in sprint3
+}
+
+function loggedIn(req, res, next) {
+    if (req.user) {
+        this.user.online = true;
+        next();
+    } else {
+        res.redirect('/login');
+    }
 }
 
 
