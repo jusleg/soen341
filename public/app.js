@@ -17,6 +17,5 @@
         }])
         .controller('appCtrl', function($scope, $rootScope) {
             $rootScope.socket = io();
-            console.log('User connected');
         });
 })();
