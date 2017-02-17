@@ -44,7 +44,7 @@ module.exports = function(app, passport) {
 
 
 function isLoggedIn(req, res, next) {
-    console.log(req.isAuthenticated());
+    // console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
         this.user.online = true;
         return next();
