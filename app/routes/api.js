@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/user.js');
+const classroom = require('../models/Classes.js');
 
 // get all todos
-router.get('/todos', function(req, res) {
-
+router.get('/messages/:classId', function(req, res) {
+    classroom.find().exec(function(err,data){
+        res.send({'data' : data})
+    });
 });
 
-// create todo and send back all todos after creation
-router.post('/todos', function(req, res) {
-
+// create
+router.get('/allUsers', function(req, res) {
+    //exclude pass and __v
+    User.find({}).select('-pass').select('-__v').exec(function(err,data){
+        res.send({'data':data})
+    });
 });
 
-// delete a todo
-router.delete('/todos/:todo_id', function(req, res) {
-
-});
 
 module.exports = router;

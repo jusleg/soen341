@@ -1,15 +1,14 @@
-const mongoose = require('mongoose'),Schema =
-    mongoose.Schema;
+const mongoose = require('mongoose'),Schema = mongoose.Schema;
 
 let chatSchema = new Schema({
-    id: String,
+    _id: String,
     name: String,
-    time: Date,
+    time: String,
     message: String
 });
 
 let classSchema = new Schema({
-    id: String,
+    _id: String,
     active: Boolean,
     time: Date,
     name: String,
@@ -18,6 +17,6 @@ let classSchema = new Schema({
     chat: [chatSchema]
 });
 
-let Class = mongoose.model('classRoom',classSchema);
+let Class = mongoose.model('class',classSchema);
 
 module.exports = Class;
