@@ -53,7 +53,6 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
                         const newUser = new User();
-
                         newUser.id = email;
                         newUser.pass = newUser.generateHash(password);
                         newUser.name = req.body.name;
@@ -62,6 +61,7 @@ module.exports = function(passport) {
                                 throw err;
                             done(null, newUser);
                         });
+
                     }
                 });
             });

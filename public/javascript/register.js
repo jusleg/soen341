@@ -89,7 +89,7 @@ function submitRegister() {
         //Form is completely validated
         //Make AJAX call to correct script
         var payload = {
-            name: $("name").val(),
+            name: $("#name").val(),
             email: $("#email").val(),
             password: $("#pass").val()
         };
@@ -98,7 +98,7 @@ function submitRegister() {
             data: payload,
             url: "/register",
             success: function(response) {
-                //Handle callback.
+                window.location.href = "/login";
             }
 
         })
