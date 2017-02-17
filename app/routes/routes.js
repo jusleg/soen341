@@ -22,7 +22,7 @@ module.exports = function(app, passport) {
 
     app.post('/login',
         passport.authenticate('local-login', {
-            successRedirect: '/chat',
+            successRedirect: '/home',
             failureRedirect: '/login',
             failureFlash: true,
             session: false
@@ -36,7 +36,7 @@ module.exports = function(app, passport) {
             session: false
         }));
 
-    app.get('/chat', isLoggedIn, function (req, res) {
+    app.get('/home', isLoggedIn, function (req, res) {
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
@@ -49,7 +49,7 @@ function isLoggedIn(req, res, next) {
         this.user.online = true;
         return next();
     }
-    return next(); //temporary here so that a user can be redirected to the /chat, will need to implement req.login() in sprint3
+    return next(); //temporary here so that a user can be redirected to the /home, will need to implement req.login() in sprint3
 }
 
 function loggedIn(req, res, next) {
