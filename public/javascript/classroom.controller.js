@@ -61,9 +61,12 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
     function sendMsg(){
         var room = vm.classId;
-        var msgObj = {'class': vm.classId, 'user':'Eric', 'message':vm.m};
-        $rootScope.socket.emit('userMessage', msgObj);
-        vm.m ='';
+        var msgObj = {'class':room, '_id': 'hardCodedEmail@hotmail.com','time': new Date().getTime().toString(), 'name':'HardCodedUser', 'message':vm.m};
+        $http.post('api/message/'+vm.classId, msgObj).then(function success(response){
+            console.log(msgObj)
+            $rootScope.socket.emit('userMessage', msgObj);
+            vm.m ='';
+        });
         return false;
     }
 
