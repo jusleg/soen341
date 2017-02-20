@@ -20,9 +20,12 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
      |   VARIABLES  |
      ---------------*/
     var vm = this;
-    vm.classId = $routeParams.classId;
+    vm.classId = $routeParams.classId.toUpperCase();
+    vm.className = ""
     vm.messages = []; //get msgs in DB and assign them here
     vm.m = "";
+    vm.professor = "";
+    vm.classroom = ""
     /*---------------
     |   FUNCTIONS   |
      ---------------*/
@@ -39,15 +42,31 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     //join current room
     $rootScope.socket.emit('join room',vm.classId);
 
+    //activate classroom once everything is ready.
+    active();
 
     /*--------------------
      |   FUNCTIONS DEF   |
      -------------------*/
+    function active(){
+        $http.get('api/messages/'+vm.classId).then(function success(response){
+            vm.messages = response.data[0].chat;
+            vm.professor = response.data[0].professor;
+            vm.classroom = response.data[0].classroom;
+            vm.className = response.data[0].name
+        }, function failure(err){
+
+        })
+    }
+
     function sendMsg(){
         var room = vm.classId;
-        var msgObj = {'class': vm.classId, 'user':'Eric', 'message':vm.m};
-        $rootScope.socket.emit('userMessage', msgObj);
-        vm.m ='';
+        var msgObj = {'class':room, '_id': 'hardCodedEmail@hotmail.com','time': new Date().getTime().toString(), 'name':'HardCodedUser', 'message':vm.m};
+        $http.post('api/message/'+vm.classId, msgObj).then(function success(response){
+            console.log(msgObj)
+            $rootScope.socket.emit('userMessage', msgObj);
+            vm.m ='';
+        });
         return false;
     }
 

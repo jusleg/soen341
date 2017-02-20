@@ -48,7 +48,8 @@ app.use(flash());
 require('./app/routes/routes.js')(app, passport);
 
 //Api routes
-app.use('/api', api);
+require('./app/routes/api.js')(app);
+// app.use('/api', api);
 
 
 
