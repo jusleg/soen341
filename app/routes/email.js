@@ -12,7 +12,7 @@ module.exports = {
 // setup email data with unicode symbols
     let mailOptions = {
         from: '"Famingo Squad Inc." <chamich196@hotmail.com>', // sender address
-        to: email // list of receivers
+        to: email, // list of receivers
         subject: 'SOEN 341 - Password reset', // Subject line
         text: 'Hello world ?', // plain text body
         html: '<b>Hello world ?</b>' // html body
@@ -40,7 +40,7 @@ module.exports = {
 // setup email data with unicode symbols
         let mailOptions = {
             from: '"Famingo Squad Inc." <chamich196@hotmail.com>', // sender address
-            to: email // list of receivers
+            to: email, // list of receivers
             subject: 'SOEN 341 - Password reset', // Subject line
             text: 'Hello world ?', // plain text body
             html: '<b>Hello world ?</b>' // html body
@@ -67,7 +67,7 @@ module.exports = {
 // setup email data with unicode symbols
         let mailOptions = {
             from: '"Famingo Squad Inc." <chamich196@hotmail.com>', // sender address
-            to: email // list of receivers
+            to: email, // list of receivers
             subject: 'SOEN 341 - Password reset', // Subject line
             text: 'Hello world ?', // plain text body
             html: '<b>Hello world ?</b>' // html body
