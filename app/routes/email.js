@@ -28,7 +28,7 @@ module.exports = {
     },
 
 
-    newInvite : function(email) => {
+    newInvite : function(email){
         let transporter = nodemailer.createTransport({
             service: 'outlook',
             auth: {
@@ -55,7 +55,7 @@ module.exports = {
         });
     },
 
-   newAccount : function(email) => {
+   newAccount : function(email){
         let transporter = nodemailer.createTransport({
             service: 'outlook',
             auth: {
