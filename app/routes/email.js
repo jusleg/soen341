@@ -5,7 +5,7 @@ module.exports = {
         service: 'outlook',
         auth: {
             user: 'chamich196@hotmail.com',
-            pass: 'kngZ1.1@'
+            pass: 'DUMMYPASS
         }
     });
 
@@ -33,7 +33,7 @@ module.exports = {
             service: 'outlook',
             auth: {
                 user: 'chamich196@hotmail.com',
-                pass: 'kngZ1.1@'
+                pass: 'DUMMYPASS'
             }
         });
 
@@ -60,7 +60,7 @@ module.exports = {
             service: 'outlook',
             auth: {
                 user: 'chamich196@hotmail.com',
-                pass: 'kngZ1.1@'
+                pass: 'DUMMYPASS'
             }
         });
 
