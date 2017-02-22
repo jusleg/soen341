@@ -1,11 +1,13 @@
-
+let nodemailer = require('nodemailer');
+let pass = "DUMMY";
+let user = "DUMMY";
 module.exports = {
     forgotPass:function(email){
     let transporter = nodemailer.createTransport({
         service: 'outlook',
         auth: {
-            user: 'chamich196@hotmail.com',
-            pass: 'DUMMYPASS
+            user: user,
+            pass: pass
         }
     });
 
@@ -32,8 +34,8 @@ module.exports = {
         let transporter = nodemailer.createTransport({
             service: 'outlook',
             auth: {
-                user: 'chamich196@hotmail.com',
-                pass: 'DUMMYPASS'
+                user: user,
+                pass: pass
             }
         });
 
@@ -59,10 +61,11 @@ module.exports = {
         let transporter = nodemailer.createTransport({
             service: 'outlook',
             auth: {
-                user: 'chamich196@hotmail.com',
-                pass: 'DUMMYPASS'
+                user: user,
+                pass: pass
             }
         });
+        console.log(email);
 
 // setup email data with unicode symbols
         let mailOptions = {
@@ -80,4 +83,5 @@ module.exports = {
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
         });
-    }
+   }
+}
