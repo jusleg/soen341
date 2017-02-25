@@ -27,31 +27,18 @@
 </div>
 
 
-<div id="loginContainer" class="animated fadeIn centered">
+<div id="passResetContainer" class="animated fadeIn centered">
 
-    <div id="loginLeftContainer">
-        <h1 class="lead" id="loginTitle" style="font-size: 2em; font-weight: 700">SOEN341</h1>
-        <h1 style="font-size: 0.8em; font-weight: 300;">An amazing chat application</h1>
-        <hr style="border-color: white; margin-top: 30px; margin-bottom: 30px;"/>
-        <p class="logDescLI"><img class="logDescIMG" src="../images/facebook-like-24.ico"/>Get feedback from teachers</p>
-        <p class="logDescLI"><img class="logDescIMG" src="../images/rss-24.ico"/>Discuss problems during lectures</p>
-        <p class="logDescLI"><img class="logDescIMG" src="../images/key-24.ico"/>The key to success</p>
+    <div id="topBanner">
+        <span style="font-weight: 700; font-size: 2em;">SOEN341</span>
+        <hr style="border-color: white; margin-top: 0; margin-bottom: 10px;"/>
+        <h1 style="font-size: 0.8em; font-weight: 300;">Password Reset</h1>
     </div>
 
-    <div id="loginRightContainer">
-        <div id="hiddenRight">
-            <span style="font-weight: 700; font-size: 2em;">SOEN341</span>
-            <hr style="border-color: white; margin-top: 0; margin-bottom: 10px;"/>
-            <h1 style="font-size: 0.8em; font-weight: 300;">An amazing chat application</h1>
-        </div>
-        <p class="descriptiveText">Enter your login credentials</p>
-        <form action="/login" method="post" id="login">
-            <input class="loginFormInput" type="text" id="email" name="email" ng-model="email" placeholder="Email Address"><br>
-            <input class="loginFormInput" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
-            <button id="loginSubmit" type="submit" value="submit" class="btn btn-primary" ng-click="vm.submit(email, password)">Connect</button>
-        </form>
-        <span id="forgotPass">Forgot your password?</span>
-        <!--<div id="createAccount">Create an Account</div>-->
+    <div style="text-align: center; margin-top: 20px;">
+        <input class="loginFormInput" type="text" id="email" name="password1" placeholder="Password"><br>
+        <input class="loginFormInput" type="password" id="password" name="password2" ng-model="password" placeholder="Repeat Password"><br>
+        <button id="loginSubmit" type="submit" value="submit" class="btn btn-primary">Reset</button>
     </div>
 
 </div>

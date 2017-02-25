@@ -40,6 +40,10 @@ module.exports = function(app, passport) {
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
+    app.get('/resetpassword', function (req, res) {
+        res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
+    });
+
 };
 
 
