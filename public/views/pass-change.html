@@ -38,9 +38,12 @@
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <input class="formInput" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
-        <input class="formInput" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
-        <button id="resetSubmit" type="submit" value="submit" onclick="validatePass()" class="btn btn-primary">Reset</button>
+        <form onsubmit="validatePass(); return false;">
+            <input class="formInput" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
+            <input class="formInput" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
+            <p id="formMessage"></p>
+            <button id="resetSubmit" type="submit" value="submit" class="btn btn-primary">Reset</button>
+        </form>
     </div>
 
 </div>
