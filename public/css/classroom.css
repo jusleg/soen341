@@ -16,7 +16,7 @@
   .classroom .window {
     background-color: white;
     overflow: auto;
-    height: 83%; }
+    height: 82%; }
     .classroom .window .message-list {
       list-style: none; }
       .classroom .window .message-list .sender {
@@ -32,5 +32,3 @@
         box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1); }
   .classroom .bulletPoint {
     list-style-type: none; }
-
-/*# sourceMappingURL=classroom.css.map */
