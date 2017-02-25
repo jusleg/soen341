@@ -56,7 +56,7 @@
   .classroom .window {
     background-color: white;
     overflow: auto;
-    height: 82%; }
+    height: 83%; }
     .classroom .window .message-list {
       list-style: none; }
       .classroom .window .message-list .sender {
@@ -318,3 +318,5 @@ body {
       margin-bottom: 0px; }
     body .content-container .content {
       height: 100%; }
+
+/*# sourceMappingURL=mainStyle.css.map */
