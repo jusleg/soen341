@@ -13,84 +13,40 @@
   background-color: white;
   border-radius: 10px; }
 
-.descriptiveText {
-  margin-top: 100px;
-  margin-bottom: 20px; }
-
-#email {
-  background: url(http://sarzh.ru/i/guest.png) no-repeat 5px center;
+#pass {
+  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   border-bottom: none;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px; }
 
-#password {
+#pass2 {
   background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px; }
 
-.loginFormInput {
+.formInput {
   padding-left: 30px;
   height: 40px;
   width: 260px;
   border: 1px solid #4c4c4c; }
 
-.loginFormInput:focus {
-  outline: none;
-  border-color: #8000ff; }
+.formInput:focus {
+  outline: none; }
 
-#loginSubmit {
+#resetSubmit {
   margin-top: 20px;
   width: 260px;
   border-radius: 5px;
   border: none;
   background-color: rgba(128, 0, 255, 0.9); }
 
-#loginSubmit:hover {
+#resetSubmit:hover {
   cursor: pointer;
   background-color: #9e00ff; }
-
-#forgotPass {
-  font-style: italic;
-  color: #a0a0a0;
-  font-size: .7em; }
-
-#forgotPass:hover {
-  cursor: pointer;
-  color: #8c8c8c; }
-
-#createAccount {
-  background-color: #7a7a7a;
-  color: white;
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 0;
-  width: 296px;
-  height: 100px; }
-
-#createAccount:hover {
-  cursor: pointer;
-  background-color: #686868; }
-
-#loginLeftContainer {
-  padding: 40px;
-  text-align: left;
-  color: white;
-  background-color: rgba(128, 0, 255, 0.8);
-  display: table-cell;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px; }
-
-#loginRightContainer {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  display: table-cell;
-  color: #424242;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px; }
 
 #topBanner {
   background-color: rgba(128, 0, 255, 0.8);
@@ -99,15 +55,6 @@
   color: white;
   height: 100px;
   padding: 10px; }
-
-.logDescLI {
-  font-weight: 300;
-  font-size: 0.9em; }
-
-.logDescIMG {
-  margin-right: 15px;
-  width: 22px;
-  height: 22px; }
 
 .centered {
   position: fixed;
