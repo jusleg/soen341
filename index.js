@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/public'));
 //serve bower components
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 // for cookies (for authentication)
-app.use(cookieParser());
+// app.use(cookieParser());
 
 //Passport authentication middlewares
 app.use(session({ secret: 'Harambe2k17HowBouDah' }));
@@ -43,6 +43,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 // to have a flash message for login/register
 app.use(flash());
+
+
+//Error handling middlewares
+
+
+
 
 //Routes
 require('./app/routes/routes.js')(app, passport);

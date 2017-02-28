@@ -3,6 +3,7 @@
  */
 'use strict';
 const path = require('path');
+const User = require('../models/user');
 
 
 module.exports = function(app, passport) {
@@ -13,11 +14,19 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../public/views/login.html'));
+        if (req.isAuthenticated()) {
+            res.redirect('/home');
+        } else {
+            res.sendFile(path.join(__dirname, '../../public/views/login.html'));
+        }
     });
 
     app.get('/register', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../public/views/register.html'));
+        if (req.isAuthenticated()) {
+            res.redirect('/home');
+        } else {
+            res.sendFile(path.join(__dirname, '../../public/views/register.html'));
+        }
     });
 
     app.post('/login',
@@ -25,16 +34,27 @@ module.exports = function(app, passport) {
             successRedirect: '/home',
             failureRedirect: '/login',
             failureFlash: true,
-            session: false
+            session: true
         }));
+
 
     app.post('/register',
         passport.authenticate('local-signup', {
             successRedirect: '/login',
             failureRedirect: '/register',
             failureFlash: true,
-            session: false
         }));
+
+    app.get('/logout',
+        function(req, res){
+            User.findOne({id: req.session.passport.user}, (err, user) => {
+                if(user.online = true){
+                    console.log('logging out');
+                    user.online = false;
+                }});
+            req.logout();
+            res.redirect('/');
+        });
 
     app.get('/home', isLoggedIn, function (req, res) {
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
@@ -44,25 +64,23 @@ module.exports = function(app, passport) {
         res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
     });
 
+    //Unknown routes
+    app.get('*', function(req, res){
+        res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
+    });
+
+
 };
 
-
 function isLoggedIn(req, res, next) {
-    // console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
-        this.user.online = true;
+        req.session.online = true;
         return next();
+    } else{
+        res.send('You are not logged in. Please login before you access the chat!');
     }
-    return next(); //temporary here so that a user can be redirected to the /home, will need to implement req.login() in sprint3
 }
 
-function loggedIn(req, res, next) {
-    if (req.user) {
-        this.user.online = true;
-        next();
-    } else {
-        res.redirect('/login');
-    }
-}
+
 
 

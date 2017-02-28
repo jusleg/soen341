@@ -9,7 +9,7 @@ module.exports = function(passport) {
     });
 
     passport.deserializeUser((id, done) => {
-        User.findById(id, (err, user) => {
+        User.findOne({id:id}, (err, user) => {
             done(err, user);
         });
     });
@@ -32,6 +32,7 @@ module.exports = function(passport) {
                 if (!user.validPassword(password)) {
                     return done(null, false, req.flash('loginMessage', 'Invalid password.'));
                 }
+                user.online = true;
                 return done(null, user);
             });
         }
