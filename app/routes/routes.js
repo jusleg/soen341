@@ -3,6 +3,7 @@
  */
 'use strict';
 const path = require('path');
+const User = require('../models/user');
 
 
 module.exports = function(app, passport) {
@@ -25,15 +26,15 @@ module.exports = function(app, passport) {
             successRedirect: '/home',
             failureRedirect: '/login',
             failureFlash: true,
-            session: false
+            session: true
         }));
+
 
     app.post('/register',
         passport.authenticate('local-signup', {
             successRedirect: '/login',
             failureRedirect: '/register',
             failureFlash: true,
-            session: false
         }));
 
     app.get('/home', isLoggedIn, function (req, res) {
@@ -46,23 +47,15 @@ module.exports = function(app, passport) {
 
 };
 
-
 function isLoggedIn(req, res, next) {
-    // console.log(req.isAuthenticated());
+    console.log(req.session);
+    console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
-        this.user.online = true;
+        req.session.online = true;
         return next();
     }
-    // return next(); //temporary here so that a user can be redirected to the /home, will need to implement req.login() in sprint3
 }
 
-function loggedIn(req, res, next) {
-    if (req.user) {
-        this.user.online = true;
-        next();
-    } else {
-        res.redirect('/login');
-    }
-}
+
 
 
