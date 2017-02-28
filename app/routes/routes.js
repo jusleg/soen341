@@ -37,6 +37,17 @@ module.exports = function(app, passport) {
             failureFlash: true,
         }));
 
+    app.get('/logout',
+        function(req, res){
+            User.findOne({id: req.session.passport.user}, (err, user) => {
+                if(user.online = true){
+                    console.log('logging out');
+                    user.online = false;
+                }});
+            req.logout();
+            res.redirect('/');
+        });
+
     app.get('/home', isLoggedIn, function (req, res) {
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
