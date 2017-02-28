@@ -31,7 +31,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/api/test',function(req,res){
+    app.get('/api/test',function(req,res){
         res.send('You got it');
     })
 };
