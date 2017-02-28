@@ -44,6 +44,12 @@ app.use(passport.session());
 // to have a flash message for login/register
 app.use(flash());
 
+
+//Error handling middlewares
+
+
+
+
 //Routes
 require('./app/routes/routes.js')(app, passport);
 

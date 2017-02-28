@@ -14,11 +14,19 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../public/views/login.html'));
+        if (req.isAuthenticated()) {
+            res.redirect('/home');
+        } else {
+            res.sendFile(path.join(__dirname, '../../public/views/login.html'));
+        }
     });
 
     app.get('/register', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../public/views/register.html'));
+        if (req.isAuthenticated()) {
+            res.redirect('/home');
+        } else {
+            res.sendFile(path.join(__dirname, '../../public/views/register.html'));
+        }
     });
 
     app.post('/login',
@@ -55,6 +63,12 @@ module.exports = function(app, passport) {
     app.get('/resetpassword', function (req, res) {
         res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
     });
+
+    //Unknown routes
+    app.get('*', function(req, res){
+        res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
+    });
+
 
 };
 
