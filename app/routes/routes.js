@@ -73,11 +73,11 @@ module.exports = function(app, passport) {
 };
 
 function isLoggedIn(req, res, next) {
-    console.log(req.session);
-    console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
         req.session.online = true;
         return next();
+    } else{
+        res.send('You are not logged in. Please login before you access the chat!');
     }
 }
 
