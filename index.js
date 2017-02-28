@@ -48,14 +48,12 @@ app.use(flash());
 //Error handling middlewares
 
 
-
-
-//Routes
-require('./app/routes/routes.js')(app, passport);
-
 //Api routes
 require('./app/routes/api.js')(app);
 // app.use('/api', api);
+
+//Routes
+require('./app/routes/routes.js')(app, passport);
 
 
 
