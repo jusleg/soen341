@@ -36,9 +36,16 @@ User.methods.validPassword = function(password) {
 };
 
 
-var hashCode = function(s){
-    return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
-}
+var hashCode = function hashCode(s){
+    if(s == null){
+        return null;
+    }
+    let tempString = s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+    return tempString;
+};
 
-
+// exports.hashCode = hashCode();
+module.expors = {
+    hashCode: hashCode
+};
 module.exports = mongoose.model('User', User);
