@@ -6,6 +6,8 @@ var expect = require('chai').expect;
 var assert = require('chai').assert;
 let User = require('../app/models/user');
 let mailer = require('../app/routes/email.js');
+let MongoClient = require('mongodb').MongoClient
+let url = 'mongodb://chevaldeguerre.xyz:27017/famongo';
 
 describe('A basic test',function(){
 
@@ -17,33 +19,41 @@ describe('A basic test',function(){
         return tempString;
     };
 
-    xit('Should pass if value within databse is the same as hashed value',function(done){
+    it('Should pass if value within databse is the same as hashed value',function(done){
+        console.log("in");
+
         var pass = "TestPass";
         var user = new User();
-        var hashedResult = hashCode("sdfsdfdsf");
+        var hashedResult = hashCode(pass);
 
-        user.pass = pass;
+        user.pass = user.generateHash(pass);
         user.name = "JIm";
-        user.id = ("Timorthy@example.com");
+        user.id = ("kimthong@example.com");
 
         user.save((err) => {
             if (err)
                 throw err;
-            done(null, user);
+            else{
+                console.log("Saved");
+            }
         });
 
-        User.findOne({ id :  "jimothy@example.com" }, (err, user) => {
+        console.log("in");
+
+        console.log(User.find({}));
+
+        User.findOne({ id :  "Timorthy@example.com" }, (err, queriedUser) => {
             console.log('enter');
             if (err)
                 return done(err);
-            if (user) {
-                console.log(user.pass);
-                assert.equals("hashedResult",user.pass);
+            if (queriedUser) {
+                console.log(queriedUser.pass + queriedUser.name);
+                assert.equals("hashedResult", queriedUser.pass);
                 done();
             }
         });
 
-    })
+    }).timeout(50000);
 
         it('Should pass if hashCode function outputs correct value',function(done){
 
