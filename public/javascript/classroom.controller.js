@@ -62,12 +62,16 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     function sendMsg(){
         var room = vm.classId;
         var msgObj = {'class':room, '_id': 'hardCodedEmail@hotmail.com','time': new Date().getTime().toString(), 'name':'HardCodedUser', 'message':vm.m};
-        $http.post('api/message/'+vm.classId, msgObj).then(function success(response){
-            console.log(msgObj)
-            $rootScope.socket.emit('userMessage', msgObj);
-            vm.m ='';
-        });
-        return false;
+        if(msgObj.message == ""){
+            return false;
+        }else{
+            $http.post('api/message/'+vm.classId, msgObj).then(function success(response){
+                console.log(msgObj)
+                $rootScope.socket.emit('userMessage', msgObj);
+                vm.m ='';
+            });
+            return false;
+        }
     }
 
     //when the client receives an emit (new message) from server
