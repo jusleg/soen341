@@ -1,3 +1,4 @@
+@import 'variables.scss';
 .classroom{
   height:100%;
   .sendMsg{
@@ -6,13 +7,10 @@
     width:100%;
     padding:20px;
     background-color: white;
-    form{
-
-    }
   }
 
   .classId{
-    color:dodgerblue;
+    background-color: $secondary_color;
     font-size: 20px;
     padding-left: 10px;
     padding-top: 2px;
@@ -30,7 +28,6 @@
         color: darkgray;
         font-weight: 200;
       }
-
       .message{
         display: inline-block;
         background-color: dodgerblue;
@@ -42,9 +39,10 @@
       }
     }
   }
-
   .bulletPoint{
     list-style-type: none;
   }
-
+  .sendMsg{
+    border-top: solid $secondary_color 1px;
+  }
 }
