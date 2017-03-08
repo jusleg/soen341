@@ -1,5 +1,7 @@
-const LocalStrategy   = require('passport-local').Strategy;
-const User = require('../app/models/user');
+let LocalStrategy   = require('passport-local').Strategy;
+let User = require('../app/models/user');
+let mailer = require('../app/routes/email');
+
 
 
 module.exports = function(passport) {
@@ -62,7 +64,7 @@ module.exports = function(passport) {
                                 throw err;
                             done(null, newUser);
                         });
-
+                        mailer.newAccount(newUser.id);
                     }
                 });
             });
