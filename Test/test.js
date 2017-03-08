@@ -9,6 +9,37 @@ let mailer = require('../app/routes/email.js');
 let MongoClient = require('mongodb').MongoClient
 let url = 'mongodb://chevaldeguerre.xyz:27017/famongo';
 
+var api = require('../app/routes/api');
+var chai = require('chai'), chaiHttp = require('chai-http');
+var server = require('../index.js');
+var should = chai.should();
+chai.use(chaiHttp);
+
+describe('RestApi Routes must all be Functional', function() {
+    it('it should GET all Users', function() {
+        chai.request(server)
+            .get('/api/users')
+            .end(function(err, res){
+                res.should.have.status(200);
+                res.body.should.be.an('array');
+            });
+    });
+    it('it should get all Messages from the Database', function() {
+        chai.request(server)
+            .get('/api/messages/engr371')
+            .end(function(err, res){
+                res.should.have.status(200);
+            });
+    });
+    it('it should post new messages to the Database', function() {
+        chai.request(server)
+            .post('/api/message/testing')
+            .end(function(err, res){
+                res.should.have.status(200);
+            });
+    });
+});
+
 describe('A basic test',function(){
 
     function hashCode(s){
@@ -19,8 +50,7 @@ describe('A basic test',function(){
         return tempString;
     };
 
-    it('Should pass if value within databse is the same as hashed value',function(done){
-        console.log("in");
+    it('Should pass if value within database is the same as hashed value',function(done){
 
         var pass = "TestPass";
         var user = new User();
@@ -37,13 +67,7 @@ describe('A basic test',function(){
                 console.log("Saved");
             }
         });
-
-        console.log("in");
-
-        console.log(User.find({}));
-
         User.findOne({ id :  "Timorthy@example.com" }, (err, queriedUser) => {
-            console.log('enter');
             if (err)
                 return done(err);
             if (queriedUser) {
