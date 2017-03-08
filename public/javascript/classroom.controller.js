@@ -53,7 +53,13 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             vm.messages = response.data[0].chat;
             vm.professor = response.data[0].professor;
             vm.classroom = response.data[0].classroom;
-            vm.className = response.data[0].name
+            vm.className = response.data[0].name;
+
+            //Make it accessible on rootScope
+            $rootScope.currentClassId = vm.classId;
+            $rootScope.currentProf = vm.professor;
+            $rootScope.currentClassroom = vm.classroom;
+            $rootScope.currentClassName = vm.className;
         }, function failure(err){
 
         })

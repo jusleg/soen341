@@ -4,33 +4,42 @@
   height: 100%;
   padding: 0px;
   z-index: 99;
-  background-color: #474647;
+  background-color: $primary_color;
   transition: transform ease-in 0.5s;
 }
 
 .search-bar {
   padding: 15px;
+  .input-group{
+    width:100%;
+  }
 }
 
 .class-section {
   color: white;
-  > div {
-    > h4 {
-      font-family: Impact;
+  div {
+    h3 {
+      margin-top:0px;
+      padding-left:5px;
     }
     .list-container {
-      :hover{
+      p {
+        //background-color: #377BBF;
+        border-top-right-radius:3px;
+        border-bottom-right-radius:3px;
+        padding:3px;
+        padding-left :20px;
+        transition: all 0.5s ease;
+        width:85%;
+        a {
+          display:block;
+          color: white;
+          cursor:pointer;
+          text-decoration: none;
+        }
+      }
+      p:hover{
         background-color: #246EB9;
-      }
-      > p {
-        background-color: #377BBF;
-        margin-right: 10px;
-        border-radius: 3px;
-        text-align: center;
-
-      }
-      > p a {
-        color: white;
       }
     }
 
