@@ -101,3 +101,11 @@
       * If they sign up and already have classes linked to their emails, the chat will show those classes
       * Whenever they get added to the class, we will notify the student via email. (just a notification email)
   * Due to those modifications, issue [#50](https://github.com/jusleg/soen341/issues/50) was discarded because it does not reflect the needs of the new user on-boarding 
+
+* **Wednesday March 8**
+  * Discussed about things required for sprint 4:
+    * Ability for teachers to add students into classes. This means that When teachers add a class, that class will be a new JSON in the DB and students will have a relation with that course (object in the student JSON) (edited)
+    * Obtaining current logged in user in the app. Currently you are able to log in by providing credentials. This will route you to the app but your user information is not in the app at all.
+    * Emails that are clicked should create an account? Ability to distinguish teacher from students
+    * refactor a lot of front end. Side bar, Header and Class Room, active room, etc...
+    * Landing page for the app? ( not the landing page we have right now )
