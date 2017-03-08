@@ -2,7 +2,7 @@ language: node_js
 
 node_js:
   - "6.9.4"
-  - "iojs"
+  - "7.5.0"
 
   #install: ./install-dependencies.sh
   #TODO: We could potentially write a script to run which fetches dependencies we need
