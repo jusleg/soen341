@@ -17,34 +17,30 @@
 </head>
 <body ng-app="app" ng-controller="appCtrl">
 <div class="row outer-container">
-    <div id="sideBar" class="col-sm-2 col-md-2 sideBar">
+    <div id="sideBar" class="col-sm-3 col-md-2 sideBar">
+        <div>
+            <a class="navbar-brand" href="#">Famingo</a></br>
+        </div>
         <div class="search-bar">
             <div class="input-group">
-                <!-- <input type="text" class="form-control" placeholder="Search...">
-                 <span class="input-group-addon"><i class="fa fa-search"></i></span>-->
+                <input type="text" class="form-control" placeholder="Search...">
+                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
             </div>
         </div>
         <div class="class-section">
             <div>
-                <h4>CLASSES:</h4>
+                <h3><b>Classes</b></h3>
                 <div class="list-container">
                     <p><a ng-href="#/class/{{'comp346'}}">Comp 346</a></p>
                     <p><a ng-href="#/class/{{'engr371'}}">Engr 371</a></p>
                 </div>
             </div>
-            <div class=>
-                <h4>CLASSROOMS:</h4>
-                <div class="list-container">
-                    <p><a ng-href="#/class/{{'comp346'}}">Comp 346 - JMSB</a></p>
-                    <p><a ng-href="#/class/{{'engr371'}}">Engr 371 - Hall buildng</a></p>
-                </div>
-            </div>
         </div>
     </div>
     <div id="content" class="col-sm-9 col-md-10 content-container">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" ng-controller="headerCtrl as vm">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -57,8 +53,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Famingo</a>
-
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -70,7 +64,7 @@
                                 <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="/logout">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -83,23 +77,6 @@
 
     </div>
 </div>
-<!--<div class="col-sm-3 nav">-->
-<!--<div class="logo">SOEN 341</div>-->
-<!--<ul>-->
-<!--<li><a ng-href="chat">Chat</a></li>-->
-<!--<li><a ng-href="#/class/{{'comp346'}}">Comp 346</a></li>-->
-<!--<li><a ng-href="#/class/{{'engr371'}}">Engr 371</a></li>-->
-<!--<li><span>Class Rooms go here</span></li>-->
-<!--</ul>-->
-
-<!--</div>-->
-<!--<header>-->
-<!--<span><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</span>-->
-<!--<span><i class="fa fa-cog" aria-hidden="true"></i>Setting</span>-->
-<!--</header>-->
-<!--<div class="col-sm-9" ng-view>-->
-<!--&lt;!&ndash;Dynamic view goes here &ndash;&gt;-->
-<!--</div>-->
 <script>
     //for the menu collapse feature in mobile
     $('#sideBar-toggle').click(function () {
@@ -113,8 +90,10 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <!--MODULES-->
 <script src="../app.js"></script>
+<script src="../javascript/modules/header.module.js"></script>
 <script src="../javascript/modules/classroom.module.js"></script>
 <!--CONTROLLERS-->
+<script src="../javascript/header.controller.js"></script>
 <script src="../javascript/classroom.controller.js"></script>
 
 </body>

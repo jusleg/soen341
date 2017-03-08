@@ -4,12 +4,12 @@
 <div class="classroom">
     <div id="shadow"></div>
     <div class="classId">
-        <span>{{vm.classId}}</span>
+        <span>{{vm.classId}} {{vm.className}} - {{vm.professor}} in {{vm.classroom}}</span>
     </div>
     <div class="window">
         <ul class="message-list">
             <li ng-repeat="message in vm.messages">
-                    <div class="sender"> {{message.user}} </div>
+                    <div class="sender"> {{message.name}} : {{message.time | date:'MM/dd/yyyy'}} </div>
                     <div class="message">{{message.message}}</div>
             </li>
         </ul>

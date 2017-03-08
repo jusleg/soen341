@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/public'));
 //serve bower components
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 // for cookies (for authentication)
-app.use(cookieParser());
+// app.use(cookieParser());
 
 //Passport authentication middlewares
 app.use(session({ secret: 'Harambe2k17HowBouDah' }));
@@ -44,11 +44,16 @@ app.use(passport.session());
 // to have a flash message for login/register
 app.use(flash());
 
-//Routes
-require('./app/routes/routes.js')(app, passport);
+
+//Error handling middlewares
+
 
 //Api routes
-app.use('/api', api);
+require('./app/routes/api.js')(app);
+// app.use('/api', api);
+
+//Routes
+require('./app/routes/routes.js')(app, passport);
 
 
 
@@ -83,3 +88,4 @@ http.listen(9001, function () {
     console.log('listening on*: 9001');
 });
 
+module.exports = app; // for testing

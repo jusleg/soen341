@@ -6,7 +6,8 @@
     // Declare app level module which depends on views, and components
     angular.module('app', [
         'ngRoute',
-        'app.classroom'
+        'app.header',
+        'app.classroom',
     ]).
     config(['$locationProvider', '$routeProvider','$httpProvider',
         function($locationProvider, $routeProvider,$httpProvider) {
@@ -17,6 +18,5 @@
         }])
         .controller('appCtrl', function($scope, $rootScope) {
             $rootScope.socket = io();
-            console.log('User connected');
         });
 })();

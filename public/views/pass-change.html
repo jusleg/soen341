@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="formApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOEN341 - Reset Password</title>
+
+    <link rel="stylesheet" href="../css/pass-change.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
+    <script src="../javascript/pass-change.js"></script>
+</head>
+<body ng-controller="mainController as vm">
+<div class="wrapper">
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+<div id="passResetContainer" class="animated fadeIn centered">
+
+    <div id="topBanner">
+        <span style="font-weight: 700; font-size: 2em;">SOEN341</span>
+        <hr style="border-color: white; margin-top: 0; margin-bottom: 10px;"/>
+        <h1 style="font-size: 0.8em; font-weight: 300;">Password Reset</h1>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <form onsubmit="validatePass(); return false;">
+            <input class="formInput" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
+            <input class="formInput" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
+            <p id="formMessage"></p>
+            <button id="resetSubmit" type="submit" value="submit" class="btn btn-primary">Reset</button>
+        </form>
+    </div>
+
+</div>
+
+
+</body>
+</html>
