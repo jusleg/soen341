@@ -84,3 +84,4 @@ http.listen(9001, function () {
     console.log('listening on*: 9001');
 });
 
+module.exports = app; // for testing

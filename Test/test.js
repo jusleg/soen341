@@ -50,60 +50,55 @@ describe('A basic test',function(){
         return tempString;
     };
 
-    it('Should pass if value within database is the same as hashed value',function(done){
+    // it('Should pass if value within database is the same as hashed value',function(done){
+    //
+    //     var pass = "TestPass";
+    //     var user = new User();
+    //     var hashedResult = hashCode(pass);
+    //
+    //     user.pass = user.generateHash(pass);
+    //     user.name = "JIm";
+    //     user.id = ("kimthong@example.com");
+    //
+    //     user.save((err) => {
+    //         if (err)
+    //             throw err;
+    //         else{
+    //             console.log("Saved");
+    //         }
+    //     });
+    //     User.findOne({ id :  "Timorthy@example.com" }, (err, queriedUser) => {
+    //         if (err)
+    //             return done(err);
+    //         if (queriedUser) {
+    //             console.log(queriedUser.pass + queriedUser.name);
+    //             assert.equals("hashedResult", queriedUser.pass);
+    //             done();
+    //         }
+    //     });
+    //
+    // }).timeout(50000);
 
-        var pass = "TestPass";
-        var user = new User();
-        var hashedResult = hashCode(pass);
+    it('Should pass if hashCode function outputs correct value',function(done){
 
-        user.pass = user.generateHash(pass);
-        user.name = "JIm";
-        user.id = ("kimthong@example.com");
+        var correctString = 105230;
+        var hashee = 'jim';
+        var hashedOutput = hashCode("jim");
 
-        user.save((err) => {
-            if (err)
-                throw err;
-            else{
-                console.log("Saved");
-            }
-        });
-        User.findOne({ id :  "Timorthy@example.com" }, (err, queriedUser) => {
-            if (err)
-                return done(err);
-            if (queriedUser) {
-                console.log(queriedUser.pass + queriedUser.name);
-                assert.equals("hashedResult", queriedUser.pass);
-                done();
-            }
-        });
-
-    }).timeout(50000);
-
-        it('Should pass if hashCode function outputs correct value',function(done){
-
-            var correctString = 105230;
-            var hashee = 'jim';
-            var hashedOutput = hashCode("jim");
-
-            assert.equal(hashedOutput,correctString,'==');
-
-
-            done();
-        })
-
-        it('Should pass if encrypted string matches the correct value',function(done){
-            var correctString;
-            var encryptee = "This is a test";
-            var encryptedOutput;
-
-            assert.equal(correctString,encryptedOutput);
-
-            done();
-        })
+        assert.equal(hashedOutput,correctString,'==');
 
 
+        done();
+    })
 
+    it('Should pass if encrypted string matches the correct value',function(done){
+        var correctString;
+        var encryptee = "This is a test";
+        var encryptedOutput;
 
+        assert.equal(correctString,encryptedOutput);
 
+        done();
+    })
 
 });
