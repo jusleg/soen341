@@ -1,6 +1,8 @@
 * [Meeting #1 (January 27, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-1)
 * [Meeting #2 (February 3, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-2)
 * [Meeting #3 (February 10, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-3)
+* [Meeting #4 (March 3, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-4)
+* [Meeting #5 (March 3, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-5)
 
 ***
 
@@ -52,3 +54,6 @@ Discussed about story points, and burndown chart.
 ## **MEETING #4**
 
 Discussed about lost grades due to missing team members. We discussed about burndown chart. In the past, our burndown charts only included the story points. This create burndown charts that were not good looking. From now on we will also include the time spent in the burndown chart. The chart will be based on hours worked. Email campaign are the main aspect of sprint 3. Many tasks depend on the email campaign to be implemented. Email campaigns for the forgot password, student on-boarding and notification email will be implemented. Some of the features behind the different email scenarios will also be implemented.
+
+## **MEETING #5**
+We discussed about issues for the project. Previously we only documented issues related to programming. We added issue that are related to the planification and management of the project since those are actual task and these are not showing up in commit history. We also discussed about the burndown chart and how story points, priority, risk and estimated time should be defined for every task / user story. We explained that in sprint 2, we lost 0.1/5 because of the attendance of team member even though every team member was present for both meetings. We showed the progress of sprint 3. We thought the deadline was Wednesday March 1, 2017; therefore, most of our commits and issue were done before this date. This will be visible in the burndown of sprint 3.
