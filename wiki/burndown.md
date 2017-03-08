@@ -5,4 +5,4 @@
 ![sprint 2](http://i.imgur.com/O331BUQ.png)
 
 **Sprint 3**
-![sprint 3](http://i.imgur.com/gYbchdq.png)
+![sprint 3](http://i.imgur.com/BpukGPV.png)
