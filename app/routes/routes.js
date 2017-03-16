@@ -47,14 +47,14 @@ module.exports = function(app, passport) {
 
     // to get the currently logged in user's info
     app.get('/currentUser', isLoggedIn, function(req, res) {
-        console.log(req.user);
-        res.json({
+        let data = {
             username: req.user.name,
             email: req.user.id,
             online: req.session.online,
             classUser: req.user.classUser,
             classMod: req.user.classMod
-        });
+        };
+        res.send(data);
     });
 
     app.get('/logout',
