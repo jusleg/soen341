@@ -30,18 +30,6 @@ module.exports = function(app) {
         });
     });
 
-    // to get the currently logged in user's info
-    app.get('/api/currentUser', function(req, res) {
-        console.log(req.user);
-        res.json({
-            username: req.user.name,
-            email: req.user.id,
-            online: req.session.online,
-            classUser: req.user.classUser,
-            classMod: req.user.classMod
-        });
-    });
-
     app.get('/api/test',function(req,res){
         res.send('You got it');
     })

@@ -45,6 +45,18 @@ module.exports = function(app, passport) {
             failureFlash: true,
         }));
 
+    // to get the currently logged in user's info
+    app.get('/currentUser', isLoggedIn, function(req, res) {
+        console.log(req.user);
+        res.json({
+            username: req.user.name,
+            email: req.user.id,
+            online: req.session.online,
+            classUser: req.user.classUser,
+            classMod: req.user.classMod
+        });
+    });
+
     app.get('/logout',
         function(req, res){
             User.findOne({id: req.session.passport.user}, (err, user) => {
