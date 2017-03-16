@@ -9,6 +9,7 @@ let mailer = require('../app/routes/email.js');
 let MongoClient = require('mongodb').MongoClient
 let url = 'mongodb://chevaldeguerre.xyz:27017/famongo';
 
+
 var api = require('../app/routes/api');
 var chai = require('chai'), chaiHttp = require('chai-http');
 var server = require('../index.js');
@@ -38,6 +39,27 @@ describe('RestApi Routes must all be Functional', function() {
                 res.should.have.status(200);
             });
     });
+
+    it('it should receive the currentUser info',function(){
+
+        chai.request(server)
+            .post('/login')
+            .send({
+                email:'example@example.com',
+                pass:'example',
+                id:'134234234'
+            })
+            .end(function(err,res){
+                res.should.have.status(200);
+                console.log("Done!");
+            })
+
+            chai.request(server)
+            .get('/api/currentUser')
+            .end(function(err,res){
+                res.should.have.status(200);
+            })
+    })
 });
 
 describe('A basic test',function(){

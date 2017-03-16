@@ -45,18 +45,32 @@ module.exports = function(app, passport) {
             failureFlash: true,
         }));
 
+    // to get the currently logged in user's info
+    app.get('/currentUser', isLoggedIn, function(req, res) {
+        let data = {
+            username: req.user.name,
+            email: req.user.id,
+            online: req.session.online,
+            classUser: req.user.classUser,
+            classMod: req.user.classMod
+        };
+        res.send(data);
+    });
+
     app.get('/logout',
         function(req, res){
             User.findOne({id: req.session.passport.user}, (err, user) => {
                 if(user.online = true){
                     console.log('logging out');
                     user.online = false;
+                    req.session.online = false;
                 }});
             req.logout();
             res.redirect('/');
         });
 
     app.get('/home', isLoggedIn, function (req, res) {
+        console.log(req.user);
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 

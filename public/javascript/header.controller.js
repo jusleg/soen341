@@ -16,6 +16,7 @@ function headerCtrl ($rootScope){
     vm.currentClassRoom = '';
     vm.currentClassName = '';
     vm.currentProf = '';
+    vm.currentUser = {};
 
     //watch for changes
     $rootScope.$watch('currentClassId',function(){
@@ -23,5 +24,8 @@ function headerCtrl ($rootScope){
         vm.currentClassRoom = $rootScope.currentClassroom;
         vm.currentClassName = $rootScope.currentClassName;
         vm.currentProf = $rootScope.currentProf;
-    })
+    });
+    $rootScope.$watch('currentUser',function(){
+        vm.currentUser = $rootScope.currentUser;
+    });
 }
