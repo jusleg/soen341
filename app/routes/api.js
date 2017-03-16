@@ -20,7 +20,6 @@ module.exports = function(app) {
         classroom.update(selection, updateQuery, options, function(err,data){
             res.send(data);
         })
-
     });
 
     // get all users
