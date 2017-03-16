@@ -16,7 +16,11 @@
             // $httpProvider.defaults.useXDomain = true;
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
-        .controller('appCtrl', function($scope, $rootScope) {
-
+        .controller('appCtrl', function($scope, $rootScope, $http) {
+      
+            $http.get('/currentUser').then(function(res,err){
+                $rootScope.currentUser = res.data
+                console.log('Current User',$rootScope.currentUser);
+            });
         });
 })();

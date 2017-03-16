@@ -74,7 +74,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
     function sendMsg(){
         var room = vm.classId;
-        var msgObj = {'class':room, '_id': 'hardCodedEmail@hotmail.com','time': new Date().getTime().toString(), 'name':'HardCodedUser', 'message':vm.m};
+        var msgObj = {'class':room, '_id': $rootScope.currentUser.email,'time': new Date().getTime().toString(), 'name': $rootScope.currentUser.username, 'message':vm.m};
         if(msgObj.message == ""){
             return false;
         }else{
