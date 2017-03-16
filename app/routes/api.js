@@ -20,7 +20,6 @@ module.exports = function(app) {
         classroom.update(selection, updateQuery, options, function(err,data){
             res.send(data);
         })
-
     });
 
     // get all users
@@ -28,6 +27,18 @@ module.exports = function(app) {
         //exclude pass and __v
         User.find({}).select('-pass').select('-__v').exec(function(err,data){
             res.send(data)
+        });
+    });
+
+    // to get the currently logged in user's info
+    app.get('/api/currentUser', function(req, res) {
+        console.log(req.user);
+        res.json({
+            username: req.user.name,
+            email: req.user.id,
+            online: req.session.online,
+            classUser: req.user.classUser,
+            classMod: req.user.classMod
         });
     });
 

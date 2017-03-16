@@ -51,12 +51,14 @@ module.exports = function(app, passport) {
                 if(user.online = true){
                     console.log('logging out');
                     user.online = false;
+                    req.session.online = false;
                 }});
             req.logout();
             res.redirect('/');
         });
 
     app.get('/home', isLoggedIn, function (req, res) {
+        console.log(req.user);
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
