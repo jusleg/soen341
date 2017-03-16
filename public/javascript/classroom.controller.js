@@ -88,9 +88,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
     //when the client receives an emit (new message) from server
     $rootScope.socket.on(vm.classId, function(msg){
-        console.log('in');
         vm.messages.push(msg);
-        console.log(vm.messages);
         $scope.$apply();
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
