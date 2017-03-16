@@ -17,6 +17,6 @@
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .controller('appCtrl', function($scope, $rootScope) {
-            $rootScope.socket = io();
+
         });
 })();

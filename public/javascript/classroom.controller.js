@@ -37,8 +37,15 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     //disconnect current socket to go to another classroom and recreate new socket
     //This fixes bug where swapping class room causes multiple line
 
-    $rootScope.socket.disconnect(); //disconnect last chat
-    $rootScope.socket = io.connect(); //reconnect socket
+    if($rootScope.socket){
+        console.log('Disconnect from previous class');
+        $rootScope.socket.disconnect(); //disconnect last chat
+        console.log('Connect to '+vm.classId);
+        $rootScope.socket = io.connect(); //reconnect socket
+    }else{
+        console.log('Connect To '+vm.classId);
+        $rootScope.socket = io.connect(); //reconnect socket
+    }
     //join current room
     $rootScope.socket.emit('join room',vm.classId);
 
@@ -72,7 +79,6 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             return false;
         }else{
             $http.post('api/message/'+vm.classId, msgObj).then(function success(response){
-                console.log(msgObj)
                 $rootScope.socket.emit('userMessage', msgObj);
                 vm.m ='';
             });
@@ -82,7 +88,9 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
     //when the client receives an emit (new message) from server
     $rootScope.socket.on(vm.classId, function(msg){
-        vm.messages.push(msg)
+        console.log('in');
+        vm.messages.push(msg);
+        console.log(vm.messages);
         $scope.$apply();
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
