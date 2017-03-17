@@ -2,11 +2,11 @@
 .classroom{
   height:100%;
   .sendMsg{
-    position:absolute;
-    bottom:0;
+    position:relative;
     width:100%;
     padding:20px;
     background-color: white;
+    height: 15%;
   }
 
   .classId{
@@ -19,9 +19,10 @@
   }
 
   .window{
+    position: relative;
     background-color: white;
-    overflow: auto;
-    height: 83%;
+    overflow-y: auto;
+    height: 80%;
     .message-list{
       list-style:none;
       .sender{
@@ -42,7 +43,14 @@
   .bulletPoint{
     list-style-type: none;
   }
-  .sendMsg{
+}
+
+@media only screen and (max-width: 420px) and (max-height: 735px){
+  .classroom >.window{
+    bottom: 6%;
+  }
+  .classroom >.sendMsg{
+    bottom: 6%;
     border-top: solid $secondary_color 1px;
   }
 }
