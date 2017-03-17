@@ -20,7 +20,6 @@ module.exports = function(app) {
         classroom.update(selection, updateQuery, options, function(err,data){
             res.send(data);
         })
-
     });
 
     // get all users
@@ -31,7 +30,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/api/test',function(req,res){
+    app.get('/api/test',function(req,res){
         res.send('You got it');
     })
 };

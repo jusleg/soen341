@@ -44,12 +44,16 @@ app.use(passport.session());
 // to have a flash message for login/register
 app.use(flash());
 
-//Routes
-require('./app/routes/routes.js')(app, passport);
+
+//Error handling middlewares
+
 
 //Api routes
 require('./app/routes/api.js')(app);
 // app.use('/api', api);
+
+//Routes
+require('./app/routes/routes.js')(app, passport);
 
 
 
@@ -84,3 +88,4 @@ http.listen(9001, function () {
     console.log('listening on*: 9001');
 });
 
+module.exports = app; // for testing

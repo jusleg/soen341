@@ -6,7 +6,8 @@
     // Declare app level module which depends on views, and components
     angular.module('app', [
         'ngRoute',
-        'app.classroom'
+        'app.header',
+        'app.classroom',
     ]).
     config(['$locationProvider', '$routeProvider','$httpProvider',
         function($locationProvider, $routeProvider,$httpProvider) {
@@ -15,7 +16,11 @@
             // $httpProvider.defaults.useXDomain = true;
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
-        .controller('appCtrl', function($scope, $rootScope) {
-            $rootScope.socket = io();
+        .controller('appCtrl', function($scope, $rootScope, $http) {
+      
+            $http.get('/currentUser').then(function(res,err){
+                $rootScope.currentUser = res.data
+                console.log('Current User',$rootScope.currentUser);
+            });
         });
 })();

@@ -7,7 +7,7 @@
     background-color: white;
     height: 15%; }
   .classroom .classId {
-    color: dodgerblue;
+    background-color: #DBE2EF;
     font-size: 20px;
     padding-left: 10px;
     padding-top: 2px;
@@ -39,4 +39,7 @@
     bottom: 6%; }
 
   .classroom > .sendMsg {
-    bottom: 6%; } }
+    bottom: 6%;
+    border-top: solid #DBE2EF 1px; 
+  } 
+}

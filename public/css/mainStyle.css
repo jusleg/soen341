@@ -2,25 +2,33 @@
   height: 100%;
   padding: 0px;
   z-index: 99;
-  background-color: #474647;
+  background-color: #112D4E;
   transition: transform ease-in 0.5s; }
 
 .search-bar {
   padding: 15px; }
+  .search-bar .input-group {
+    width: 100%; }
 
 .class-section {
   color: white; }
-  .class-section > div > h4 {
-    font-family: Impact; }
-  .class-section > div .list-container :hover {
+  .class-section div h3 {
+    margin-top: 0px;
+    padding-left: 5px; }
+  .class-section div .list-container p {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 3px;
+    padding-left: 20px;
+    transition: all 0.5s ease;
+    width: 85%; }
+    .class-section div .list-container p a {
+      display: block;
+      color: white;
+      cursor: pointer;
+      text-decoration: none; }
+  .class-section div .list-container p:hover {
     background-color: #246EB9; }
-  .class-section > div .list-container > p {
-    background-color: #377BBF;
-    margin-right: 10px;
-    border-radius: 3px;
-    text-align: center; }
-  .class-section > div .list-container > p a {
-    color: white; }
 
 .sideBar-toggle {
   margin-left: 9px;
@@ -47,7 +55,7 @@
     background-color: white;
     height: 15%; }
   .classroom .classId {
-    color: dodgerblue;
+    background-color: #DBE2EF;
     font-size: 20px;
     padding-left: 10px;
     padding-top: 2px;
@@ -73,6 +81,8 @@
         box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1); }
   .classroom .bulletPoint {
     list-style-type: none; }
+  .classroom .sendMsg {
+    border-top: solid #DBE2EF 1px; }
 
 @media only screen and (max-width: 420px) and (max-height: 735px) {
   .classroom > .window {
@@ -319,7 +329,7 @@ body {
     body .content-container .navbar-toggle {
       border: 0; }
     body .content-container .navbar {
-      background-color: #EFF0F4;
+      background-color: #F9F7F7;
       border: 0;
       border-radius: 0;
       margin-bottom: 0px; }
