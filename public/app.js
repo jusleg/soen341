@@ -17,7 +17,7 @@
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .controller('appCtrl', function($scope, $rootScope, $http) {
-            $rootScope.socket = io();
+      
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 console.log('Current User',$rootScope.currentUser);
