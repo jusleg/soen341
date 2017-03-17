@@ -1,11 +1,11 @@
 .classroom {
   height: 100%; }
   .classroom .sendMsg {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     width: 100%;
     padding: 20px;
-    background-color: white; }
+    background-color: white;
+    height: 15%; }
   .classroom .classId {
     color: dodgerblue;
     font-size: 20px;
@@ -14,9 +14,10 @@
     padding-bottom: 5px;
     font-weight: bolder; }
   .classroom .window {
+    position: relative;
     background-color: white;
-    overflow: auto;
-    height: 82%; }
+    overflow-y: auto;
+    height: 80%; }
     .classroom .window .message-list {
       list-style: none; }
       .classroom .window .message-list .sender {
@@ -32,3 +33,10 @@
         box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1); }
   .classroom .bulletPoint {
     list-style-type: none; }
+
+@media only screen and (max-width: 420px) and (max-height: 735px) {
+  .classroom > .window {
+    bottom: 6%; }
+
+  .classroom > .sendMsg {
+    bottom: 6%; } }
