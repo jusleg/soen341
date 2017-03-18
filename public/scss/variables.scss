@@ -5,3 +5,29 @@ $bubble_color_one:  #415F9D;
 $bubble_color_two:  #233B6E;
 
 $primary_purple:    rgba(128, 0, 255, 0.8);
+
+$purple_bg: rgb(105,0,220);
+
+$border_color: #8e8e8e;
+
+$selection_color: #F3F3F3;
+
+@mixin vertical-align() {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin pointerTransition() {
+  -webkit-transition:  0.2s;
+  -moz-transition:  .2s;
+  -ms-transition:  .2s;
+  -o-transition:  .2s;
+  transition:  .2s;
+  &:hover{
+    cursor: pointer;
+    color: $primary_purple;
+  }
+}

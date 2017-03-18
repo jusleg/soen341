@@ -8,7 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/mainStyle.css">
 
     <script src="/socket.io/socket.io.js"></script>
@@ -16,7 +16,102 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="app" ng-controller="appCtrl">
-<div class="row outer-container">
+<div class="outer-container">
+
+    <div id="leftMenu">
+
+        <div id="left_top">
+            <p>Famingo</p>
+        </div>
+
+        <div id="menu">
+            <div id="menu_items">
+                <div id="search">
+                    <input type="text" name="classSearch" id="classSearch" placeholder="Search Classes">
+                </div>
+
+                <div id="classList">
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 371</p>
+                        <p class="menu_class_subtitle">Probability and Statistics</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ELEC 275</p>
+                        <p class="menu_class_subtitle">Introduction to Electrical Engineering</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">SOEN 331</p>
+                        <p class="menu_class_subtitle">Formal Specifications</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">SOEN 341</p>
+                        <p class="menu_class_subtitle">Software Process</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div><div class="menu_class">
+                    <p class="menu_class_title">COMP 346</p>
+                    <p class="menu_class_subtitle">Operating Systems</p>
+                    <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 233</p>
+                        <p class="menu_class_subtitle">Advanced Calculus</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 233</p>
+                        <p class="menu_class_subtitle">Advanced Calculus</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 233</p>
+                        <p class="menu_class_subtitle">Advanced Calculus</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 233</p>
+                        <p class="menu_class_subtitle">Advanced Calculus</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 233</p>
+                        <p class="menu_class_subtitle">Advanced Calculus</p>
+                        <div>Status: <span class="menu_class_status"></span></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="rightContent">
+
+        <div id="right_top">
+
+            <i id="right_top_settings" class="fa fa-cog fa-2x"></i>
+
+            <div id="right_top_userMenu">
+                <i class="fa fa-user-circle fa-2x"></i>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+
+            </div>
+
+            <p>Class Name</p>
+
+        </div>
+
+        <div style="background-color:#D8DEE5" class="content" ng-view>
+
+        </div>
+
+    </div>
+
+    <!--Sidebar
     <div id="sideBar" class="col-sm-3 col-md-2 sideBar">
         <div>
             <a class="navbar-brand" href="#">Famingo</a></br>
@@ -37,10 +132,11 @@
             </div>
         </div>
     </div>
+    -->
+    <!-- Main Content
     <div id="content" class="col-sm-9 col-md-10 content-container">
         <nav class="navbar navbar-default" ng-controller="headerCtrl as vm">
             <div class="container-fluid">
-                <!-- toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -54,7 +150,6 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -74,8 +169,9 @@
 
         <div style="background-color:#D8DEE5" class="content" ng-view></div>
         <div id="shadow"></div>
-
     </div>
+    -->
+
 </div>
 <script>
     //for the menu collapse feature in mobile

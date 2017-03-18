@@ -14,6 +14,7 @@ body{
   height:100%;
   width:100%;
   .outer-container{
+    display: flex;
     margin:0;
     height:100%;
     width:100%;
@@ -46,6 +47,105 @@ body{
     }
     .content{
       height:100%;
+    }
+  }
+}
+
+#leftMenu {
+  width: 25%;
+  height: 100vh;
+  border-right: 1px solid $border_color;
+
+  #left_top {
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid $border_color;
+    text-align: center;
+    p {
+      @include vertical-align();
+      font-size: 20px;
+    }
+  }
+
+  #search {
+    height: 50px;
+    text-align: center;
+    input {
+      @include vertical-align();
+      width: 90%;
+      background: url(../images/search.png) no-repeat 5px center;
+      -webkit-background-size: 20px 20px;
+      background-size: 20px 20px;
+      border: 1px solid $border_color;
+      padding-top: 5px;
+      padding-bottom:5px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    input:focus {
+      outline: none;
+      border-color: $primary_purple;
+    }
+  }
+
+  #menu {
+    overflow: scroll;
+    height: calc(100vh - 50px);
+  }
+
+  #classList{
+    .menu_class {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 5%;
+    }
+    .menu_class:hover {
+      cursor: pointer;
+      background-color: $selection_color;
+    }
+    p {
+      margin: 0;
+    }
+  }
+
+  .menu_class_title {
+    font-size: 1.3em;
+    font-weight: 600;
+  }
+  .menu_class_subtitle {
+    font-size: .9em;
+  }
+}
+
+#rightContent {
+  width: 75%;
+  height: 100%;
+
+  #right_top {
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid $border_color;
+    text-align: center;
+    p {
+      @include vertical-align();
+      font-size: 20px;
+    }
+    #right_top_userMenu {
+      float: right;
+      clear: none;
+      color: $border_color;
+      @include vertical-align();
+      margin-right: 10px;
+      z-index: 20;
+      @include pointerTransition();
+    }
+    #right_top_settings {
+      float: left;
+      color: $border_color;
+      @include vertical-align();
+      margin-left:10px;
+      z-index: 20;
+      @include pointerTransition();
     }
   }
 }
