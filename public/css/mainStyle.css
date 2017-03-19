@@ -935,38 +935,81 @@ input::-webkit-input-placeholder {
     overflow: scroll; }
     .classroom .window .message-list {
       list-style: none;
-      padding-left: 20px;
-      padding-right: 20px; }
+      padding-left: 30px;
+      padding-right: 30px; }
       .classroom .window .message-list .message {
         float: left;
-        clear: both; }
+        clear: both;
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 5px; }
+        .classroom .window .message-list .message .sendInfo {
+          width: 80px; }
+        .classroom .window .message-list .message .messageBubble {
+          font-size: 1.1em;
+          position: relative;
+          color: black;
+          text-align: center;
+          padding: 0px;
+          background: lightgray;
+          border-radius: 8px;
+          padding: 6px;
+          max-width: 700px;
+          margin-bottom: 6px; }
+        .classroom .window .message-list .message .messageBubble:after {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 5px 8px 5px 0;
+          border-color: transparent lightgray;
+          display: block;
+          width: 0;
+          z-index: 1;
+          left: -8px;
+          top: 12px; }
+        .classroom .window .message-list .message .fa {
+          color: darkgray; }
       .classroom .window .message-list .message2 {
         float: right;
-        clear: both; }
+        clear: both;
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 5px; }
         .classroom .window .message-list .message2 .sender {
           float: right;
           clear: both; }
+        .classroom .window .message-list .message2 .sendInfo {
+          width: 80px; }
         .classroom .window .message-list .message2 .messageBubble {
-          display: inline-block;
-          background-color: lightgray;
-          color: black;
-          padding: 6px;
           font-size: 1.1em;
+          position: relative;
+          color: white;
+          text-align: center;
+          padding: 0px;
+          background: rgba(128, 0, 255, 0.8);
           border-radius: 8px;
-          margin-bottom: 6px;
+          padding: 6px;
+          max-width: 700px;
+          margin-bottom: 6px; }
+        .classroom .window .message-list .message2 .messageBubble:after {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 5px 0 5px 8px;
+          border-color: transparent rgba(128, 0, 255, 0.8);
+          display: block;
+          width: 0;
+          z-index: 1;
+          right: -8px;
+          top: 12px; }
+        .classroom .window .message-list .message2 .fa {
+          color: darkgray;
           float: right;
           clear: both; }
       .classroom .window .message-list .sender {
         color: darkgray;
-        font-weight: 200; }
-      .classroom .window .message-list .messageBubble {
-        display: inline-block;
-        background-color: rgba(128, 0, 255, 0.8);
-        color: white;
-        padding: 6px;
-        font-size: 1.1em;
-        border-radius: 8px;
-        margin-bottom: 6px; }
+        font-weight: 200;
+        font-size: 12px; }
   .classroom .bulletPoint {
     list-style-type: none; }
 
@@ -1185,6 +1228,9 @@ button.btn-5:focus {
   100% {
     -webkit-transform: translateY(-1200px) rotate(600deg);
     transform: translateY(-1200px) rotate(600deg); } }
+@font-face {
+  font-family: "Nova";
+  src: url(../fonts/ProximaNova-Regular.otf); }
 a, a:hover, a:active, a:visited, a:focus {
   text-decoration: none; }
 
@@ -1193,7 +1239,7 @@ html {
   width: 100%; }
 
 body {
-  font-family: 'Lato', sans-serif !important;
+  font-family: Helvetica;
   margin: 0;
   padding: 0;
   height: 100%;

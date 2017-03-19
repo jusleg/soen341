@@ -15,13 +15,19 @@
                 <li ng-repeat="message in vm.messages">
 
                     <div ng-if="message.name != $root.currentUser.username" class="message animated fadeIn">
-                        <div class="sender"> {{message.name}} - {{message.time |date :"MMM dd, H:mm"}}</div>
+                        <div class="sendInfo">
+                            <i class="fa fa-user-circle fa-2x"></i>
+                            <div class="sender"> {{message.name}} <!-- - {{message.time |date :"MMM dd, H:mm"}}--></div>
+                        </div>
                         <div class="messageBubble">{{message.message}}</div>
                     </div>
 
                     <div ng-if="message.name == $root.currentUser.username" class="message2 animated fadeIn">
-                        <div class="sender"> {{message.name}} - {{message.time | date :"MMM dd, H:mm"}}</div>
                         <div class="messageBubble">{{message.message}}</div>
+                        <div class="sendInfo">
+                            <i class="fa fa-user-circle fa-2x"></i>
+                            <div class="sender"> {{message.name}} <!-- - {{message.time | date :"MMM dd, H:mm"}}--></div>
+                        </div>
                     </div>
 
                 </li>

@@ -47,27 +47,87 @@
     overflow: scroll;
     .message-list{
       list-style:none;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
       .message {
         float: left;
         clear: both;
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 5px;
+        .sendInfo {
+          width: 80px;
+        }
+        .messageBubble {
+          font-size:1.1em;
+          position: relative;
+          color: black;
+          text-align: center;
+          padding: 0px;
+          background: lightgray;
+          border-radius: 8px;
+          padding: 6px;
+          max-width: 700px;
+          margin-bottom: 6px;
+        }
+
+        .messageBubble:after
+        {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 5px 8px 5px 0;
+          border-color: transparent lightgray;
+          display: block;
+          width: 0;
+          z-index: 1;
+          left: -8px;
+          top: 12px;
+        }
+
+        .fa {
+          color: darkgray;
+        }
       }
       .message2 {
         float: right;
         clear: both;
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 5px;
         .sender {
           float: right;
           clear: both;
         }
+        .sendInfo {
+          width: 80px;
+        }
         .messageBubble {
-          display: inline-block;
-          background-color: lightgray;
-          color: black;
-          padding: 6px;
-          font-size: 1.1em;
+          font-size:1.1em;
+          position: relative;
+          color: white;
+          text-align: center;
+          padding: 0px;
+          background: $primary_purple;
           border-radius: 8px;
+          padding: 6px;
+          max-width: 700px;
           margin-bottom: 6px;
+        }
+        .messageBubble:after {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 5px 0 5px 8px;
+          border-color: transparent $primary_purple;
+          display: block;
+          width: 0;
+          z-index: 1;
+          right: -8px;
+          top: 12px;
+        }
+        .fa {
+          color: darkgray;
           float: right;
           clear: both;
         }
@@ -75,15 +135,7 @@
       .sender{
         color: darkgray;
         font-weight: 200;
-      }
-      .messageBubble{
-        display: inline-block;
-        background-color: $primary_purple;
-        color: white;
-        padding: 6px;
-        font-size: 1.1em;
-        border-radius: 8px;
-        margin-bottom: 6px;
+        font-size: 12px;
       }
     }
   }

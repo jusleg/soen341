@@ -8,6 +8,10 @@
 @import 'sideBar';
 @import 'classroom.scss';
 @import 'landing.scss';
+@font-face {
+  font-family: "Nova";
+  src: url(../fonts/ProximaNova-Regular.otf);
+}
 
 a, a:hover, a:active, a:visited, a:focus {
   text-decoration:none;
@@ -17,7 +21,7 @@ html{
   width:100%;
 }
 body{
-  font-family: 'Lato', sans-serif !important;
+  font-family: Helvetica;
   margin:0;
   padding:0;
   height:100%;
