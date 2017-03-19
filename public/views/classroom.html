@@ -16,16 +16,16 @@
 
                     <div ng-if="message.name != $root.currentUser.username" class="message animated fadeIn">
                         <div class="sendInfo">
-                            <i ng-if="message.name != vm.messages[$index -1].name" class="fa fa-user-circle fa-2x" data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'></i>
+                            <i ng-if="message.name != vm.messages[$index -1].name" class="fa fa-user-circle fa-2x"></i>
                             <div ng-if="message.name != vm.messages[$index -1].name" class="sender"> {{message.name}} <!-- - {{message.time |date :"MMM dd, H:mm"}}--></div>
                         </div>
-                        <div class="messageBubble">{{message.message}}</div>
+                        <div class="messageBubble" data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'>{{message.message}}</div>
                     </div>
 
                     <div ng-if="message.name == $root.currentUser.username" class="message2 animated fadeIn">
-                        <div class="messageBubble">{{message.message}}</div>
+                        <div class="messageBubble" data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'>{{message.message}}</div>
                         <div class="sendInfo" >
-                            <i ng-if="message.name != vm.messages[$index -1].name" class="fa fa-user-circle fa-2x"  data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'></i>
+                            <i ng-if="message.name != vm.messages[$index -1].name" class="fa fa-user-circle fa-2x" ></i>
                             <div ng-if="message.name != vm.messages[$index -1].name" class="sender"> {{message.name}} <!-- - {{message.time | date :"MMM dd, H:mm"}}--></div>
                         </div>
                     </div>
