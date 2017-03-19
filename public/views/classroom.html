@@ -3,16 +3,20 @@
 </head>
 <div class="classroom">
     <div id="shadow"></div>
+    <!--
     <div class="classId">
         <span>{{vm.classId}} {{vm.className}} - {{vm.professor}} in {{vm.classroom}}</span>
     </div>
+    -->
     <div class="window">
-        <ul class="message-list">
-            <li ng-repeat="message in vm.messages">
-                    <div class="sender"> {{message.name}} : {{message.time | date:'MM/dd/yyyy'}} </div>
-                    <div class="message">{{message.message}}</div>
-            </li>
-        </ul>
+        <div id="chatroom">
+            <ul class="message-list">
+                <li ng-repeat="message in vm.messages">
+                        <div class="sender"> {{message.name}} : {{message.time | date:'MM/dd/yyyy'}} </div>
+                        <div class="message">{{message.message}}</div>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="sendMsg">
         <form ng-submit="vm.sendMsg()">

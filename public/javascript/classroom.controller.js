@@ -40,6 +40,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     if($rootScope.socket){
         console.log('Disconnect from previous class');
         $rootScope.socket.disconnect(); //disconnect last chat
+        $(".menu_class").css("background-color", "white");
         console.log('Connect to '+vm.classId);
         $rootScope.socket = io.connect(); //reconnect socket
     }else{

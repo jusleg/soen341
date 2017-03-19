@@ -31,11 +31,13 @@
                 </div>
 
                 <div id="classList">
-                    <div class="menu_class">
-                        <p class="menu_class_title">ENGR 371</p>
-                        <p class="menu_class_subtitle">Probability and Statistics</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
-                    </div>
+                    <a ng-href="#/class/{{'comp346'}}">
+                        <div class="menu_class">
+                            <p class="menu_class_title">ENGR 371</p>
+                            <p class="menu_class_subtitle">Probability and Statistics</p>
+                            <div>Status: <span class="menu_class_status"></span></div>
+                        </div>
+                    </a>
                     <div class="menu_class">
                         <p class="menu_class_title">ELEC 275</p>
                         <p class="menu_class_subtitle">Introduction to Electrical Engineering</p>
@@ -50,7 +52,8 @@
                         <p class="menu_class_title">SOEN 341</p>
                         <p class="menu_class_subtitle">Software Process</p>
                         <div>Status: <span class="menu_class_status"></span></div>
-                    </div><div class="menu_class">
+                    </div>
+                    <div class="menu_class" ng-href="#/class/{{'comp346'}}">
                     <p class="menu_class_title">COMP 346</p>
                     <p class="menu_class_subtitle">Operating Systems</p>
                     <div>Status: <span class="menu_class_status"></span></div>
@@ -179,6 +182,18 @@
         $('#sideBar').toggleClass('sideBarOpen');
         $('#content').toggleClass('content-container-moveX');
         $('#shadow').toggleClass('shadow-active');
+    })
+    $(document).ready(function() {
+        $(".menu_class_status").each(function() {
+            if(Math.random() < .5) {
+                $(this).text("Active");
+                $(this).css("color", "green")
+            }
+            else {
+                $(this).text("Inactive");
+                $(this).css("color", "red")
+            }
+        })
     })
 </script>
 <!--ANGULAR-->

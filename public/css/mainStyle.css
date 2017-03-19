@@ -53,7 +53,7 @@
     width: 100%;
     padding: 20px;
     background-color: white;
-    height: 15%; }
+    height: 65px; }
   .classroom .classId {
     background-color: #DBE2EF;
     font-size: 20px;
@@ -62,10 +62,10 @@
     padding-bottom: 5px;
     font-weight: bolder; }
   .classroom .window {
+    height: calc(100vh - 115px);
     position: relative;
     background-color: white;
-    overflow-y: auto;
-    height: 80%; }
+    overflow: scroll; }
     .classroom .window .message-list {
       list-style: none; }
       .classroom .window .message-list .sender {
@@ -376,6 +376,16 @@ body {
   #leftMenu #menu {
     overflow: scroll;
     height: calc(100vh - 50px); }
+  #leftMenu a:visited {
+    color: black;
+    background-color: #F3F3F3;
+    text-decoration: none; }
+  #leftMenu a:hover {
+    color: black;
+    text-decoration: none; }
+  #leftMenu a:active {
+    color: black;
+    text-decoration: none; }
   #leftMenu #classList .menu_class {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -389,7 +399,9 @@ body {
     font-size: 1.3em;
     font-weight: 600; }
   #leftMenu .menu_class_subtitle {
-    font-size: .9em; }
+    font-weight: 600; }
+  #leftMenu div {
+    color: black; }
 
 #rightContent {
   width: 75%;

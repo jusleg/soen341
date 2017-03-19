@@ -93,6 +93,20 @@ body{
     height: calc(100vh - 50px);
   }
 
+  a:visited {
+    color: black;
+    background-color: $selection_color;
+    text-decoration: none;
+  }
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  a:active {
+    color: black;
+    text-decoration: none;
+  }
+
   #classList{
     .menu_class {
       padding-top: 10px;
@@ -113,7 +127,10 @@ body{
     font-weight: 600;
   }
   .menu_class_subtitle {
-    font-size: .9em;
+    font-weight: 600;
+  }
+  div {
+    color: black;
   }
 }
 

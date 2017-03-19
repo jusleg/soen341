@@ -5,7 +5,7 @@
     width: 100%;
     padding: 20px;
     background-color: white;
-    height: 15%; }
+    height: 65px; }
   .classroom .classId {
     background-color: #DBE2EF;
     font-size: 20px;
@@ -14,10 +14,10 @@
     padding-bottom: 5px;
     font-weight: bolder; }
   .classroom .window {
+    height: calc(100vh - 115px);
     position: relative;
     background-color: white;
-    overflow-y: auto;
-    height: 80%; }
+    overflow: scroll; }
     .classroom .window .message-list {
       list-style: none; }
       .classroom .window .message-list .sender {
