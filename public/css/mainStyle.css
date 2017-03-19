@@ -999,7 +999,7 @@ input::-webkit-input-placeholder {
           background: #0084FF;
           border-radius: 8px;
           padding: 6px;
-          max-width: 700px;
+          max-width: 550px;
           margin-bottom: 6px; }
         .classroom .window .message-list .message2 .messageBubble:after {
           content: '';
@@ -1347,22 +1347,25 @@ body {
       border-left: 2px solid #0084FF !important;
       padding-left: calc(5% - 2px) !important;
       background-color: #3d4856; }
+    #leftMenu #classList .menu_class_title {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: white; }
+    #leftMenu #classList .menu_class_subtitle {
+      color: #bcbcbc;
+      font-size: .9em; }
     #leftMenu #classList div {
-      color: #DEDFDF; }
+      color: #bcbcbc;
+      font-size: .9em; }
     #leftMenu #classList p {
       margin: 0; }
-  #leftMenu .menu_class_title {
-    font-size: 1.3em;
-    font-weight: 500;
-    color: white; }
-  #leftMenu .menu_class_subtitle {
-    color: #DEDFDF; }
 
 #rightContent {
   width: 75%;
   height: 100%;
   background-color: #EAEDF1; }
   #rightContent #right_top {
+    padding-left: 15px;
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #706d6d;
@@ -1374,45 +1377,29 @@ body {
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       font-size: 22px;
-      display: inline-block; }
-    #rightContent #right_top #right_top_userMenu {
-      background-color: transparent;
-      border: none;
+      float: left; }
+    #rightContent #right_top #top_right_rhs {
       float: right;
-      clear: none;
-      color: #706d6d;
-      position: relative;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-      margin-right: 15px;
-      z-index: 20;
-      -webkit-transition: 0.2s;
-      -moz-transition: .2s;
-      -ms-transition: .2s;
-      -o-transition: .2s;
-      transition: .2s; }
-      #rightContent #right_top #right_top_userMenu:hover {
-        cursor: pointer;
-        color: #0084FF; }
-      #rightContent #right_top #right_top_userMenu span {
-        margin-right: 5px; }
-    #rightContent #right_top #right_top_settings {
-      float: left;
-      color: #706d6d;
-      position: relative;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-      margin-left: 15px;
-      z-index: 20;
-      -webkit-transition: 0.2s;
-      -moz-transition: .2s;
-      -ms-transition: .2s;
-      -o-transition: .2s;
-      transition: .2s; }
-      #rightContent #right_top #right_top_settings:hover {
-        cursor: pointer;
-        color: #0084FF; }
+      height: 100%; }
+      #rightContent #right_top #top_right_rhs div {
+        width: 70px;
+        display: inline-block;
+        border-left: 1px solid #706d6d;
+        height: 100%;
+        color: #706d6d;
+        -webkit-transition: 0.2s;
+        -moz-transition: .2s;
+        -ms-transition: .2s;
+        -o-transition: .2s;
+        transition: .2s; }
+        #rightContent #right_top #top_right_rhs div .fa {
+          position: relative;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
+        #rightContent #right_top #top_right_rhs div:hover {
+          cursor: pointer;
+          color: #0084FF; }
+      #rightContent #right_top #top_right_rhs div:hover {
+        background-color: #F3F3F3; }

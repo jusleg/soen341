@@ -76,7 +76,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             });
 
             $("#className").addClass("animated fadeIn");
-            $("#className").text(vm.classId +": "+vm.className);
+            $("#className").html("<span style='weight: 600;'/>"+vm.classId +"</span>: "+vm.className);
 
             //Make it accessible on rootScope
             $rootScope.currentClassId = vm.classId;
