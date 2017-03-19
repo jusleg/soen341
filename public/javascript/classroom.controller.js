@@ -63,6 +63,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             vm.classroom = response.data[0].classroom;
             vm.className = response.data[0].name;
 
+            $("#className").text(vm.classId +": "+vm.className);
+
             //Make it accessible on rootScope
             $rootScope.currentClassId = vm.classId;
             $rootScope.currentProf = vm.professor;
@@ -91,6 +93,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     $rootScope.socket.on(vm.classId, function(msg){
         vm.messages.push(msg);
         $scope.$apply();
+        $(".window").animate({ scrollTop: $('#chatroom').prop("scrollHeight")}, 750);
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
 }

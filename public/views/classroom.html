@@ -18,14 +18,12 @@
             </ul>
         </div>
     </div>
-    <div class="sendMsg">
-        <form ng-submit="vm.sendMsg()">
+        <form class="sendMsg" ng-submit="vm.sendMsg()">
             <div class="input-group">
-                <input ng-model="vm.m" type="text" class="form-control" placeholder="Message Text" >
+                <input ng-model="vm.m" type="text" class="form-control" placeholder="Send a message..." >
                 <span class="input-group-btn">
-                    <button class="btn btn-default">Send</button>
+                    <button class="btn btn-default"><i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i></button>
                 </span>
             </div>
         </form>
-    </div>
 </div>

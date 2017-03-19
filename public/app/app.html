@@ -21,7 +21,7 @@
     <div id="leftMenu">
 
         <div id="left_top">
-            <p>Famingo</p>
+            <p><a href="#">Famingo</a></p>
         </div>
 
         <div id="menu">
@@ -31,7 +31,8 @@
                 </div>
 
                 <div id="classList">
-                    <a ng-href="#/class/{{'comp346'}}">
+
+                    <a ng-href="#/class/{{'engr371'}}">
                         <div class="menu_class">
                             <p class="menu_class_title">ENGR 371</p>
                             <p class="menu_class_subtitle">Probability and Statistics</p>
@@ -53,11 +54,13 @@
                         <p class="menu_class_subtitle">Software Process</p>
                         <div>Status: <span class="menu_class_status"></span></div>
                     </div>
-                    <div class="menu_class" ng-href="#/class/{{'comp346'}}">
-                    <p class="menu_class_title">COMP 346</p>
-                    <p class="menu_class_subtitle">Operating Systems</p>
-                    <div>Status: <span class="menu_class_status"></span></div>
-                    </div>
+                    <a ng-href="#/class/{{'comp346'}}">
+                        <div class="menu_class">
+                            <p class="menu_class_title">COMP 346</p>
+                            <p class="menu_class_subtitle">Probability and Statistics</p>
+                            <div>Status: <span class="menu_class_status"></span></div>
+                        </div>
+                    </a>
                     <div class="menu_class">
                         <p class="menu_class_title">ENGR 233</p>
                         <p class="menu_class_subtitle">Advanced Calculus</p>
@@ -104,7 +107,7 @@
 
             </div>
 
-            <p>Class Name</p>
+            <p id="className">Class Name</p>
 
         </div>
 

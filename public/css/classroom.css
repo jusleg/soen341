@@ -1,11 +1,23 @@
 .classroom {
   height: 100%; }
   .classroom .sendMsg {
-    position: relative;
+    border-top: 1px solid #8e8e8e;
     width: 100%;
-    padding: 20px;
     background-color: white;
-    height: 65px; }
+    height: 50px; }
+    .classroom .sendMsg input {
+      border: none;
+      height: 49px;
+      font-size: 1.1em;
+      padding-left: 20px; }
+    .classroom .sendMsg button {
+      border: none; }
+    .classroom .sendMsg button:hover {
+      background-color: white; }
+    .classroom .sendMsg input:focus {
+      outline: none; }
+    .classroom .sendMsg .fa {
+      color: rgba(128, 0, 255, 0.8); }
   .classroom .classId {
     background-color: #DBE2EF;
     font-size: 20px;
@@ -14,18 +26,19 @@
     padding-bottom: 5px;
     font-weight: bolder; }
   .classroom .window {
-    height: calc(100vh - 115px);
+    height: calc(100vh - 100px);
     position: relative;
     background-color: white;
     overflow: scroll; }
     .classroom .window .message-list {
-      list-style: none; }
+      list-style: none;
+      padding-left: 20px; }
       .classroom .window .message-list .sender {
         color: darkgray;
         font-weight: 200; }
       .classroom .window .message-list .message {
         display: inline-block;
-        background-color: dodgerblue;
+        background-color: rgba(128, 0, 255, 0.8);
         color: white;
         padding: 5px;
         border-radius: 10px;

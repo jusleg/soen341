@@ -2,11 +2,28 @@
 .classroom{
   height:100%;
   .sendMsg{
-    position:relative;
+    border-top: 1px solid $border_color;
     width:100%;
-    padding:20px;
     background-color: white;
-    height: 65px;
+    height: 50px;
+    input {
+      border: none;
+      height: 49px;
+      font-size: 1.1em;
+      padding-left: 20px;
+    }
+    button {
+      border: none;
+    }
+    button:hover {
+      background-color: white;
+    }
+    input:focus {
+      outline: none;
+    }
+    .fa {
+      color: $primary_purple;
+    }
   }
 
   .classId{
@@ -19,19 +36,20 @@
   }
 
   .window{
-    height: calc(100vh - 115px);
+    height: calc(100vh - 100px);
     position: relative;
     background-color: white;
     overflow: scroll;
     .message-list{
       list-style:none;
+      padding-left: 20px;
       .sender{
         color: darkgray;
         font-weight: 200;
       }
       .message{
         display: inline-block;
-        background-color: dodgerblue;
+        background-color: $primary_purple;
         color: white;
         padding: 5px;
         border-radius: 10px;
