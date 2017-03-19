@@ -16,11 +16,15 @@
             // $httpProvider.defaults.useXDomain = true;
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
-        .controller('appCtrl', function($scope, $rootScope, $http) {
-      
+        .controller('appCtrl', function($scope, $rootScope, $http, $routeParams) {
+            var vm = this;
+
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 console.log('Current User',$rootScope.currentUser);
             });
+            $rootScope.$watch('currentClassId',function(New){
+                vm.currentClassId = New;
+            })
         });
 })();

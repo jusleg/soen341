@@ -118,6 +118,10 @@ body{
 
   #classList{
     z-index: 100;
+    .activeClass{
+      border-left:6px solid $primary_purple;
+      padding-left:calc(5% - 6px) !important;
+    }
     .menu_class {
       padding-top: 10px;
       padding-bottom: 10px;

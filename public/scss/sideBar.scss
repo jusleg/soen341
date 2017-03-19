@@ -1,5 +1,7 @@
 @import 'variables.scss';
+.activeClass{
 
+}
 .sideBar {
   height: 100%;
   padding: 0px;
@@ -7,7 +9,6 @@
   background-color: $primary_color;
   transition: transform ease-in 0.5s;
 }
-
 .search-bar {
   padding: 15px;
   .input-group{

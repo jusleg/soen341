@@ -15,7 +15,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
-<body ng-app="app" ng-controller="appCtrl">
+<body ng-app="app" ng-controller="appCtrl as vm">
 <div class="outer-container">
 
     <div id="leftMenu">
@@ -33,7 +33,7 @@
                 <div id="classList">
 
                     <a ng-href="#/class/{{'engr371'}}">
-                        <div class="menu_class">
+                        <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == 'ENGR371'}">
                             <p class="menu_class_title">ENGR 371</p>
                             <p class="menu_class_subtitle">Probability and Statistics</p>
                             <div>Status: <span class="menu_class_status"></span></div>
@@ -55,7 +55,7 @@
                         <div>Status: <span class="menu_class_status"></span></div>
                     </div>
                     <a ng-href="#/class/{{'comp346'}}">
-                        <div class="menu_class">
+                        <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == 'COMP346'}">
                             <p class="menu_class_title">COMP 346</p>
                             <p class="menu_class_subtitle">Probability and Statistics</p>
                             <div>Status: <span class="menu_class_status"></span></div>

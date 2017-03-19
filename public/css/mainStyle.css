@@ -1275,6 +1275,9 @@ body {
     text-decoration: none; }
   #leftMenu #classList {
     z-index: 100; }
+    #leftMenu #classList .activeClass {
+      border-left: 6px solid rgba(128, 0, 255, 0.8);
+      padding-left: calc(5% - 6px) !important; }
     #leftMenu #classList .menu_class {
       padding-top: 10px;
       padding-bottom: 10px;
