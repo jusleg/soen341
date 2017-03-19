@@ -42,7 +42,6 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     if($rootScope.socket){
         console.log('Disconnect from previous class');
         $rootScope.socket.disconnect(); //disconnect last chat
-        $(".menu_class").css("background-color", "white");
         console.log('Connect to '+vm.classId);
         $rootScope.socket = io.connect(); //reconnect socket
     }else{
@@ -65,6 +64,14 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             vm.classroom = response.data[0].classroom;
             vm.className = response.data[0].name;
 
+            var height = 0;
+            vm.messages.forEach(function() {
+                height += 47;
+            })
+            setTimeout(function() {
+                $(".window").animate({ scrollTop: height}, 750);
+            }, 500);
+            $("#className").addClass("animated fadeIn");
             $("#className").text(vm.classId +": "+vm.className);
 
             //Make it accessible on rootScope
@@ -97,8 +104,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
         $scope.$apply();
 
         var height = 0;
-        $(".message-list li").each(function() {
-            height += 45;
+        vm.messages.forEach(function() {
+            height += 47;
         })
         $(".window").animate({ scrollTop: height}, 750);
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));

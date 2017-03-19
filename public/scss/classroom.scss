@@ -1,4 +1,5 @@
 @import 'variables.scss';
+
 .classroom{
   height:100%;
   .sendMsg{
@@ -6,23 +7,27 @@
     width:100%;
     background-color: white;
     height: 50px;
-    input {
-      border: none;
-      height: 49px;
-      font-size: 1.1em;
-      padding-left: 20px;
-    }
-    button {
-      border: none;
-    }
-    button:hover {
-      background-color: white;
-    }
-    input:focus {
-      outline: none;
-    }
-    .fa {
-      color: $primary_purple;
+    .input-group {
+      input {
+        border: none;
+        height: 49px;
+        font-size: 1.1em;
+        padding-left: 20px;
+      }
+      input:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      button {
+        border: none;
+      }
+      button:hover {
+        background-color: white;
+      }
+      .fa {
+        color: $primary_purple;
+      }
     }
   }
 

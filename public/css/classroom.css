@@ -5,18 +5,20 @@
     width: 100%;
     background-color: white;
     height: 50px; }
-    .classroom .sendMsg input {
+    .classroom .sendMsg .input-group input {
       border: none;
       height: 49px;
       font-size: 1.1em;
       padding-left: 20px; }
-    .classroom .sendMsg button {
+    .classroom .sendMsg .input-group input:focus {
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .classroom .sendMsg .input-group button {
       border: none; }
-    .classroom .sendMsg button:hover {
+    .classroom .sendMsg .input-group button:hover {
       background-color: white; }
-    .classroom .sendMsg input:focus {
-      outline: none; }
-    .classroom .sendMsg .fa {
+    .classroom .sendMsg .input-group .fa {
       color: rgba(128, 0, 255, 0.8); }
   .classroom .classId {
     background-color: #DBE2EF;
