@@ -119,10 +119,12 @@ body{
   #classList{
     z-index: 100;
     .activeClass{
-      border-left:6px solid $primary_purple;
+      border-left:6px solid $primary_purple !important;
       padding-left:calc(5% - 6px) !important;
     }
     .menu_class {
+      transition: border-color 0.5s ease-in;
+      border-color:transparent;
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 5%;

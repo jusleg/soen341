@@ -1276,9 +1276,11 @@ body {
   #leftMenu #classList {
     z-index: 100; }
     #leftMenu #classList .activeClass {
-      border-left: 6px solid rgba(128, 0, 255, 0.8);
+      border-left: 6px solid rgba(128, 0, 255, 0.8) !important;
       padding-left: calc(5% - 6px) !important; }
     #leftMenu #classList .menu_class {
+      transition: border-color 0.5s ease-in;
+      border-color: transparent;
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 5%; }
