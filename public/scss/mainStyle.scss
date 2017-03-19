@@ -68,63 +68,63 @@ body{
   width: 25%;
   height: 100vh;
   border-right: 1px solid $border_color;
+  background-color: $bg_dark;
 
   #left_top {
-    height: 50px;
+    color: white;
+    height: 70px;
     width: 100%;
     border-bottom: 1px solid $border_color;
-    text-align: center;
-    p {
-      @include vertical-align();
-      font-size: 20px;
-    }
-  }
-
-  #search {
-    height: 50px;
-    text-align: center;
-    border-bottom: 1px solid $border_color;
-    input {
-      width: 100%;
+    #search {
       height: 100%;
-      border: none;
-      background: url(../images/search.png) no-repeat 5px center;
-      -webkit-background-size: 20px 20px;
-      background-size: 20px 20px;
-      padding-top: 5px;
-      padding-bottom:5px;
-      padding-left: 35px;
-    }
-    input:focus {
-      outline: none;
-      border-color: $primary_purple;
+      text-align: center;
+      input {
+        @include vertical-align();
+        width: 90%;
+        height: 34px;
+        border-radius: 17px;
+        border: none;
+        background: url(../images/search.png) no-repeat 10px center;
+        background-color: $bg_dark_selection;
+        -webkit-background-size: 20px 20px;
+        background-size: 20px 20px;
+        padding-top: 5px;
+        padding-bottom:5px;
+        padding-left: 40px;
+        color: white;
+      }
+      input:focus {
+        outline: none;
+        border: 1px solid $lead_blue;
+      }
     }
   }
 
   #menu {
     overflow: scroll;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 70px);
   }
 
   a:visited {
-    color: black;
+    color: white;
     background-color: $selection_color;
     text-decoration: none;
   }
   a:hover {
-    color: black;
+    color: white;
     text-decoration: none;
   }
   a:active {
-    color: black;
+    color: white;
     text-decoration: none;
   }
 
   #classList{
     z-index: 100;
     .activeClass{
-      border-left:6px solid $primary_purple !important;
-      padding-left:calc(5% - 6px) !important;
+      border-left:2px solid $lead_blue !important;
+      padding-left:calc(5% - 2px) !important;
+      background-color: $bg_dark_selection;
     }
     .menu_class {
       transition: border-color 0.5s ease-in;
@@ -135,7 +135,12 @@ body{
     }
     .menu_class:hover {
       cursor: pointer;
-      background-color: $selection_color;
+      border-left:2px solid $lead_blue !important;
+      padding-left:calc(5% - 2px) !important;
+      background-color: $bg_dark_selection;
+    }
+    div {
+      color: $text_secondary;
     }
     p {
       margin: 0;
@@ -145,35 +150,36 @@ body{
   .menu_class_title {
     font-size: 1.3em;
     font-weight: 500;
+    color: white;
   }
   .menu_class_subtitle {
-  }
-  div {
-    color: black;
+    color: $text_secondary;
   }
 }
 
 #rightContent {
   width: 75%;
   height: 100%;
+  background-color: $bg_light;
 
   #right_top {
-    height: 50px;
+    height: 70px;
     width: 100%;
     border-bottom: 1px solid $border_color;
     text-align: center;
     p {
       @include vertical-align();
-      font-size: 20px;
+      font-size: 22px;
+      display: inline-block;
     }
     #right_top_userMenu {
-      background-color: white;
+      background-color: transparent;
       border: none;
       float: right;
       clear: none;
       color: $border_color;
       @include vertical-align();
-      margin-right: 10px;
+      margin-right: 15px;
       z-index: 20;
       @include pointerTransition();
       span{
@@ -184,7 +190,7 @@ body{
       float: left;
       color: $border_color;
       @include vertical-align();
-      margin-left:10px;
+      margin-left:15px;
       z-index: 20;
       @include pointerTransition();
     }

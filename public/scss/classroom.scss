@@ -1,13 +1,23 @@
 @import 'variables.scss';
 
+.tooltip.bottom .tooltip-inner {
+  background-color:darkgray;
+  z-index: 99999;
+}
+.tooltip.bottom .tooltip-arrow {
+  border-top-color: darkgray;
+  border-color: darkgray transparent;
+}
+
 .classroom{
   height:100%;
   .sendMsg{
     border-top: 1px solid $border_color;
     width:100%;
-    background-color: white;
     height: 50px;
     .input-group {
+      background-color: white;
+      padding-right: 10px;
       input {
         border: none;
         height: 49px;
@@ -26,7 +36,7 @@
         background-color: white;
       }
       .fa {
-        color: $primary_purple;
+        color: $lead_blue;
       }
     }
   }
@@ -41,9 +51,9 @@
   }
 
   .window{
-    height: calc(100vh - 100px);
+    background-color: $bg_light;
+    height: calc(100vh - 120px);
     position: relative;
-    background-color: white;
     overflow: scroll;
     .message-list{
       list-style:none;
@@ -64,7 +74,7 @@
           color: black;
           text-align: center;
           padding: 0px;
-          background: lightgray;
+          background: white;
           border-radius: 8px;
           padding: 6px;
           max-width: 700px;
@@ -77,7 +87,7 @@
           position: absolute;
           border-style: solid;
           border-width: 5px 8px 5px 0;
-          border-color: transparent lightgray;
+          border-color: transparent white;
           display: block;
           width: 0;
           z-index: 1;
@@ -108,7 +118,7 @@
           color: white;
           text-align: center;
           padding: 0px;
-          background: $primary_purple;
+          background: $lead_blue;
           border-radius: 8px;
           padding: 6px;
           max-width: 700px;
@@ -119,7 +129,7 @@
           position: absolute;
           border-style: solid;
           border-width: 5px 0 5px 8px;
-          border-color: transparent $primary_purple;
+          border-color: transparent $lead_blue;
           display: block;
           width: 0;
           z-index: 1;

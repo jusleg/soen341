@@ -71,6 +71,10 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             setTimeout(function() {
                 $(".window").animate({ scrollTop: height}, 750);
             }, 500);
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
             $("#className").addClass("animated fadeIn");
             $("#className").text(vm.classId +": "+vm.className);
 
@@ -107,7 +111,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
         vm.messages.forEach(function() {
             height += 55;
         })
-        $(".window").animate({ scrollTop: height}, 750);
+        $(".window").animate({ scrollTop: height}, 200);
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
 }
