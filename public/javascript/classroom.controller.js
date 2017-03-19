@@ -3,6 +3,7 @@
  */
 'use strict';
 
+
 angular.module('app.classroom', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
@@ -20,6 +21,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
      |   VARIABLES  |
      ---------------*/
     var vm = this;
+    vm.userName = $rootScope.currentUser.userName;
     vm.classId = $routeParams.classId.toUpperCase();
     vm.className = ""
     vm.messages = []; //get msgs in DB and assign them here
@@ -93,7 +95,12 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     $rootScope.socket.on(vm.classId, function(msg){
         vm.messages.push(msg);
         $scope.$apply();
-        $(".window").animate({ scrollTop: $('#chatroom').prop("scrollHeight")}, 750);
+
+        var height = 0;
+        $(".message-list li").each(function() {
+            height += 45;
+        })
+        $(".window").animate({ scrollTop: height}, 750);
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
 }

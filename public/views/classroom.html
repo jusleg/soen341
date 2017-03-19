@@ -12,8 +12,17 @@
         <div id="chatroom">
             <ul class="message-list">
                 <li ng-repeat="message in vm.messages">
-                        <div class="sender"> {{message.name}} : {{message.time | date:'MM/dd/yyyy'}} </div>
-                        <div class="message">{{message.message}}</div>
+
+                    <div ng-if="message.name != $root.currentUser.username" class="message">
+                        <div class="sender"> {{message.name}}</div>
+                        <div class="messageBubble">{{message.message}}</div>
+                    </div>
+
+                    <div ng-if="message.name == $root.currentUser.username" class="message2">
+                        <div class="sender"> {{message.name}}</div>
+                        <div class="messageBubble">{{message.message}}</div>
+                    </div>
+
                 </li>
             </ul>
         </div>

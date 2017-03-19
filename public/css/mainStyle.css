@@ -80,18 +80,38 @@
     overflow: scroll; }
     .classroom .window .message-list {
       list-style: none;
-      padding-left: 20px; }
+      padding-left: 20px;
+      padding-right: 20px; }
+      .classroom .window .message-list .message {
+        float: left;
+        clear: both; }
+      .classroom .window .message-list .message2 {
+        float: right;
+        clear: both; }
+        .classroom .window .message-list .message2 .sender {
+          float: right;
+          clear: both; }
+        .classroom .window .message-list .message2 .messageBubble {
+          display: inline-block;
+          background-color: lightgray;
+          color: black;
+          padding: 6px;
+          font-size: 1.1em;
+          border-radius: 8px;
+          margin-bottom: 6px;
+          float: right;
+          clear: both; }
       .classroom .window .message-list .sender {
         color: darkgray;
         font-weight: 200; }
-      .classroom .window .message-list .message {
+      .classroom .window .message-list .messageBubble {
         display: inline-block;
         background-color: rgba(128, 0, 255, 0.8);
         color: white;
-        padding: 5px;
-        border-radius: 10px;
-        margin-bottom: 2px;
-        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1); }
+        padding: 6px;
+        font-size: 1.1em;
+        border-radius: 8px;
+        margin-bottom: 6px; }
   .classroom .bulletPoint {
     list-style-type: none; }
 

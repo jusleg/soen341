@@ -43,18 +43,42 @@
     .message-list{
       list-style:none;
       padding-left: 20px;
+      padding-right: 20px;
+      .message {
+        float: left;
+        clear: both;
+      }
+      .message2 {
+        float: right;
+        clear: both;
+        .sender {
+          float: right;
+          clear: both;
+        }
+        .messageBubble {
+          display: inline-block;
+          background-color: lightgray;
+          color: black;
+          padding: 6px;
+          font-size: 1.1em;
+          border-radius: 8px;
+          margin-bottom: 6px;
+          float: right;
+          clear: both;
+        }
+      }
       .sender{
         color: darkgray;
         font-weight: 200;
       }
-      .message{
+      .messageBubble{
         display: inline-block;
         background-color: $primary_purple;
         color: white;
-        padding: 5px;
-        border-radius: 10px;
-        margin-bottom: 2px;
-        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+        padding: 6px;
+        font-size: 1.1em;
+        border-radius: 8px;
+        margin-bottom: 6px;
       }
     }
   }
