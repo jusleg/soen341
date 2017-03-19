@@ -1311,6 +1311,8 @@ body {
       transform: translateY(-50%);
       font-size: 20px; }
     #rightContent #right_top #right_top_userMenu {
+      background-color: white;
+      border: none;
       float: right;
       clear: none;
       color: #8e8e8e;

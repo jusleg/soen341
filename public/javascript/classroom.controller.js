@@ -66,7 +66,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
             var height = 0;
             vm.messages.forEach(function() {
-                height += 47;
+                height += 55;
             })
             setTimeout(function() {
                 $(".window").animate({ scrollTop: height}, 750);
@@ -105,7 +105,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
         var height = 0;
         vm.messages.forEach(function() {
-            height += 47;
+            height += 55;
         })
         $(".window").animate({ scrollTop: height}, 750);
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));

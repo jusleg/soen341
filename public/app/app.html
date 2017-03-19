@@ -36,7 +36,7 @@
                         <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == 'ENGR371'}">
                             <p class="menu_class_title">ENGR 371</p>
                             <p class="menu_class_subtitle">Probability and Statistics</p>
-                            <div>Status: <span class="menu_class_status"></span></div>
+                            <div>Status: <span class="menu_class_status">Active</span></div>
                         </div>
                     </a>
                     <a ng-href="#/class/{{'comp346'}}">
@@ -49,42 +49,49 @@
                     <div class="menu_class">
                         <p class="menu_class_title">ELEC 275</p>
                         <p class="menu_class_subtitle">Introduction to Electrical Engineering</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
                     <div class="menu_class">
                         <p class="menu_class_title">SOEN 331</p>
                         <p class="menu_class_subtitle">Formal Specifications</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
                     <div class="menu_class">
                         <p class="menu_class_title">SOEN 341</p>
                         <p class="menu_class_subtitle">Software Process</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
+                    </div>
+                    <a ng-href="#/class/{{'comp346'}}">
+                        <div class="menu_class">
+                            <p class="menu_class_title">COMP 346</p>
+                            <p class="menu_class_subtitle">Probability and Statistics</p>
+                            <div>Status: <span class="menu_class_status">Active</span></div>
+                        </div>
+                    </a>
+                    <div class="menu_class">
+                        <p class="menu_class_title">ENGR 233</p>
+                        <p class="menu_class_subtitle">Advanced Calculus</p>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
                     <div class="menu_class">
                         <p class="menu_class_title">ENGR 233</p>
                         <p class="menu_class_subtitle">Advanced Calculus</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
                     <div class="menu_class">
                         <p class="menu_class_title">ENGR 233</p>
                         <p class="menu_class_subtitle">Advanced Calculus</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
                     <div class="menu_class">
                         <p class="menu_class_title">ENGR 233</p>
                         <p class="menu_class_subtitle">Advanced Calculus</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
                     <div class="menu_class">
                         <p class="menu_class_title">ENGR 233</p>
                         <p class="menu_class_subtitle">Advanced Calculus</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
-                    </div>
-                    <div class="menu_class">
-                        <p class="menu_class_title">ENGR 233</p>
-                        <p class="menu_class_subtitle">Advanced Calculus</p>
-                        <div>Status: <span class="menu_class_status"></span></div>
+                        <div>Status: <span class="menu_class_status">Inactive</span></div>
                     </div>
 
 
@@ -105,7 +112,6 @@
                 <span>{{vm.currentUserName}}</span>
                 <i class="fa fa-user-circle fa-2x"></i>
                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-
             </div>
 
             <p id="className">Class Name</p>
@@ -189,12 +195,10 @@
     })
     $(document).ready(function() {
         $(".menu_class_status").each(function() {
-            if(Math.random() < .5) {
-                $(this).text("Active");
+            if($(this).text() == "Active") {
                 $(this).css("color", "green")
             }
             else {
-                $(this).text("Inactive");
                 $(this).css("color", "red")
             }
         })
