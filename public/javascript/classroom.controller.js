@@ -21,7 +21,6 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
      |   VARIABLES  |
      ---------------*/
     var vm = this;
-    vm.userName = $rootScope.currentUser.userName;
     vm.classId = $routeParams.classId.toUpperCase();
     vm.className = ""
     vm.messages = []; //get msgs in DB and assign them here

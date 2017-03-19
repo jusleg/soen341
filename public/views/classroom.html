@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/classroom.css">
+    <link rel="stylesheet" type="text/css" href="../css/mainStyle.css">
     <link rel="stylesheet" type="text/css" href="../css/animate.css">
 </head>
 <div class="classroom">
@@ -15,12 +15,12 @@
                 <li ng-repeat="message in vm.messages">
 
                     <div ng-if="message.name != $root.currentUser.username" class="message animated fadeIn">
-                        <div class="sender"> {{message.name}}</div>
+                        <div class="sender"> {{message.name}} - {{message.time |date :"MMM dd, H:mm"}}</div>
                         <div class="messageBubble">{{message.message}}</div>
                     </div>
 
                     <div ng-if="message.name == $root.currentUser.username" class="message2 animated fadeIn">
-                        <div class="sender"> {{message.name}}</div>
+                        <div class="sender"> {{message.name}} - {{message.time | date :"MMM dd, H:mm"}}</div>
                         <div class="messageBubble">{{message.message}}</div>
                     </div>
 

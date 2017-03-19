@@ -1,3 +1,9 @@
+//outside app
+@import 'landing.scss';
+@import 'login.scss';
+@import 'pass-change';
+@import 'register.scss';
+//inside app
 @import 'variables.scss';
 @import 'sideBar';
 @import 'classroom.scss';
