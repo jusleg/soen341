@@ -1329,6 +1329,8 @@ body {
       #rightContent #right_top #right_top_userMenu:hover {
         cursor: pointer;
         color: rgba(128, 0, 255, 0.8); }
+      #rightContent #right_top #right_top_userMenu span {
+        margin-right: 5px; }
     #rightContent #right_top #right_top_settings {
       float: left;
       color: #8e8e8e;

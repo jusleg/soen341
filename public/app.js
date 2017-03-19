@@ -21,6 +21,7 @@
 
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
+                vm.currentUserName = $rootScope.currentUser.username;
                 console.log('Current User',$rootScope.currentUser);
             });
             $rootScope.$watch('currentClassId',function(New){

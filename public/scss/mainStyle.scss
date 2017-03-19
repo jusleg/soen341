@@ -170,6 +170,9 @@ body{
       margin-right: 10px;
       z-index: 20;
       @include pointerTransition();
+      span{
+        margin-right:5px;
+      }
     }
     #right_top_settings {
       float: left;
