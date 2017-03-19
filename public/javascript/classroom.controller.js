@@ -27,7 +27,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     vm.messages = []; //get msgs in DB and assign them here
     vm.m = "";
     vm.professor = "";
-    vm.classroom = ""
+    vm.classroom = "";
+    vm.recentMsgFromUser = '';
     /*---------------
     |   FUNCTIONS   |
      ---------------*/
@@ -106,7 +107,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     $rootScope.socket.on(vm.classId, function(msg){
         vm.messages.push(msg);
         $scope.$apply();
-
+        vm.recentMsgFromUser = msg.name;
+        console.log(vm.recentMsgFromUser);
         var height = 0;
         vm.messages.forEach(function() {
             height += 55;
