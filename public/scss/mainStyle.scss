@@ -139,21 +139,22 @@ body{
       padding-left:calc(5% - 2px) !important;
       background-color: $bg_dark_selection;
     }
+    .menu_class_title {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: white;
+    }
+    .menu_class_subtitle {
+      color: $text_secondary;
+      font-size: .9em;
+    }
     div {
       color: $text_secondary;
+      font-size: .9em;
     }
     p {
       margin: 0;
     }
-  }
-
-  .menu_class_title {
-    font-size: 1.3em;
-    font-weight: 500;
-    color: white;
-  }
-  .menu_class_subtitle {
-    color: $text_secondary;
   }
 }
 
@@ -163,6 +164,7 @@ body{
   background-color: $bg_light;
 
   #right_top {
+    padding-left: 15px;
     height: 70px;
     width: 100%;
     border-bottom: 1px solid $border_color;
@@ -170,29 +172,25 @@ body{
     p {
       @include vertical-align();
       font-size: 22px;
-      display: inline-block;
-    }
-    #right_top_userMenu {
-      background-color: transparent;
-      border: none;
-      float: right;
-      clear: none;
-      color: $border_color;
-      @include vertical-align();
-      margin-right: 15px;
-      z-index: 20;
-      @include pointerTransition();
-      span{
-        margin-right:5px;
-      }
-    }
-    #right_top_settings {
       float: left;
-      color: $border_color;
-      @include vertical-align();
-      margin-left:15px;
-      z-index: 20;
-      @include pointerTransition();
+    }
+    #top_right_rhs {
+      float: right;
+      height: 100%;
+      div {
+        width: 70px;
+        display: inline-block;
+        border-left: 1px solid $border_color;
+        height: 100%;
+        color: $border_color;
+        .fa {
+          @include vertical-align();
+        }
+        @include pointerTransition();
+      }
+      div:hover {
+        background-color: $selection_color;
+      }
     }
   }
 }

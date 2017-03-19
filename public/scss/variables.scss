@@ -19,7 +19,7 @@ $bg_light: #EAEDF1;
 
 $lead_blue: #0084FF;
 
-$text_secondary: #DEDFDF;
+$text_secondary: #bcbcbc;
 
 @mixin vertical-align() {
   position: relative;
@@ -37,6 +37,6 @@ $text_secondary: #DEDFDF;
   transition:  .2s;
   &:hover{
     cursor: pointer;
-    color: $primary_purple;
+    color: $lead_blue;
   }
 }
