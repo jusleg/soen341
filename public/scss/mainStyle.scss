@@ -19,10 +19,13 @@ a, a:hover, a:active, a:visited, a:focus {
 html{
   height:100%;
   width:100%;
+  overflow: hidden;
 }
 body{
+  overflow: auto;
   font-family: Helvetica;
   margin:0;
+  -webkit-overflow-scrolling: touch;
   padding:0;
   height:100%;
   width:100%;

@@ -1,12 +1,12 @@
 @import 'variables.scss';
 
 .tooltip.bottom .tooltip-inner {
-  background-color:darkgray;
+  background-color:$border_color;
   z-index: 99999;
 }
 .tooltip.bottom .tooltip-arrow {
-  border-top-color: darkgray;
-  border-color: darkgray transparent;
+  border-top-color: $border_color;
+  border-color: $border_color transparent;
 }
 
 .classroom{
@@ -36,7 +36,7 @@
         background-color: white;
       }
       .fa {
-        color: $lead_blue;
+        color: $secondary_blue;
       }
     }
   }
@@ -57,16 +57,20 @@
     overflow: scroll;
     .message-list{
       list-style:none;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 60px;
+      padding-right: 60px;
+      .nonRecurrentMessage {
+        margin-top: 12px;
+      }
       .message {
+        margin-left:-45px;
+        margin-bottom: 2px;
         float: left;
         clear: both;
         align-items: flex-start;
         display: flex;
-        margin-bottom: 5px;
         .sendInfo {
-          width: 80px;
+          width: 45px;
         }
         .messageBubble {
           font-size:1.1em;
@@ -78,10 +82,9 @@
           border-radius: 8px;
           padding: 6px;
           max-width: 700px;
-          margin-bottom: 6px;
         }
 
-        .messageBubble:after
+        .bubbleArrow:after
         {
           content: '';
           position: absolute;
@@ -96,23 +99,26 @@
         }
 
         .fa {
-          color: darkgray;
+          color: $border_color;
         }
       }
       .message2 {
+        margin-right: -45px;
         float: right;
         clear: both;
         align-items: flex-start;
         display: flex;
-        margin-bottom: 5px;
+        margin-bottom: 2px;
         .sender {
           float: right;
           clear: both;
         }
         .sendInfo {
-          width: 80px;
+          width: 45px;
+          float: right;
         }
         .messageBubble {
+          float: left;
           font-size:1.1em;
           position: relative;
           color: white;
@@ -122,9 +128,9 @@
           border-radius: 8px;
           padding: 6px;
           max-width: 550px;
-          margin-bottom: 6px;
         }
-        .messageBubble:after {
+
+        .bubbleArrow:after {
           content: '';
           position: absolute;
           border-style: solid;
@@ -137,7 +143,7 @@
           top: 12px;
         }
         .fa {
-          color: darkgray;
+          color: $lead_blue;
           float: right;
           clear: both;
         }

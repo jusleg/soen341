@@ -900,12 +900,12 @@ input::-webkit-input-placeholder {
   .content-container-moveX {
     transform: translateX(300px); } }
 .tooltip.bottom .tooltip-inner {
-  background-color: darkgray;
+  background-color: #706d6d;
   z-index: 99999; }
 
 .tooltip.bottom .tooltip-arrow {
-  border-top-color: darkgray;
-  border-color: darkgray transparent; }
+  border-top-color: #706d6d;
+  border-color: #706d6d transparent; }
 
 .classroom {
   height: 100%; }
@@ -930,7 +930,7 @@ input::-webkit-input-placeholder {
       .classroom .sendMsg .input-group button:hover {
         background-color: white; }
       .classroom .sendMsg .input-group .fa {
-        color: #0084FF; }
+        color: #0048bc; }
   .classroom .classId {
     background-color: #DBE2EF;
     font-size: 20px;
@@ -945,16 +945,19 @@ input::-webkit-input-placeholder {
     overflow: scroll; }
     .classroom .window .message-list {
       list-style: none;
-      padding-left: 30px;
-      padding-right: 30px; }
+      padding-left: 60px;
+      padding-right: 60px; }
+      .classroom .window .message-list .nonRecurrentMessage {
+        margin-top: 12px; }
       .classroom .window .message-list .message {
+        margin-left: -45px;
+        margin-bottom: 2px;
         float: left;
         clear: both;
         align-items: flex-start;
-        display: flex;
-        margin-bottom: 5px; }
+        display: flex; }
         .classroom .window .message-list .message .sendInfo {
-          width: 80px; }
+          width: 45px; }
         .classroom .window .message-list .message .messageBubble {
           font-size: 1.1em;
           position: relative;
@@ -964,9 +967,8 @@ input::-webkit-input-placeholder {
           background: white;
           border-radius: 8px;
           padding: 6px;
-          max-width: 700px;
-          margin-bottom: 6px; }
-        .classroom .window .message-list .message .messageBubble:after {
+          max-width: 700px; }
+        .classroom .window .message-list .message .bubbleArrow:after {
           content: '';
           position: absolute;
           border-style: solid;
@@ -978,19 +980,22 @@ input::-webkit-input-placeholder {
           left: -8px;
           top: 12px; }
         .classroom .window .message-list .message .fa {
-          color: darkgray; }
+          color: #706d6d; }
       .classroom .window .message-list .message2 {
+        margin-right: -45px;
         float: right;
         clear: both;
         align-items: flex-start;
         display: flex;
-        margin-bottom: 5px; }
+        margin-bottom: 2px; }
         .classroom .window .message-list .message2 .sender {
           float: right;
           clear: both; }
         .classroom .window .message-list .message2 .sendInfo {
-          width: 80px; }
+          width: 45px;
+          float: right; }
         .classroom .window .message-list .message2 .messageBubble {
+          float: left;
           font-size: 1.1em;
           position: relative;
           color: white;
@@ -999,9 +1004,8 @@ input::-webkit-input-placeholder {
           background: #0084FF;
           border-radius: 8px;
           padding: 6px;
-          max-width: 550px;
-          margin-bottom: 6px; }
-        .classroom .window .message-list .message2 .messageBubble:after {
+          max-width: 550px; }
+        .classroom .window .message-list .message2 .bubbleArrow:after {
           content: '';
           position: absolute;
           border-style: solid;
@@ -1013,7 +1017,7 @@ input::-webkit-input-placeholder {
           right: -8px;
           top: 12px; }
         .classroom .window .message-list .message2 .fa {
-          color: darkgray;
+          color: #0084FF;
           float: right;
           clear: both; }
       .classroom .window .message-list .sender {
@@ -1246,11 +1250,14 @@ a, a:hover, a:active, a:visited, a:focus {
 
 html {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  overflow: hidden; }
 
 body {
+  overflow: auto;
   font-family: Helvetica;
   margin: 0;
+  -webkit-overflow-scrolling: touch;
   padding: 0;
   height: 100%;
   width: 100%; }
