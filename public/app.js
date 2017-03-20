@@ -8,6 +8,7 @@
         'ngRoute',
         'app.header',
         'app.classroom',
+        // TODO add classroom module
     ]).
     config(['$locationProvider', '$routeProvider','$httpProvider',
         function($locationProvider, $routeProvider,$httpProvider) {

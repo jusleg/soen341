@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="formApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOEN341 - Add Class</title>
+
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
+    <script src="../javascript/add-class.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+<div id="registerContainer" class="animated fadeIn centered">
+
+    <div id="registerTopContainer">
+        <div style="float:left">
+            <h1 class="lead" id="loginTitle" style="font-size: 2em; font-weight: 700;">Create Class</h1>
+            <h1 style="font-size: 0.8em; font-weight: 300;">SOEN341</h1>
+        </div>
+        <div style="float: right; margin-right: 20px;"><img src="https://challengefailure.org/wp-content/uploads/2016/03/register-icon@2x.png" height="60"/></div>
+    </div>
+
+    <div id="registerBottomContainer">
+        <input class="formInput" id="name" placeholder="Class Name">
+        <input class="formInput" id="hoursz" type="email" placeholder="Hours">
+        <input class="formInput pass" id="pass" type="password" placeholder="Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
+        <input class="formInput pass" id="pass2" type="password" placeholder="Verify Password" name="passwordRepeat"><br>
+        <input id="termCheck" type="checkbox" name="agreeTerms" value="true"> <span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
+        <button type="submit" id="registerSubmit" onclick="submitRegister()">Submit</button><br/>
+        <span style="font-size:0.75em; color:dimgray">Already have an account?<a href="../login"> Login</a>.</span>
+    </div>
+
+    <div id="registerRightContainer">
+        <!--<div id="hiddenRight">
+            <span style="font-weight: 900; font-size: 2em;">SOEN341</span>
+            <hr style="border-color: white; margin-top: 0; margin-bottom: 10px;"/>
+            <h1 style="font-size: 0.8em; font-weight: 300;">An amazing chat application</h1>
+        </div>
+        <div id="createAccount">Create an Account</div>-->
+    </div>
+
+</div>
+
+</body>
+</html>
