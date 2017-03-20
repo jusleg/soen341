@@ -899,13 +899,13 @@ input::-webkit-input-placeholder {
 
   .content-container-moveX {
     transform: translateX(300px); } }
-.tooltip.bottom .tooltip-inner {
+.tooltip.left .tooltip-inner {
   background-color: #706d6d;
   z-index: 99999; }
 
-.tooltip.bottom .tooltip-arrow {
+.tooltip.left .tooltip-arrow {
   border-top-color: #706d6d;
-  border-color: #706d6d transparent; }
+  border-color: transparent #706d6d; }
 
 .classroom {
   height: 100%; }
@@ -948,7 +948,7 @@ input::-webkit-input-placeholder {
       padding-left: 60px;
       padding-right: 60px; }
       .classroom .window .message-list .nonRecurrentMessage {
-        margin-top: 12px; }
+        margin-top: 22px; }
       .classroom .window .message-list .message {
         margin-left: -45px;
         margin-bottom: 2px;
@@ -958,7 +958,14 @@ input::-webkit-input-placeholder {
         display: flex; }
         .classroom .window .message-list .message .sendInfo {
           width: 45px; }
-        .classroom .window .message-list .message .messageBubble {
+        .classroom .window .message-list .message .bubble_group span {
+          font-size: 10px;
+          float: left;
+          color: #bcbcbc;
+          margin-top: -15px; }
+        .classroom .window .message-list .message .bubble_group .messageBubble {
+          clear: both;
+          float: left;
           font-size: 1.1em;
           position: relative;
           color: black;
@@ -967,7 +974,7 @@ input::-webkit-input-placeholder {
           background: white;
           border-radius: 8px;
           padding: 6px;
-          max-width: 700px; }
+          max-width: 850px; }
         .classroom .window .message-list .message .bubbleArrow:after {
           content: '';
           position: absolute;

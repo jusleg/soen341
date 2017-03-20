@@ -1,13 +1,13 @@
 @import 'variables.scss';
 
-.tooltip.bottom .tooltip-inner {
+.tooltip.left .tooltip-inner {
   background-color:$border_color;
   z-index: 99999;
 }
-.tooltip.bottom .tooltip-arrow {
-  border-top-color: $border_color;
-  border-color: $border_color transparent;
-}
+.tooltip.left .tooltip-arrow {
+   border-top-color: $border_color;
+   border-color: transparent $border_color;
+ }
 
 .classroom{
   height:100%;
@@ -60,7 +60,7 @@
       padding-left: 60px;
       padding-right: 60px;
       .nonRecurrentMessage {
-        margin-top: 12px;
+        margin-top: 22px;
       }
       .message {
         margin-left:-45px;
@@ -72,18 +72,27 @@
         .sendInfo {
           width: 45px;
         }
-        .messageBubble {
-          font-size:1.1em;
-          position: relative;
-          color: black;
-          text-align: center;
-          padding: 0px;
-          background: white;
-          border-radius: 8px;
-          padding: 6px;
-          max-width: 700px;
+        .bubble_group {
+          span {
+            font-size: 10px;
+            float: left;
+            color: $text_secondary;
+            margin-top: -15px;
+          }
+          .messageBubble {
+            clear: both;
+            float: left;
+            font-size:1.1em;
+            position: relative;
+            color: black;
+            text-align: center;
+            padding: 0px;
+            background: white;
+            border-radius: 8px;
+            padding: 6px;
+            max-width: 850px;
+          }
         }
-
         .bubbleArrow:after
         {
           content: '';
