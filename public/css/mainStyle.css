@@ -959,6 +959,7 @@ input::-webkit-input-placeholder {
         .classroom .window .message-list .message .sendInfo {
           width: 45px; }
         .classroom .window .message-list .message .bubble_group span {
+          margin-left: 3px;
           font-size: 10px;
           float: left;
           color: #bcbcbc;
@@ -969,12 +970,12 @@ input::-webkit-input-placeholder {
           font-size: 1.1em;
           position: relative;
           color: black;
-          text-align: center;
+          text-align: left;
           padding: 0px;
           background: white;
           border-radius: 8px;
-          padding: 6px;
-          max-width: 850px; }
+          padding: 6px 10px;
+          max-width: 650px; }
         .classroom .window .message-list .message .bubbleArrow:after {
           content: '';
           position: absolute;
@@ -1006,12 +1007,11 @@ input::-webkit-input-placeholder {
           font-size: 1.1em;
           position: relative;
           color: white;
-          text-align: center;
-          padding: 0px;
+          text-align: left;
           background: #0084FF;
           border-radius: 8px;
-          padding: 6px;
-          max-width: 550px; }
+          padding: 6px 10px;
+          max-width: 650px; }
         .classroom .window .message-list .message2 .bubbleArrow:after {
           content: '';
           position: absolute;

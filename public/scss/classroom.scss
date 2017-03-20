@@ -55,6 +55,7 @@
     height: calc(100vh - 120px);
     position: relative;
     overflow: scroll;
+
     .message-list{
       list-style:none;
       padding-left: 60px;
@@ -74,6 +75,7 @@
         }
         .bubble_group {
           span {
+            margin-left: 3px;
             font-size: 10px;
             float: left;
             color: $text_secondary;
@@ -85,12 +87,12 @@
             font-size:1.1em;
             position: relative;
             color: black;
-            text-align: center;
+            text-align: left;
             padding: 0px;
             background: white;
             border-radius: 8px;
-            padding: 6px;
-            max-width: 850px;
+            padding: 6px 10px;
+            max-width: 650px;
           }
         }
         .bubbleArrow:after
@@ -131,12 +133,11 @@
           font-size:1.1em;
           position: relative;
           color: white;
-          text-align: center;
-          padding: 0px;
+          text-align: left;
           background: $lead_blue;
           border-radius: 8px;
-          padding: 6px;
-          max-width: 550px;
+          padding: 6px 10px;
+          max-width: 650px;
         }
 
         .bubbleArrow:after {
