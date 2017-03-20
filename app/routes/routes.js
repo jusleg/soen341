@@ -30,7 +30,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/createclass', (req, res) => {
-        if (req.isAuthenticated() && req.user.classMod.length > -1  ) {
+        if (req.isAuthenticated() && req.user.classMod.length > 0) {
             res.sendFile(path.join(__dirname, '../../public/views/create-class.html'));
         } else {
             res.send('You are not authorized to access this page.');
