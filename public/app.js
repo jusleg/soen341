@@ -19,11 +19,11 @@
         }])
         .controller('appCtrl', function($scope, $rootScope, $http, $routeParams, $uibModal,$log) {
             var vm = this;
-
+            vm.currentClassId = '';
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
-                vm.currentUserName = $rootScope.currentUser.username;
-                console.log('Current User',$rootScope.currentUser);
+                vm.currentUser = $rootScope.currentUser;
+                console.log('Current User ',vm.currentUser)
             });
             $rootScope.$watch('currentClassId',function(New){
                 vm.currentClassId = New;

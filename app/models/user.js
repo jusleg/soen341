@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
-
 //Mongoose Schema ==============================================================================
 
 let User = mongoose.Schema({
@@ -14,8 +13,8 @@ let User = mongoose.Schema({
     name: String,
     pass: String,
     online: Boolean,
-    classUser: [String],
-    classMod: [String]
+    classUser: [{type: Schema.Types.ObjectId, ref: 'class'}],
+    classMod: [{type: Schema.Types.ObjectId, ref: 'class'}],
 });
 
 // Schema methods ==============================================================================

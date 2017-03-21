@@ -4,7 +4,7 @@
 'use strict';
 const path = require('path');
 const User = require('../models/user');
-
+const classroom = require('../models/Classes.js');
 
 module.exports = function(app, passport) {
 
@@ -47,14 +47,18 @@ module.exports = function(app, passport) {
 
     // to get the currently logged in user's info
     app.get('/currentUser', isLoggedIn, function(req, res) {
-        let data = {
-            username: req.user.name,
-            email: req.user.id,
-            online: req.session.online,
-            classUser: req.user.classUser,
-            classMod: req.user.classMod
-        };
-        res.send(data);
+        User.findOne({"id":req.user.id}).populate('classMod classUser','-chat').exec(function(err,user){
+            if (err) return handleError(err);
+            let data = {
+                username: req.user.name,
+                email: req.user.id,
+                online: req.session.online,
+                classUser: user.classUser,
+                classMod: user.classMod
+            };
+            res.send(data);
+        })
+
     });
 
     app.get('/logout',

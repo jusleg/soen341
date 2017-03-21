@@ -45,6 +45,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
         $rootScope.socket.disconnect(); //disconnect last chat
         console.log('Connect to '+vm.classId);
         $rootScope.socket = io.connect(); //reconnect socket
+        $("#className").html("");
     }else{
         console.log('Connect To '+vm.classId);
         $rootScope.socket = io.connect(); //reconnect socket
@@ -76,8 +77,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
                 $('[data-toggle="tooltip"]').tooltip();
             });
 
-            $("#className").addClass("animated fadeIn");
-            $("#className").html("<span style='weight: 600;'/>"+vm.classId +"</span>: "+vm.className);
+            $("#className").html("<span class='animated bounceInDown' style='font-weight: 800;'>" + vm.classId + " - </span><span class='animated bounceInDown' style='color:#706d6d; font-size: 16px;'>" + vm.className + "</span>");
 
             //Make it accessible on rootScope
             $rootScope.currentClassId = vm.classId;
