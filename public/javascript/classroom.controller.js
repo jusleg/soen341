@@ -71,8 +71,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
                 height += 55;
             })
             setTimeout(function() {
-                $(".window").animate({ scrollTop: height}, 750);
-            }, 500);
+                $(".window").animate({ scrollTop: height}, 0);
+            }, 0);
             $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip();
             });

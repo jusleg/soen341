@@ -947,6 +947,11 @@ input::-webkit-input-placeholder {
       list-style: none;
       padding-left: 60px;
       padding-right: 60px; }
+      .classroom .window .message-list .beginningOfMessages {
+        padding-top: 15px;
+        color: #706d6d; }
+        .classroom .window .message-list .beginningOfMessages .seperator {
+          border-color: #706d6d; }
       .classroom .window .message-list .nonRecurrentMessage {
         margin-top: 22px; }
       .classroom .window .message-list .message {
@@ -1347,8 +1352,8 @@ body {
   #leftMenu #classList {
     z-index: 100; }
     #leftMenu #classList .activeClass {
-      border-left: 2px solid #0084FF !important;
-      padding-left: calc(5% - 2px) !important;
+      border-left: 5px solid #0084FF !important;
+      padding-left: calc(5% - 5px) !important;
       background-color: #3d4856; }
     #leftMenu #classList .menu_class {
       transition: border-color 0.5s ease-in;
@@ -1358,8 +1363,8 @@ body {
       padding-left: 5%; }
     #leftMenu #classList .menu_class:hover {
       cursor: pointer;
-      border-left: 2px solid #0084FF !important;
-      padding-left: calc(5% - 2px) !important;
+      border-left: 5px solid #0084FF !important;
+      padding-left: calc(5% - 5px) !important;
       background-color: #3d4856; }
     #leftMenu #classList .menu_class_title {
       font-size: 1.4em;

@@ -60,6 +60,13 @@
       list-style:none;
       padding-left: 60px;
       padding-right: 60px;
+      .beginningOfMessages{
+        padding-top:15px;
+        color:$border_color;
+        .seperator{
+          border-color:$border_color;
+        }
+      }
       .nonRecurrentMessage {
         margin-top: 22px;
       }

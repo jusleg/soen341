@@ -12,8 +12,19 @@
     <div class="window">
         <div id="chatroom">
             <ul class="message-list">
+                <li class="beginningOfMessages">
+                    <div class="">
+                        <div>
+                            <h4>This is the very beginning of the message history of {{vm.classId}}</h4>
+                            <h5>{{vm.className}}</h5>
+                            <h5>Teacher: {{vm.professor}}</h5>
+                            <h5>Room: {{vm.classroom}}</h5>
+                            <span class="right-float">( Time Stamp )</span>
+                        </div>
+                    </div>
+                    <hr class="seperator">
+                </li>
                 <li ng-repeat="message in vm.messages">
-
                     <div ng-class="{message : message.name != $root.currentUser.username, message2 : message.name == $root.currentUser.username ,nonRecurrentMessage : message.name != vm.messages[$index -1].name}" class="animated fadeIn">
                         <div ng-if="message.name == $root.currentUser.username"class="messageBubble" ng-class="{bubbleArrow : message.name != vm.messages[$index -1].name}">{{message.message}}</div>
                         <div class="sendInfo">
