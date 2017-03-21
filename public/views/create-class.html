@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
-    <script src="../javascript/create-class.js"></script>
+    <script src="../javascript/createclass.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -45,7 +45,8 @@
         <input class="formInput" id="location" placeholder="Location">
         <input class="formInput" id="TAs" placeholder="TAs">
         <br/><br/>
-        <span>CSV File of Students</span><input id="studentFile" type="file" accept="text/csv">
+        <span>CSV File of Students</span>
+        <input id="studentList" type="file" accept="text/csv" name="studentList">
         <button type="submit" id="registerSubmit" onclick="submitCreateClass()">Submit</button><br/>
     </div>
 
