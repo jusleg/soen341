@@ -6,6 +6,7 @@ const path = require('path');
 const User = require('../models/user');
 const crypto = require('crypto-js');
 const parseMePLzr = require('body-parser');
+const email = require('./email');
 
 module.exports = function(app, passport) {
 
@@ -102,6 +103,11 @@ module.exports = function(app, passport) {
         })
 
 
+    });
+
+    app.get('/emailreset', function (req,res){
+       console.log(req.query.email);
+        email.forgotPass(req.query.email);
     });
 
     app.get('/home', isLoggedIn, function (req, res) {
