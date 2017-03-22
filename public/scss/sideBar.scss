@@ -14,21 +14,30 @@
     z-index:99;
 
   }
+  .rightContent{
+    transition: transform 0.5s ease-in;
+    transform:translateX(-70%);
+    position:absolute;
+    width:100% !important;
+  }
+  .content-container-moveX{
+    transform: translateX(0%) !important;
+  }
+  //for chrome
+  @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .rightContent{
+      transform:translateX(0%);
+    }
+    .content-container-moveX{
+      transform: translateX(70%) !important;
+    }
+  }
   .sideBar{
     width:70% !important;
     transform: translateX(-100%);
   }
   .sideBarOpen{
     transform: translateX(0px);
-  }
-  .content-container-moveX{
-    transform: translateX(0%) !important;
-  }
-  .rightContent{
-    transition: transform 0.5s ease-in;
-    transform:translateX(-70%);
-    position:absolute;
-    width:100% !important;
   }
   .responsive_right_top{
     display:flex;
