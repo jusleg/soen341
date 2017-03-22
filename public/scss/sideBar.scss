@@ -1,7 +1,4 @@
 @import 'variables.scss';
-.activeClass{
-
-}
 .sideBar {
   z-index: 99;
   transition: transform ease-in 0.5s;
@@ -25,11 +22,11 @@
     transform: translateX(0px);
   }
   .content-container-moveX{
-    transform: translateX(70%) !important;
+    transform: translateX(0%) !important;
   }
   .rightContent{
     transition: transform 0.5s ease-in;
-    transform:translateX(0%);
+    transform:translateX(-70%);
     position:absolute;
     width:100% !important;
   }
