@@ -1,10 +1,10 @@
 /**
  * Created by Ethan on 3/22/2017.
  */
-angular.module('app.classroom', ['ngRoute'])
+angular.module('app.homepage', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/', {
+        $routeProvider.when('/steven', {
             templateUrl: 'views/homepage.html',
         });
     }])
