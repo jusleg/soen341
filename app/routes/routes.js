@@ -101,7 +101,7 @@ module.exports = function(app, passport) {
 
         User.findOne({id: email}, (err, user) => {
             if (err)
-                return done(err);var email = crypto.AES.decrypt(unescape(req.params.id),"ch3vald3gu3rreftwgr8b8m8").toString(crypto.enc.Utf8);
+                return done(err);
             if (user) {
                 user.validated = true;
                 user.save((err) => {
