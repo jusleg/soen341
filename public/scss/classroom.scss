@@ -50,11 +50,22 @@
     font-weight: bolder;
   }
 
+  .welcome-message{
+    background-color: $bg_light;
+    height: calc(100vh - 120px);
+    line-height: calc(100vh - 120px);
+    color: #00b3ee;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
   .window{
     background-color: $bg_light;
     height: calc(100vh - 120px);
     position: relative;
     overflow: scroll;
+
 
     .message-list{
       list-style:none;
