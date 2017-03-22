@@ -77,7 +77,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
                 $('[data-toggle="tooltip"]').tooltip();
             });
 
-            $("#className").html("<span class='animated bounceInDown' style='font-weight: 800;'>" + vm.classId + " - </span><span class='animated bounceInDown' style='color:#706d6d; font-size: 16px;'>" + vm.className + "</span>");
+            $("#className").html("<span class='animated bounceInDown' style='font-weight: 800;'>" + vm.classId + " </span><span class='animated bounceInDown responsive_class_name' style='color:#706d6d; font-size: 16px;'>- " + vm.className + "</span>");
 
             //Make it accessible on rootScope
             $rootScope.currentClassId = vm.classId;

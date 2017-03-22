@@ -34,17 +34,6 @@ body{
     margin:0;
     height:100%;
     width:100%;
-    @media screen and (max-width: 767px) {
-      .shadow-active{
-        position:absolute;
-        width:100%;
-        height:100%;
-        background-color:rgba(0,0,0,0.8);
-        transition: background-color 0.4s;
-        z-index:99;
-
-      }
-    }
   }
   .content-container{
     height:100%;
@@ -176,6 +165,10 @@ body{
       @include vertical-align();
       font-size: 22px;
       float: left;
+    }
+    .responsive_right_top_toggle{
+      display:none;
+      padding:10px;
     }
     #top_right_rhs {
       float: right;
