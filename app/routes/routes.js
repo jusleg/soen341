@@ -4,10 +4,19 @@
 'use strict';
 const path = require('path');
 const User = require('../models/user');
-
+const crypto = require('crypto-js');
+const parseMePLzr = require('body-parser');
+const email = require('./email');
 
 module.exports = function(app, passport) {
 
+    var hashCode = function hashCode(s){
+        if(s == null){
+            return null;
+        }
+        let tempString = s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+        return tempString;
+    };
 
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../../public/views/landing.html'));
@@ -46,7 +55,7 @@ module.exports = function(app, passport) {
         }));
 
     // to get the currently logged in user's info
-    app.get('/currentUser', isLoggedIn, function(req, res) {
+    app.get('/currentUser', isLoggedIn, function (req, res) {
         let data = {
             username: req.user.name,
             email: req.user.id,
@@ -58,16 +67,48 @@ module.exports = function(app, passport) {
     });
 
     app.get('/logout',
-        function(req, res){
+        function (req, res) {
             User.findOne({id: req.session.passport.user}, (err, user) => {
-                if(user.online = true){
+                if (user.online = true) {
                     console.log('logging out');
                     user.online = false;
                     req.session.online = false;
-                }});
+                }
+            });
             req.logout();
             res.redirect('/');
         });
+
+    app.post('/reset', function(req, res) {
+        var token = req.body.token;
+        var pass = req.body.password;
+        pass = hashCode(pass);
+        var text = token + " " + pass;
+        console.log(text);
+        var email = crypto.AES.decrypt(unescape(token),"ch3vald3gu3rreftwgr8b8m8").toString(crypto.enc.Utf8);
+
+        User.findOne({id: email}, (err, user) => {
+            if (err)
+                return done(err);
+            if (user) {
+                user.pass = req.params.pass;
+                user.save((err) => {
+                    if (err)
+                        throw err;
+
+                });
+                res.send("Oh hey you just changed you password! Shine on you crazy diamond!");
+            }
+
+        })
+
+
+    });
+
+    app.get('/emailreset', function (req,res){
+       console.log(req.query.email);
+        email.forgotPass(req.query.email);
+    });
 
     app.get('/home', isLoggedIn, function (req, res) {
         console.log(req.user);
@@ -78,23 +119,46 @@ module.exports = function(app, passport) {
         res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
     });
 
+    app.get('/verify/:id', function (req, res) {
+
+
+        var email = crypto.AES.decrypt(unescape(req.params.id),"ch3vald3gu3rreftwgr8b8m8").toString(crypto.enc.Utf8);
+
+        User.findOne({id: email}, (err, user) => {
+            if (err)
+                return done(err);
+            if (user) {
+                user.validated = true;
+                user.save((err) => {
+                    if (err)
+                        throw err;
+
+                });
+                //TODO FRONT END WHEN ACCOUNT IS VERIFIED
+                res.send("Your account was validate");
+
+            } else {
+                //TODO FRONT END WHEN ACCOUNT IS NOT FOUND
+                res.send("Could not find your account");
+            }
+        });
+
+    });
+
     //Unknown routes
-    app.get('*', function(req, res){
+    app.get('*', function (req, res) {
         res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
     });
 
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated()) {
+            req.session.online = true;
+            return next();
+        } else {
+            res.send('You are not logged in. Please login before you access the chat!');
+        }
+    };
 
-};
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        req.session.online = true;
-        return next();
-    } else{
-        res.send('You are not logged in. Please login before you access the chat!');
-    }
 }
-
-
 
 
