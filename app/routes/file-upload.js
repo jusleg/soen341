@@ -3,10 +3,13 @@ const User = require('../models/user.js');
 const classroom = require('../models/Classes.js');
 
 //File upload requirements
-const express = require('express')
-const multer  = require('multer')
-const storage = multer.memoryStorage() //allows the file to be read into memory instead of saved on disk
-const upload = multer({ storage: storage, inMemory: true })
+const express = require('express');
+const multer  = require('multer');
+const storage = multer.memoryStorage(); //allows the file to be read into memory instead of saved on disk
+const upload = multer({ storage: storage, inMemory: true });
+
+//Mailer
+const mailer = require('./email');
 
 module.exports = function(app) {
 	app.post('/createclass', upload.single('studentList'), function(req, res) {
@@ -41,10 +44,14 @@ module.exports = function(app) {
 
 				getUsers().then(function(userList) {
 
+					let newUsers = [];
+					let usersInClass = [];
+
 					// Add course code to courseMod for users who are to be TAs for this course
 					for(var i in mods) {
-						if(userExists(mods[i], userList)) {
-							var selection = { 'id': mods[i] };
+						usersInClass.push(mods[i][0]);
+						if(userExists(mods[i][0], userList)) {
+							var selection = { 'id': mods[i][0] };
 							var updateQuery = { $addToSet: { classMod: req.body.classcode }};
 							var otions = { safe: true, upsert: true };
 							User.update(selection, updateQuery, options, function(err, data) {
@@ -52,14 +59,26 @@ module.exports = function(app) {
 							})
 						}
 						else {
-							// TODO: create the TA's account with this course in courseMod
-							// TODO: notify the TA via email of their new account
-							console.log('candidate TA ' + mods[i] + ' not found in existing user list');
+							console.log('candidate TA ' + mods[i][0] + ' not found in existing user list');
+
+							//Create new account for TA
+							let newUser = new User({
+								id:   mods[i][0],
+								pass: "",
+								name: mods[i][1],
+							});
+
+							newUser.save((err) => {
+								if (err) throw err;
+								done(null, newUser);
+							});
+							newUsers.push(newUser.id);
 						}
 					}
 
 					for(var i in studentList) {
 						let studentInfo = studentList[i].split(','); //[0]==email,[1]==name
+						usersInClass.push(studentInfo[0]);
 
 						if(userExists(studentInfo[0], userList)) {
 							var selection = {'id': studentInfo[0]};
@@ -70,12 +89,25 @@ module.exports = function(app) {
 							});
 						}
 						else {
-							// TODO: create the student (with this class's _id in their classUser[])
-							// TODO: Notify student via email of their new account
 							console.log('student ' + studentInfo[0] + ' not found in existing user list');
+
+							//Create new account for student
+							let newUser = new User({
+								id:   studentInfo[i][0],
+								pass: "",
+								name: studentInfo[i][1],
+							});
+
+							newUser.save((err) => {
+								if (err) throw err;
+								done(null, newUser);
+							});
+							newUsers.push(newUser.id);
 						}
 					}
 
+					mailer.newAccount(newUsers);
+					mailer.newClass(usersInClass); // TODO: cause it to not email the teacher who created the class?
 				});
 			}
 		}	

@@ -24,7 +24,7 @@ function submitCreateClass() {
 	if(location.match(/^ *$/) !== null)
 		validInput = false;
 	
-	if(TAs.split(',').every(validEmail) === false)
+	if(TAs.split(',').every((e) => (validEmail(e.split(":")[0])) ) === false)
 		validInput = false;
 
 	if(validInput) {
