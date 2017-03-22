@@ -40,37 +40,48 @@ module.exports = function(app) {
 				var mods = req.body.TAs
 					.split(',')
 					.map((e) => (e.trim())); //get each TA'split email and trim each one's whitespace
-				mods.push(req.user.email); //teacher should also be a moderator
+				
+				// Add course to mod list for teacher
+				var selection = { 'id': req.user.id };
+				var updateQuery = { $addToSet: { classMod: req.body.classcode }};
+				var otions = { safe: true, upsert: true };
+				User.update(selection, updateQuery, options, function(err, data) {
+					console.log(data);
+					return data;
+				});
 
 				getUsers().then(function(userList) {
 
-					let newUsers = [];
-					let usersInClass = [];
+					var newUsers = [];
+					var usersInClass = [];
 
 					// Add course code to courseMod for users who are to be TAs for this course
 					for(var i in mods) {
-						usersInClass.push(mods[i][0]);
-						if(userExists(mods[i][0], userList)) {
-							var selection = { 'id': mods[i][0] };
+						let modInfo = mods[i].split(':');
+						usersInClass.push(modInfo);
+
+						if(userExists(modInfo[0], userList)) {
+							var selection = { 'id': modInfo[0] };
 							var updateQuery = { $addToSet: { classMod: req.body.classcode }};
 							var otions = { safe: true, upsert: true };
 							User.update(selection, updateQuery, options, function(err, data) {
 								console.log(data);
+								return data;
 							})
 						}
 						else {
-							console.log('candidate TA ' + mods[i][0] + ' not found in existing user list');
+							console.log('candidate TA ' + modInfo[0] + ' not found in existing user list');
 
-							//Create new account for TA
-							let newUser = new User({
-								id:   mods[i][0],
-								pass: "",
-								name: mods[i][1],
-							});
+							// Create new account for TA
+							const newUser = new User();
+							newUser.id       = modInfo[0];
+							newUser.pass     = "";
+							newUser.name     = modInfo[1];
+							newUser.classMod = [req.body.classcode];
 
 							newUser.save((err) => {
-								if (err) throw err;
-								done(null, newUser);
+								if (err) { console.log("error creating TA"); throw err; }
+								console.log("New user created.");
 							});
 							newUsers.push(newUser.id);
 						}
@@ -86,28 +97,29 @@ module.exports = function(app) {
 							var options = { safe: true, upsert: true };
 							User.update(selection, updateQuery, options, function(err, data) {
 								console.log(data);
+								return data;
 							});
 						}
 						else {
 							console.log('student ' + studentInfo[0] + ' not found in existing user list');
 
-							//Create new account for student
-							let newUser = new User({
-								id:   studentInfo[i][0],
-								pass: "",
-								name: studentInfo[i][1],
-							});
+							// Create new account for student
+							const newUser = new User();
+							newUser.id        = studentInfo[i][0];
+							newUser.pass      = "";
+							newUser.name      = studentInfo[i][1];
+							newUser.classUser = [req.body.classcode];
 
 							newUser.save((err) => {
-								if (err) throw err;
-								done(null, newUser);
+								if (err) { console.log("error creating student"); throw err };
+								console.log("New user created.");
 							});
 							newUsers.push(newUser.id);
 						}
 					}
 
-					mailer.newAccount(newUsers);
-					mailer.newClass(usersInClass); // TODO: cause it to not email the teacher who created the class?
+					// mailer.newAccount(newUsers);
+					// mailer.newClass(usersInClass); // TODO: cause it to not email the teacher who created the class?
 				});
 			}
 		}	
@@ -116,6 +128,8 @@ module.exports = function(app) {
 				+ (req.file.size/1000000).toFixed(2) + " MB.");
 		}
 	})
+
+	function addClassToUser
 
 	function getUsers() {
 		return User.find({}).select('-pass').select('-__v').exec();
