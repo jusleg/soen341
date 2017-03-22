@@ -86,7 +86,6 @@ module.exports = function(app, passport) {
 
                 });
                 //TODO : FRONT END WHEN THE ACCOUNT IS VERIFIED
-                console.log("Validated!");
 
             } else {
                 //TODO: FRONT END WHEN THE ACCOUNT IS NOT FOUND
