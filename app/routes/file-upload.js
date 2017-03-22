@@ -118,8 +118,8 @@ module.exports = function(app) {
 						}
 					}
 
-					// mailer.newAccount(newUsers);
-					// mailer.newClass(usersInClass); // TODO: cause it to not email the teacher who created the class?
+					mailer.newAccount(newUsers);
+					mailer.newClass(usersInClass); // TODO: cause it to not email the teacher who created the class?
 				});
 			}
 		}	
