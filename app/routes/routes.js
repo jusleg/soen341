@@ -134,10 +134,12 @@ module.exports = function(app, passport) {
                         throw err;
 
                 });
-                //TODO : FRONT END WHEN THE ACCOUNT IS VERIFIED
+                //TODO FRONT END WHEN ACCOUNT IS VERIFIED
+                res.send("Your account was validate");
 
             } else {
-                //TODO: FRONT END WHEN THE ACCOUNT IS NOT FOUND
+                //TODO FRONT END WHEN ACCOUNT IS NOT FOUND
+                res.send("Could not find your account");
             }
         });
 
