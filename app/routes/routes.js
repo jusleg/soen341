@@ -81,23 +81,28 @@ module.exports = function(app, passport) {
 
     app.post('/reset', function(req, res) {
         var token = req.body.token;
+        console.log(token);
         var pass = req.body.password;
         pass = hashCode(pass);
         var text = token + " " + pass;
         console.log(text);
-        var email = crypto.AES.decrypt(unescape(token),"ch3vald3gu3rreftwgr8b8m8").toString(crypto.enc.Utf8);
-
+        var email = crypto.AES.decrypt(decodeURIComponent(token),"ch3vald3gu3rr3ftwgr8b8m8").toString(crypto.enc.Utf8);
+        console.log(email);
         User.findOne({id: email}, (err, user) => {
-            if (err)
+            if (err){
+                res.send("Oh hey. I did not find your account.");
                 return done(err);
+            }
             if (user) {
-                user.pass = req.params.pass;
+                user.pass = pass;
                 user.save((err) => {
                     if (err)
                         throw err;
 
                 });
                 res.send("Oh hey you just changed you password! Shine on you crazy diamond!");
+            } else {
+                res.send("Oh hey. I did not find your account2.");
             }
 
         })
@@ -120,10 +125,8 @@ module.exports = function(app, passport) {
     });
 
     app.get('/verify/:id', function (req, res) {
-
-
-        var email = crypto.AES.decrypt(unescape(req.params.id),"ch3vald3gu3rreftwgr8b8m8").toString(crypto.enc.Utf8);
-
+        var email = crypto.AES.decrypt(decodeURIComponent(req.params.id),"ch3vald3gu3rr3ftwgr8b8m8").toString(crypto.enc.Utf8);
+        console.log(email);
         User.findOne({id: email}, (err, user) => {
             if (err)
                 return done(err);
@@ -135,7 +138,7 @@ module.exports = function(app, passport) {
 
                 });
                 //TODO FRONT END WHEN ACCOUNT IS VERIFIED
-                res.send("Your account was validate");
+                res.send("Your account was validated");
 
             } else {
                 //TODO FRONT END WHEN ACCOUNT IS NOT FOUND
