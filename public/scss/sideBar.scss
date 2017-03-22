@@ -25,11 +25,11 @@
     transform: translateX(0px);
   }
   .content-container-moveX{
-    transform: translateX(0%) !important;
+    transform: translateX(70%) !important;
   }
   .rightContent{
     transition: transform 0.5s ease-in;
-    transform:translateX(-70%);
+    transform:translateX(0%);
     position:absolute;
     width:100% !important;
   }
