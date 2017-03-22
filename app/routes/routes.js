@@ -46,7 +46,7 @@ module.exports = function(app, passport) {
         }));
 
     // to get the currently logged in user's info
-    app.get('/currentUser', isLoggedIn, function(req, res) {
+    app.get('/currentUser', isLoggedIn, function (req, res) {
         let data = {
             username: req.user.name,
             email: req.user.id,
@@ -58,43 +58,69 @@ module.exports = function(app, passport) {
     });
 
     app.get('/logout',
-        function(req, res){
+        function (req, res) {
             User.findOne({id: req.session.passport.user}, (err, user) => {
-                if(user.online = true){
+                if (user.online = true) {
                     console.log('logging out');
                     user.online = false;
                     req.session.online = false;
-                }});
+                }
+            });
             req.logout();
             res.redirect('/');
         });
 
-    app.get('/home', isLoggedIn, function (req, res) {
-        console.log(req.user);
-        res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
+    app.get('/verify/:id', function (req, res) {
+
+        //TODO:NEEDS TO COME FROM THE DECRPYTION
+        var email = req.params.id;
+
+        User.findOne({id: email}, (err, user) => {
+            if (err)
+                return done(err);
+            if (user) {
+                user.validated = true;
+                user.save((err) => {
+                    if (err)
+                        throw err;
+
+                });
+                //TODO : FRONT END WHEN THE ACCOUNT IS VERIFIED
+                console.log("Validated!");
+
+            } else {
+                //TODO: FRONT END WHEN THE ACCOUNT IS NOT FOUND
+            }
+
+
+        });
+
+        app.get('/home', isLoggedIn, function (req, res) {
+            console.log(req.user);
+            res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
+        });
+
+        app.get('/resetpassword', function (req, res) {
+            res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
+        });
+
+        //Unknown routes
+        app.get('*', function (req, res) {
+            res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
+        });
+
+
     });
 
-    app.get('/resetpassword', function (req, res) {
-        res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
-    });
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated()) {
+            req.session.online = true;
+            return next();
+        } else {
+            res.send('You are not logged in. Please login before you access the chat!');
+        }
+    };
 
-    //Unknown routes
-    app.get('*', function(req, res){
-        res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
-    });
-
-
-};
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        req.session.online = true;
-        return next();
-    } else{
-        res.send('You are not logged in. Please login before you access the chat!');
-    }
 }
-
-
 
 
