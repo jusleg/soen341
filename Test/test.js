@@ -16,6 +16,39 @@ var server = require('../index.js');
 var should = chai.should();
 chai.use(chaiHttp);
 
+var superagent = require('superagent');
+var agent = superagent.agent();
+exports.login = function (request, done) {
+    request.post('/login')
+        .send(theAccount)
+        .end(function (err, res) {
+            if (err) {
+                throw err;
+            }
+            agent.saveCookies(res);
+            done(agent);
+        });
+};
+
+var request = require('supertest')(app); var login = require('/login');
+
+describe('MyApp', function () {
+
+    var agent;
+
+    before(function (done) {
+        login.login(request, function (loginAgent) {
+            agent = loginAgent;
+            done();
+        });
+    });
+
+    it('should allow access to admin when logged in', function (done) {
+        var req = request.get('/admin');
+        agent.attachCookies(req);
+        req.expect(200, done); }
+        );
+
 describe('RestApi Routes must all be Functional', function() {
     it('it should GET all Users', function() {
         chai.request(server)
@@ -123,4 +156,8 @@ describe('A basic test',function(){
         done();
     })
 
+    t('the session object should have an Online boolean',function(done) {
+
+        done();
+    })
 });
