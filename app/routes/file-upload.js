@@ -50,7 +50,8 @@ module.exports = function(app) {
 					return data;
 				});
 
-				getUsers().then(function(userList) {
+				// Get all users
+				User.find({}).select('-pass').select('-__v').exec().then(function(userList) {
 
 					var newUsers = [];
 					var usersInClass = [];
@@ -120,6 +121,14 @@ module.exports = function(app) {
 
 					mailer.newAccount(newUsers);
 					mailer.newClass(usersInClass); // TODO: cause it to not email the teacher who created the class?
+
+					function userExists(username, userList) {
+						for(var i in userList) {
+							if(username === userList[i].id)
+								return true; //user found
+						}
+						return false; //user not found
+					}
 				});
 			}
 		}	
@@ -128,16 +137,4 @@ module.exports = function(app) {
 				+ (req.file.size/1000000).toFixed(2) + " MB.");
 		}
 	})
-
-	function getUsers() {
-		return User.find({}).select('-pass').select('-__v').exec();
-	}
-
-	function userExists(username, userList) {
-		for(var i in userList) {
-			if(username === userList[i].id)
-				return true; //user found
-		}
-		return false; //user not found
-	}
 };
