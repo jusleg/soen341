@@ -2,7 +2,8 @@
 * [Meeting #2 (February 3, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-2)
 * [Meeting #3 (February 10, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-3)
 * [Meeting #4 (March 3, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-4)
-* [Meeting #5 (March 3, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-5)
+* [Meeting #5 (March 10, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-5)
+* [Meeting #6 (March 17, 2017)](https://github.com/jusleg/soen341/wiki/Meeting-Notes#meeting-6)
 
 ***
 
@@ -57,3 +58,6 @@ Discussed about lost grades due to missing team members. We discussed about burn
 
 ## **MEETING #5**
 We discussed about issues for the project. Previously we only documented issues related to programming. We added issue that are related to the planification and management of the project since those are actual task and these are not showing up in commit history. We also discussed about the burndown chart and how story points, priority, risk and estimated time should be defined for every task / user story. We explained that in sprint 2, we lost 0.1/5 because of the attendance of team member even though every team member was present for both meetings. We showed the progress of sprint 3. We thought the deadline was Wednesday March 1, 2017; therefore, most of our commits and issue were done before this date. This will be visible in the burndown of sprint 3.
+
+## **MEETING #6**
+We discussed about the new grading scheme for sprint 4 and 5. The main elements of this sprint are email (for verification, notification and forgot my password), UI refactoring and adding classes. We discussed about unit testing and test cases for user stories. We also asked about the coding points in the grading. We were using different conventions for javascript (ES5, ES6). We discussed about using babel to convert to a unified syntax.

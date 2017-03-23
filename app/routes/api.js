@@ -30,6 +30,13 @@ module.exports = function(app) {
         });
     });
 
+    // get all classrooms
+    app.get('/api/classrooms', function(req, res) {
+        classroom.find({}).exec(function(err, data) {
+            res.send(data);
+        })
+    })
+
     app.get('/api/test',function(req,res){
         res.send('You got it');
     })
