@@ -54,10 +54,11 @@
     background-color: $bg_light;
     height: calc(100vh - 120px);
     line-height: calc(100vh - 120px);
-    color: #00b3ee;
+    color: #0f0f0f;
     text-align: center;
     display: table-cell;
     vertical-align: middle;
+    width: 100%;
   }
 
   .window{
