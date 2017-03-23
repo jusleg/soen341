@@ -2,12 +2,14 @@
  * Created by mike on 2/26/17.
  */
 
-var expect = require('chai').expect;
-var assert = require('chai').assert;
-let User = require('../app/models/user');
-let mailer = require('../app/routes/email.js');
-let MongoClient = require('mongodb').MongoClient;
-let url = 'mongodb://chevaldeguerre.xyz:27017/famongo';
+const expect = require('chai').expect;
+const assert = require('chai').assert;
+const User = require('../app/models/user');
+const mailer = require('../app/routes/email.js');
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://chevaldeguerre.xyz:27017/famongo';
+const session = require('supertest-session');
+const myApp = require('./../index.js');
 
 
 var api = require('../app/routes/api');
@@ -97,7 +99,7 @@ describe('RestApi Routes must all be Functional', function () {
     })
 });
 
-describe('A basic test', function () {
+describe('Password tests', function () {
 
     function hashCode(s) {
         if (s == null) {
@@ -162,73 +164,37 @@ describe('A basic test', function () {
     });
 });
 
-const _ = require('lodash');
-const session = require('supertest-session');
-const myApp = require('./../index.js');
-var Memcached = require('memcached');
-var memcached = new Memcached('localhost:9001', {timeout: 10000});
-// var request = require('superagent');
 
+describe('Authentication tests', function() {
 
-let testSession = null;
-
-
-describe('Session tests', function(){
-
-    it('Should be able to login successfully with a valid username and password ', function (done){
-        testSession.post('/login')
-            .send({ email: 'steven1@email.com', password: 'Steven1111' })
+    it('Should be able to login successfully with a valid username and password ', function (done) {
+        request.post('/login')
+            .send({email: 'steven1@email.com', password: 'Steven1111'})
             .expect(302)
             .end(done);
     });
 
-    // it('Session should contain Online boolean', function(done){
-    //     var sessionCookie = _.find(testSession.cookies, function (cookie) {
-    //         return cookie.name === connect.sid;
-    //     });
-    //
-    //     console.log(sessionCookie)
-    //     memcached.get(sessionCookie.value, function (err, session) {
-    //         console.log(session);
-    //         // session.user.name.should.eq('Foobar');
-    //         done();
-    //     });
-    // });
+});
 
-    var authenticatedSession;
-    var Cookies;
+describe('Database fields validatiion', function(){
 
-    beforeEach(function (done) {
-        testSession = session(myApp);
-
-        testSession.post('/login')
-            .send({ email: 'michel@email.com', password: 'Michel111' })
-            .end(function (err, res) {
-                if (err) return done(err);
-                authenticatedSession = testSession;
-                return done();
-            });
+    before(function(){
+        request.post('/login')
+            .send({email:'kevin1@email.com', password:'Kevin1111'})
     });
 
-    it('Online boolean present inside session object', function (done) {
-
-        var req = authenticatedSession.get('/home').expect(200);
-        req.cookies = Cookies;
-        // console.log(req);
-        console.log(req.cookies)
-
-        req
-            .end(function(err, res){
-                console.log(req.session);
-                done();
-            });
+    it('Database should contain the Online boolean', function(done){
+        User.findOne({email:'kevin1@email.com'}, function(err, user){
+            expect(user.online).to.be.true;
+        });
     });
+
 
 });
 
 var request = require('supertest');
 
-describe('Session tests2', function(){
+describe('Session testing', function(){
 
     var cookies1;
 
@@ -246,15 +212,13 @@ describe('Session tests2', function(){
     it('get session', function(done){
         var req = request(myApp).get('/home');
         req.cookies = cookies1;
-        // console.log(req);
-        // console.log(req.body);
         req
             .end(function(err, res){
-            console.log(req)
+            console.log(req);
            done();
         })
-    })
+    });
 
-});
+s});
 
 

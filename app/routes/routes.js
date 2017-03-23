@@ -63,6 +63,11 @@ module.exports = function(app, passport) {
                 if(user.online = true){
                     console.log('logging out');
                     user.online = false;
+                    user.save((err) => {
+                        if (err)
+                            throw err;
+                        done(null, user);
+                    });
                     req.session.online = false;
                 }});
             req.logout();
