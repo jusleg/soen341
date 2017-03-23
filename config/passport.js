@@ -34,8 +34,12 @@ module.exports = function(passport) {
                 if (!user.validPassword(password)) {
                     return done(null, false, req.flash('loginMessage', 'Invalid password.'));
                 } else{
-                user.update({online:false}, {online: true});
-                user.save;
+                    user.online = true;
+                    user.save((err) => {
+                        if (err)
+                            throw err;
+                        done(null, user);
+                    });
                 }
                 return done(null, user);
             });
@@ -61,7 +65,6 @@ module.exports = function(passport) {
                         newUser.id = email;
                         newUser.pass = newUser.generateHash(password);
                         newUser.name = req.body.name;
-                        newUser.online = false;
                         newUser.save((err) => {
                             if (err)
                                 throw err;
