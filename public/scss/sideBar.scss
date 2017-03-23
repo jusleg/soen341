@@ -1,69 +1,65 @@
 @import 'variables.scss';
-
 .sideBar {
-  height: 100%;
-  padding: 0px;
   z-index: 99;
-  background-color: $primary_color;
   transition: transform ease-in 0.5s;
 }
-
-.search-bar {
-  padding: 15px;
-  .input-group{
-    width:100%;
-  }
-}
-
-.class-section {
-  color: white;
-  div {
-    h3 {
-      margin-top:0px;
-      padding-left:5px;
-    }
-    .list-container {
-      p {
-        //background-color: #377BBF;
-        border-top-right-radius:3px;
-        border-bottom-right-radius:3px;
-        padding:3px;
-        padding-left :20px;
-        transition: all 0.5s ease;
-        width:85%;
-        a {
-          display:block;
-          color: white;
-          cursor:pointer;
-          text-decoration: none;
-        }
-      }
-      p:hover{
-        background-color: #246EB9;
-      }
-    }
-
-  }
-}
-
-.sideBar-toggle {
-  margin-left: 9px;
-  float: left;
-}
-
 //for phones
 @media screen and (max-width: 767px) {
-  .sideBar {
-    width: 300px;
-    position: absolute;
-    transform: translateX(-300px);
+  .shadow-active{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.8);
+    transition: background-color 0.4s;
+    z-index:99;
+
   }
-  .sideBarOpen {
-    opacity: 0.9;
+  .rightContent{
+    transition: transform 0.5s ease-in;
+    transform:translateX(-70%);
+    position:absolute;
+    width:100% !important;
+  }
+  .content-container-moveX{
+    transform: translateX(0%) !important;
+  }
+  //for chrome
+  @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .rightContent{
+      transform:translateX(0%);
+    }
+    .content-container-moveX{
+      transform: translateX(70%) !important;
+    }
+  }
+  .sideBar{
+    width:70% !important;
+    transform: translateX(-100%);
+  }
+  .sideBarOpen{
     transform: translateX(0px);
   }
-  .content-container-moveX {
-    transform: translateX(300px);
+  .responsive_right_top{
+    display:flex;
+    justify-content: space-between;
+    #className{
+      display:flex;
+      align-items: center;
+    }
+    .responsive_class_name{
+      display:none;
+    }
+    .responsive_top_right_rhs{
+      display:flex;
+      .responsive_right_top_settings{
+        display:none !important;
+        font-size:20px;
+      }
+    }
+    .responsive_right_top_toggle{
+      display: flex !important;
+      align-items:center;
+    }
   }
 }
 
