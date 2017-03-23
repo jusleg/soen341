@@ -9,6 +9,7 @@
         'ngRoute',
         'app.header',
         'app.classroom',
+        'app.createclass',
         'app.homepage',
     ]).
     config(['$locationProvider', '$routeProvider','$httpProvider',
