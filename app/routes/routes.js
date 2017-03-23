@@ -51,7 +51,8 @@ module.exports = function(app, passport) {
         res.json({
             username: req.user.name,
             email: req.user.id,
-            online: req.session.online,
+            online: req.user.online,
+            role: req.user.role,
             classUser: req.user.classUser,
             classMod: req.user.classMod
         });
