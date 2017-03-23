@@ -70,13 +70,13 @@ module.exports = function(app, passport) {
             let data = {
                 username: req.user.name,
                 email: req.user.id,
-                online: req.session.online,
+                online: req.user.online,
+                role: req.user.role,
                 classUser: user.classUser,
                 classMod: user.classMod
             };
             res.send(data);
         })
-
     });
 
     app.get('/logout',
