@@ -70,7 +70,6 @@ module.exports = function(app, passport) {
         });
 
     app.get('/home', isLoggedIn, function (req, res) {
-        console.log(req.user);
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
