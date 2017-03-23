@@ -1,12 +1,44 @@
 @import 'variables.scss';
+
+.tooltip.left .tooltip-inner {
+  background-color:$border_color;
+  z-index: 99999;
+}
+.tooltip.left .tooltip-arrow {
+   border-top-color: $border_color;
+   border-color: transparent $border_color;
+ }
+
 .classroom{
   height:100%;
   .sendMsg{
-    position:relative;
+    border-top: 1px solid $border_color;
     width:100%;
-    padding:20px;
-    background-color: white;
-    height: 15%;
+    height: 50px;
+    .input-group {
+      background-color: white;
+      padding-right: 10px;
+      input {
+        border: none;
+        height: 49px;
+        font-size: 1.1em;
+        padding-left: 20px;
+      }
+      input:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      button {
+        border: none;
+      }
+      button:hover {
+        background-color: white;
+      }
+      .fa {
+        color: $secondary_blue;
+      }
+    }
   }
 
   .classId{
@@ -18,25 +50,137 @@
     font-weight: bolder;
   }
 
+  .welcome-message{
+    background-color: $bg_light;
+    height: calc(100vh - 120px);
+    line-height: calc(100vh - 120px);
+    color: #0f0f0f;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+  }
+
   .window{
+    background-color: $bg_light;
+    height: calc(100vh - 120px);
     position: relative;
-    background-color: white;
-    overflow-y: auto;
-    height: 80%;
+    overflow: scroll;
+
+
     .message-list{
       list-style:none;
+      padding-left: 60px;
+      padding-right: 60px;
+      .beginningOfMessages{
+        padding-top:15px;
+        color:$border_color;
+        .seperator{
+          border-color:$border_color;
+        }
+      }
+      .nonRecurrentMessage {
+        margin-top: 22px;
+      }
+      .message {
+        margin-left:-45px;
+        margin-bottom: 2px;
+        float: left;
+        clear: both;
+        align-items: flex-start;
+        display: flex;
+        .sendInfo {
+          width: 45px;
+        }
+        .bubble_group {
+          span {
+            margin-left: 3px;
+            font-size: 10px;
+            float: left;
+            color: $text_secondary;
+            margin-top: -15px;
+          }
+          .messageBubble {
+            clear: both;
+            float: left;
+            font-size:1.1em;
+            position: relative;
+            color: black;
+            text-align: left;
+            padding: 0px;
+            background: white;
+            border-radius: 8px;
+            padding: 6px 10px;
+            max-width: 650px;
+          }
+        }
+        .bubbleArrow:after
+        {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 5px 8px 5px 0;
+          border-color: transparent white;
+          display: block;
+          width: 0;
+          z-index: 1;
+          left: -8px;
+          top: 12px;
+        }
+
+        .fa {
+          color: $border_color;
+        }
+      }
+      .message2 {
+        margin-right: -45px;
+        float: right;
+        clear: both;
+        align-items: flex-start;
+        display: flex;
+        margin-bottom: 2px;
+        .sender {
+          float: right;
+          clear: both;
+        }
+        .sendInfo {
+          width: 45px;
+          float: right;
+        }
+        .messageBubble {
+          float: left;
+          font-size:1.1em;
+          position: relative;
+          color: white;
+          text-align: left;
+          background: $lead_blue;
+          border-radius: 8px;
+          padding: 6px 10px;
+          max-width: 650px;
+        }
+
+        .bubbleArrow:after {
+          content: '';
+          position: absolute;
+          border-style: solid;
+          border-width: 5px 0 5px 8px;
+          border-color: transparent $lead_blue;
+          display: block;
+          width: 0;
+          z-index: 1;
+          right: -8px;
+          top: 12px;
+        }
+        .fa {
+          color: $lead_blue;
+          float: right;
+          clear: both;
+        }
+      }
       .sender{
         color: darkgray;
         font-weight: 200;
-      }
-      .message{
-        display: inline-block;
-        background-color: dodgerblue;
-        color: white;
-        padding: 5px;
-        border-radius: 10px;
-        margin-bottom: 2px;
-        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+        font-size: 12px;
       }
     }
   }

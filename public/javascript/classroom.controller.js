@@ -3,6 +3,7 @@
  */
 'use strict';
 
+
 angular.module('app.classroom', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
@@ -12,20 +13,22 @@ angular.module('app.classroom', ['ngRoute'])
             controllerAs:'vm'
         });
     }])
-
     .controller('classCtrl', classCtrl);
 
 function classCtrl ($http, $routeParams, $rootScope, $scope){
     /*---------------
      |   VARIABLES  |
      ---------------*/
+    console.log('hi');
     var vm = this;
     vm.classId = $routeParams.classId.toUpperCase();
+    $rootScope.currentClassId = vm.classId;
     vm.className = ""
     vm.messages = []; //get msgs in DB and assign them here
     vm.m = "";
     vm.professor = "";
-    vm.classroom = ""
+    vm.classroom = "";
+    vm.recentMsgFromUser = '';
     /*---------------
     |   FUNCTIONS   |
      ---------------*/
@@ -42,6 +45,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
         $rootScope.socket.disconnect(); //disconnect last chat
         console.log('Connect to '+vm.classId);
         $rootScope.socket = io.connect(); //reconnect socket
+        $("#className").html("");
     }else{
         console.log('Connect To '+vm.classId);
         $rootScope.socket = io.connect(); //reconnect socket
@@ -61,6 +65,19 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             vm.professor = response.data[0].professor;
             vm.classroom = response.data[0].classroom;
             vm.className = response.data[0].name;
+
+            var height = 0;
+            vm.messages.forEach(function() {
+                height += 55;
+            })
+            setTimeout(function() {
+                $(".window").animate({ scrollTop: height}, 0);
+            }, 0);
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
+            $("#className").html("<span class='animated bounceInDown' style='font-weight: 800;'>" + vm.classId + " </span><span class='animated bounceInDown responsive_class_name' style='color:#706d6d; font-size: 16px;'>- " + vm.className + "</span>");
 
             //Make it accessible on rootScope
             $rootScope.currentClassId = vm.classId;
@@ -90,6 +107,13 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     $rootScope.socket.on(vm.classId, function(msg){
         vm.messages.push(msg);
         $scope.$apply();
+        vm.recentMsgFromUser = msg.name;
+        console.log(vm.recentMsgFromUser);
+        var height = 0;
+        vm.messages.forEach(function() {
+            height += 55;
+        })
+        $(".window").animate({ scrollTop: height}, 200);
         // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
 }
