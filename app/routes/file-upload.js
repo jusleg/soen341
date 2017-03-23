@@ -44,7 +44,7 @@ module.exports = function(app) {
 				// Add course to mod list for teacher
 				var selection = { 'id': req.user.id };
 				var updateQuery = { $addToSet: { classMod: req.body.classcode }};
-				var otions = { safe: true, upsert: true };
+				var options = { safe: true, upsert: true };
 				User.update(selection, updateQuery, options, function(err, data) {
 					console.log(data);
 					return data;
