@@ -129,8 +129,6 @@ module.exports = function(app) {
 		}
 	})
 
-	function addClassToUser
-
 	function getUsers() {
 		return User.find({}).select('-pass').select('-__v').exec();
 	}
