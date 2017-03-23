@@ -6,10 +6,18 @@
         <script src="../javascript/login_authentication.js"></script>
         <!-- Latest compiled and minified CSS -->
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/mainStyle.css">
         <link rel="stylesheet" href="../css/animate.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
+        <script>
+            function resetPassword(){
+                var email = prompt("Please enter the email associated with your account.");
+                console.log(email);
+                alert("Please check your mailbox for reset instructions.");
+                $.get( "emailreset", {email:email} );
+            }
+        </script>
         <title>SOEN341 - Login</title>
     </head>
     <body ng-controller="mainController as vm">
@@ -52,7 +60,7 @@
                     <input class="loginFormInput" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
                     <button id="loginSubmit" type="submit" value="submit" class="btn btn-primary" ng-click="vm.submit(email, password)">Connect</button>
                 </form>
-                <span id="forgotPass">Forgot your password?</span>
+                <span id="forgotPass" onclick="resetPassword()">Forgot your password?</span>
                 <!--<div id="createAccount">Create an Account</div>-->
             </div>
 
