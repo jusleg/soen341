@@ -39,6 +39,14 @@ module.exports = function(app, passport) {
         }
     });
 
+    app.get('/createclass', (req, res) => {
+        if (req.isAuthenticated() && req.user.role == 2) {
+            res.sendFile(path.join(__dirname, '../../public/views/create-class.html'));
+        } else {
+            res.send('You are not authorized to access this page.');
+        }
+    });
+
     app.post('/login',
         passport.authenticate('local-login', {
             successRedirect: '/home',

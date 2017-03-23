@@ -55,7 +55,8 @@ require('./app/routes/api.js')(app);
 //Routes
 require('./app/routes/routes.js')(app, passport);
 
-
+//File upload
+require('./app/routes/file-upload.js')(app);
 
 io.on('connection', function (socket) {
     //user is connected...
