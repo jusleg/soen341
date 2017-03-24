@@ -119,8 +119,8 @@ function submitCreateClass() {
 			processData: false,
 			contentType: false,
 			success: function(response) {
-				$('#createClassOK').click();
 				alert("Class successfully created.");
+				window.location.href = "/home";
 			},
 			failure: function(response) {
 				alert("Invalid field data."); //TODO: Do this properly

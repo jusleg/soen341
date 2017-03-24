@@ -17,8 +17,8 @@
         <br/><br/>
         <span>CSV of Students</span>
         <input id="studentList" type="file" accept="text/csv" name="studentList" style="margin: 0 auto; width: 200px;">
-        <button type="submit" id="registerSubmit" onclick="submitCreateClass()">Submit</button><br/>
-        <button id="createClassOK" ng-click="vm.ok();" style="display: none;"></button>
+        <button type="submit" id="createClassSubmit" onclick="submitCreateClass()" class="largeButton">Submit</button><br/>
+        <button type="button" id="cancelCreateClass" onclick="vm.cancel()" class="largeButton grey">Cancel</button><br/>
     </div>
 
 </div>

@@ -691,7 +691,7 @@ input::-webkit-input-placeholder {
 .formInput:focus {
   outline: none; }
 
-#registerSubmit {
+#registerSubmit, .largeButton {
   width: 300px;
   height: 40px;
   box-shadow: none;
@@ -701,9 +701,15 @@ input::-webkit-input-placeholder {
   border: none;
   margin-top: 15px; }
 
-#registerSubmit:hover {
+#registerSubmit:hover, .largeButton:hover {
   cursor: pointer;
   background-color: rgba(148, 0, 255, 0.8); }
+
+.grey {
+  background-color: #87898e; }
+
+.grey:hover {
+  background-color: rgba(140, 142, 147, 0.8); }
 
 #name {
   background: url(http://sarzh.ru/i/guest.png) no-repeat 5px center;
@@ -1429,3 +1435,5 @@ body {
           color: #0084FF; }
       #rightContent #right_top #top_right_rhs div:hover {
         background-color: #F3F3F3; }
+
+/*# sourceMappingURL=mainStyle.css.map */
