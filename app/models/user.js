@@ -16,7 +16,7 @@ let User = mongoose.Schema({
     online: Boolean,
     classUser: [{type: String, ref: 'class'}],
     classMod: [{type: String, ref: 'class'}],
-    role : Number
+    role: Number,
 });
 
 // Schema methods ==============================================================================

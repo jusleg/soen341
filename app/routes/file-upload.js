@@ -1,4 +1,5 @@
 //DB requirements
+const mongoose = require('mongoose');
 const User = require('../models/user.js');
 const classroom = require('../models/Classes.js');
 
@@ -18,40 +19,45 @@ module.exports = function(app) {
 
 			if(true) {//TODO: if valid class information
 
-				var newClass = new classroom({
-					_id:       req.body.classcode,
-					active:    false,
-					name:      req.body.classname,
-					professor: req.user.id,
-					classroom: req.body.location
-					//TODO: add time
-				});
-
-				newClass.save(function(err, data) {
-					if(err) console.error(err);
-					console.log(data);
-				});
-
 				// Mongoose users to update or create
 				var studentList = req.file.buffer.toString('utf8')
 					.split(/[\r\n]+/)
 					.map((e) => (e.trim())); //get students file as array of lines, trim whitespace
 
-				var mods = req.body.TAs
+				/*var TAs = req.body.TAs
 					.split(',')
 					.map((e) => (e.trim())); //get each TA'split email and trim each one's whitespace
-				
-				// Add course to mod list for teacher
-				var selection = { 'id': req.user.id };
-				var updateQuery = { $addToSet: { classMod: req.body.classcode }};
-				var options = { safe: true, upsert: true };
-				User.update(selection, updateQuery, options, function(err, data) {
-					console.log(data);
-					return data;
+
+				var newClass = new classroom({
+					_id:        req.body.classcode,
+					active:     false,
+					name:       req.body.classname,
+					professor:  req.user.id,
+					classroom:  req.body.location
+					//TODO: add time
 				});
 
+				newClass.save(function(err, classroom) {
+					if(err) console.error(err);
+					console.log(classroom);
+
+					var mods = TAs.concat([req.user.id]); // teacher is also to be made a mod
+
+					// Add course code to teacher's classMod list
+					User.find({'id': { $in: mods } }, (err, user) => {
+						user.classMod.push(classroom._id);
+	                    user.save((err) => {
+	                        if (err) throw err;
+	                    });
+					});
+					
+					User.find({}, (err, user) => {
+						if(studentList.indexOf(user.))
+					});
+				});*/
+
 				// Get all users
-				User.find({}).select('-pass').select('-__v').exec().then(function(userList) {
+				/*User.find({}).select('-pass').select('-__v').exec().then(function(userList) {
 
 					var newUsers = [];
 					var usersInClass = [];
@@ -129,7 +135,7 @@ module.exports = function(app) {
 						}
 						return false; //user not found
 					}
-				});
+				});*/
 			}
 		}	
 		else {
