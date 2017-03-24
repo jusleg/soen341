@@ -45,7 +45,7 @@
   outline: none;
 }
 
-#registerSubmit {
+#registerSubmit, .largeButton {
   width: 300px;
   height: 40px;
   box-shadow: none;
@@ -56,9 +56,17 @@
   margin-top: 15px;
 }
 
-#registerSubmit:hover {
+#registerSubmit:hover, .largeButton:hover {
   cursor: pointer;
   background-color: rgba(148, 0, 255, 0.8);
+}
+
+.grey {
+  background-color: rgb(135, 137, 142);
+}
+
+.grey:hover {
+  background-color: rgba(140, 142, 147, 0.8);
 }
 
 #name {

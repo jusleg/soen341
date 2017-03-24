@@ -6,16 +6,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
-
 //Mongoose Schema ==============================================================================
 
 let User = mongoose.Schema({
+    validated:Boolean,
     id: String,
     name: String,
     pass: String,
     online: Boolean,
-    classUser: [String],
-    classMod: [String]
+    classUser: [{type: String, ref: 'class'}],
+    classMod: [{type: String, ref: 'class'}],
+    role: Number,
 });
 
 // Schema methods ==============================================================================
