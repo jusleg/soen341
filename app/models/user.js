@@ -14,8 +14,8 @@ let User = mongoose.Schema({
     name: String,
     pass: String,
     online: Boolean,
-    classUser: [{type: Schema.Types.ObjectId, ref: 'class'}],
-    classMod: [{type: Schema.Types.ObjectId, ref: 'class'}],
+    classUser: [{type: String, ref: 'class'}],
+    classMod: [{type: String, ref: 'class'}],
     role : Number
 });
 
