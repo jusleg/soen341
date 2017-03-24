@@ -9,13 +9,15 @@ let chatSchema = new Schema({
 
 let classSchema = new Schema({
     _id: String,
-    // courseCode: String,
     active: Boolean,
     time: Date,
     name: String,
     professor: String,
     classroom: String,
     chat: [chatSchema]
+},
+{
+    timestamps: true
 });
 
 let Class = mongoose.model('class',classSchema);
