@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html ng-app="formApp">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SOEN341 - Add Class</title>
-
-    <link rel="stylesheet" href="../css/mainStyle.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
-    <script src="../javascript/createclass.js"></script>
-</head>
-<body>
-<div class="wrapper">
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-
-
-<div id="registerContainer" class="animated fadeIn centered">
+<div id="registerContainer" class="animated fadeIn centered" style="margin-top: 240px;">
 
     <div id="registerTopContainer">
         <div style="float:left">
@@ -46,15 +15,12 @@
         <input class="formInput" id="location" placeholder="Location">
         <input class="formInput" id="TAs" placeholder="TAs">
         <br/><br/>
-        <span>CSV File of Students</span>
-        <input id="studentList" type="file" accept="text/csv" name="studentList">
+        <span>CSV of Students</span>
+        <input id="studentList" type="file" accept="text/csv" name="studentList" style="margin: 0 auto; width: 200px;">
         <button type="submit" id="registerSubmit" onclick="submitCreateClass()">Submit</button><br/>
-    </div>
-
-    <div id="registerRightContainer">
+        <button id="createClassOK" ng-click="vm.ok();" style="display: none;"></button>
     </div>
 
 </div>
 
-</body>
-</html>
+<script src="../javascript/createclass.js"></script>
