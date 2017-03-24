@@ -14,13 +14,15 @@ angular.module('app.createclass', ['ngRoute'])
             controller: 'createClassCtrl',
             controllerAs:'vm',
             resolve:{
-                "check":function($location,$rootScope){
-                    if($rootScope.currentUser.role == 2){
-                        //Do something
-                    }else{
-                        $location.path('/');    //redirect user to home.
-                        alert("You don't have access here");
-                    }
+                "check":function($location,$rootScope,$http){
+                    $http.get('/currentUser').then(function(res,err){
+                        if($rootScope.currentUser.role == 2){
+
+                        }else{
+                            $location.path('/');    //redirect user to home.
+                            alert("You don't have access here");
+                        }
+                    });
                 }
             }
         });
