@@ -39,6 +39,7 @@
                     </a>
                 </div>
             </div>
+            <a ng-click="vm.openCreateClassModal('md')" ng-if="$root.currentUser.role == 2">Create Class</a>
         </div>
         <hr>
         <!--TODO: do properly with angular routing-->
@@ -92,10 +93,12 @@
 <script src="../javascript/modules/header.module.js"></script>
 <script src="../javascript/modules/classroom.module.js"></script>
 <script src="../javascript/modules/homepage.module.js"></script>
+<script src="../javascript/modules/createclass.module.js"></script>
 <!--CONTROLLERS-->
 <script src="../javascript/header.controller.js"></script>
 <script src="../javascript/classroom.controller.js"></script>
 <script src="../javascript/homepage.controller.js"></script>
+<script src="../javascript/createclass.controller.js"></script>
 
 </body>
 </html>

@@ -9,6 +9,7 @@
         'ngRoute',
         'app.header',
         'app.classroom',
+        'app.createclass',
         'app.homepage',
     ]).
     config(['$locationProvider', '$routeProvider','$httpProvider',
@@ -46,6 +47,23 @@
                     $log.info('Modal dismissed at: ' + new Date());
                 });
             };
+
+            //CREATE CLASS FORM MODAL
+            vm.openCreateClassModal = function (size, parentSelector) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'views/create-class.html',
+                    controller: 'userModalInstanceCtrl',
+                    controllerAs: 'vm',
+                    size: size,
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                    vm.selected = selectedItem;
+                }, function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+            };
         });
     angular.module('app').controller('userModalInstanceCtrl', function ($uibModalInstance) {
         var vm = this;
@@ -58,4 +76,6 @@
             $uibModalInstance.dismiss('cancel');
         };
     });
+
+    
 })();
