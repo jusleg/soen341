@@ -84,8 +84,9 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             $rootScope.currentProf = vm.professor;
             $rootScope.currentClassroom = vm.classroom;
             $rootScope.currentClassName = vm.className;
+            $(".sendMsg").notify("Connected to "+vm.classId, { position:"top-right", className:"success"});
         }, function failure(err){
-
+            $.notify("Fail to Connect to "+vm.classId, { position:"bottom-right", className:"Warning"});
         })
     }
 
@@ -98,6 +99,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             $http.post('api/message/'+vm.classId, msgObj).then(function success(response){
                 $rootScope.socket.emit('userMessage', msgObj);
                 vm.m ='';
+            },function faillure(){
+                $.notify("Message Failed to Send", { position:"bottom-right", className:"error"});
             });
             return false;
         }
