@@ -59,33 +59,46 @@ function submitCreateClass() {
 	var hours = $('#hours').val();
 	var location = $('#location').val();
 	var TAs = $('#TAs').val();
+	var file = $('#studentList').val();
 
 	var validInput = true;
+	var errorMsg = "Error!\n";
 
-	console.log("invalid class code? " + (validClassCode(classCode) !== true));
-	if(validClassCode(classCode) !== true)
+	if(validClassCode(classCode) !== true) {
 		validInput = false;
+		errorMsg += "Class Code field must 4 alphabetic characters, 3 digits, and optional extra alphabetic characters, e.g. 'ABCD123'.\n";
+	}
 
-	console.log("invalid className? " + isEmpty(className));
-	if(isEmpty(className))
+	if(isEmpty(className)) {
 		validInput = false;
+		errorMsg += "Class Name field must have a value.\n";
+	}
 
 	//if(hours.match(/^(mon|tue|wed|thu|fri|sat|sun)\/$/)) //TODO: hours validation, e.g. tue/17:45/20:15,thurs/8:45/10:00
-	console.log("invalid hours? " + isEmpty(hours))
-	if(isEmpty(hours))
+	if(isEmpty(hours)) {
 		validInput = false;
+		errorMsg += "Class Hours field must have a value.\n";
+	}
 
 	//if(location) //TODO: location validation
-	console.log("invalid location? " + isEmpty(location));
-	if(isEmpty(location))
+	if(isEmpty(location)) {
 		validInput = false;
+		errorMsg += "Location field must have a value.\n";
+	}
 	
-	console.log("invalid TA field values? " + TAFieldValid(TAs) !== true);
-	if(TAFieldValid(TAs) !== true)
+	if(TAFieldValid(TAs) !== true) {
 		validInput = false;
+		errorMsg += "TAs field must follow the format 'email@addr:name,email@addr:name', etc.\n";
+	}
+
+	if(studentList.length == 0) {
+		validInput = false;
+		errorMsg += "A CSV file of students must be provided.\n";
+	}
 
 	if(validInput) {
-		console.log("Form submit valid...");
+
+		console.log("Form input valid; submitting.");
 
 		// Prepare payload; send file as data
 		var formData = new FormData();
@@ -106,7 +119,8 @@ function submitCreateClass() {
 			processData: false,
 			contentType: false,
 			success: function(response) {
-				window.location.href = "/home";
+				$('#createClassOK').click();
+				alert("Class successfully created.");
 			},
 			failure: function(response) {
 				alert("Invalid field data."); //TODO: Do this properly
@@ -114,8 +128,7 @@ function submitCreateClass() {
 		})
 	}
 	else {
-		//TODO: error message
-		console.log("Error: Form values not valid.");
+		alert(errorMsg);
 	}
 };
 

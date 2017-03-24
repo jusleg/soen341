@@ -14,6 +14,7 @@ const mailer = require('./email');
 
 module.exports = function(app) {
 	app.post('/createclass', upload.single('studentList'), function(req, res) {
+		console.log("attempt class creation? (merge with class creation branch)");
 		// If file is smaller than 1 MB
 		if(req.file.size < 1000000) {
 
@@ -137,6 +138,7 @@ module.exports = function(app) {
 					}
 				});*/
 			}
+			res.send("success");
 		}	
 		else {
 			console.error("Attempted file upload exceeded max size of 1 MB: file was "

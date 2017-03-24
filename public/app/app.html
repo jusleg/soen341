@@ -39,7 +39,7 @@
                     </a>
                 </div>
             </div>
-            <a href="#/createclass" ng-if="$root.currentUser.role == 2">Create Class</a>
+            <a ng-click="vm.openCreateClassModal('md')" ng-if="$root.currentUser.role == 2">Create Class</a>
         </div>
         <hr>
         <!--TODO: do properly with angular routing-->
