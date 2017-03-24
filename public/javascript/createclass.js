@@ -85,7 +85,7 @@ function submitCreateClass() {
 		validInput = false;
 		errorMsg += "Location field must have a value.\n";
 	}
-	
+
 	if(TAFieldValid(TAs) !== true) {
 		validInput = false;
 		errorMsg += "TAs field must follow the format 'email@addr:name,email@addr:name', etc.\n";

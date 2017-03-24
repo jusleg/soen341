@@ -39,12 +39,7 @@
                     </a>
                 </div>
             </div>
-            <a ng-click="vm.openCreateClassModal('md')" ng-if="$root.currentUser.role == 2">Create Class</a>
-        </div>
-        <hr>
-        <!--TODO: do properly with angular routing-->
-        <div id="teacher-links-section" style="padding-left: 20px;">
-            <p><a href="/createclass">Create Class</a></p>
+            <a href="#/createclass" ng-if="$root.currentUser.role == 2">Create Class</a>
         </div>
     </div>
 
@@ -66,9 +61,7 @@
             </div>
         </div>
         <div id="shadow"></div>
-        <div style="background-color:#D8DEE5" class="content" ng-view>
-
-        </div>
+        <div class="content" ng-view></div>
 
     </div>
 </div>
