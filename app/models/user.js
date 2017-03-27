@@ -10,6 +10,7 @@ mongoose.Promise = global.Promise;
 
 let User = mongoose.Schema({
     validated:Boolean,
+    imglink:String,
     id: String,
     name: String,
     pass: String,
