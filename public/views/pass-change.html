@@ -49,8 +49,8 @@
     <div style="text-align: center; margin-top: 20px;">
         <form onsubmit="validatePass()" action="/reset" method="POST">
             <input type="hidden" id="token" name="token" value="INSERT_TOKEN_HERE">
-            <input class="formInput" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
-            <input class="formInput" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
+            <input class="formInput pass" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
+            <input class="formInput pass" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
             <p id="formMessage"></p>
             <button id="resetSubmit" type="submit" value="submit" class="btn btn-primary">Reset</button>
         </form>
