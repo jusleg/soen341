@@ -677,6 +677,13 @@ input::-webkit-input-placeholder {
   padding-top: 20px;
   padding-bottom: 20px; }
 
+.registrationTeacher {
+  font-size: 0.75em;
+  color: #0275d8;
+  cursor: pointer; }
+  .registrationTeacher:hover {
+    text-decoration: underline; }
+
 .formInput {
   width: 300px;
   height: 40px;
