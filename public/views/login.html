@@ -6,10 +6,30 @@
         <script src="../javascript/login_authentication.js"></script>
         <!-- Latest compiled and minified CSS -->
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/mainStyle.css">
         <link rel="stylesheet" href="../css/animate.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
+        <!-- for IE support -->
+		<script src="../bower_components/es6-promise/es6-promise.auto.min.js"></script>
+
+		<script src="../bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+		<link rel="stylesheet" href="../bower_components/sweetalert2/dist/sweetalert2.min.css">
+        <script>
+            function resetPassword(){
+            	swal({
+				  title: 'Input email address',
+				  input: 'email'
+				}).then(function (email) {
+					$.get( "emailreset", {email:email} );
+					console.log(email);
+				  swal({
+				    type: 'success',
+				    html: 'Please check your mailbox for reset instructions.'
+				  })
+				});
+            }
+        </script>
         <title>SOEN341 - Login</title>
     </head>
     <body ng-controller="mainController as vm">
@@ -48,11 +68,11 @@
                 </div>
                 <p class="descriptiveText">Enter your login credentials</p>
                 <form action="/login" method="post" id="login">
-                    <input class="loginFormInput" type="text" id="email" name="email" ng-model="email" placeholder="Email Address"><br>
-                    <input class="loginFormInput" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
+                    <input class="loginFormInput no_border" type="text" id="email" name="email" ng-model="email" placeholder="Email Address"><br>
+                    <input class="loginFormInput pass" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
                     <button id="loginSubmit" type="submit" value="submit" class="btn btn-primary" ng-click="vm.submit(email, password)">Connect</button>
                 </form>
-                <span id="forgotPass">Forgot your password?</span>
+                <span id="forgotPass" onclick="resetPassword()">Forgot your password?</span>
                 <!--<div id="createAccount">Create an Account</div>-->
             </div>
 

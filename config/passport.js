@@ -1,7 +1,7 @@
 let LocalStrategy   = require('passport-local').Strategy;
 let User = require('../app/models/user');
 let mailer = require('../app/routes/email');
-
+let crypto = require('crypto-js');
 
 
 module.exports = function(passport) {
@@ -64,7 +64,9 @@ module.exports = function(passport) {
                         const newUser = new User();
                         newUser.id = email;
                         newUser.pass = newUser.generateHash(password);
+                        newUser.imglink = "https://www.gravatar.com/avatar/"+crypto.MD5(email.trim().toLowerCase()).toString()+"?d=retro";
                         newUser.name = req.body.name;
+                        newUser.validated = false;
                         newUser.save((err) => {
                             if (err)
                                 throw err;

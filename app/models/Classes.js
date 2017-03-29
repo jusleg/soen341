@@ -9,6 +9,7 @@ let chatSchema = new Schema({
 
 let classSchema = new Schema({
     _id: String,
+    // courseCode: String,
     active: Boolean,
     time: Date,
     name: String,

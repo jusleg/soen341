@@ -1,0 +1,26 @@
+<div id="registerContainer" class="animated fadeIn centered" style="margin-top: 240px;">
+
+    <div id="registerTopContainer">
+        <div style="float:left">
+            <h1 class="lead" id="loginTitle" style="font-size: 2em; font-weight: 700;">Create Class</h1>
+            <h1 style="font-size: 0.8em; font-weight: 300;">SOEN341</h1>
+        </div>
+        <div style="float: right; margin-right: 20px;"><img src="https://challengefailure.org/wp-content/uploads/2016/03/register-icon@2x.png" height="60"/></div>
+    </div>
+
+    <div id="registerBottomContainer">
+        <input class="formInput" id="classcode" placeholder="Class Code">
+        <input class="formInput" id="classname" placeholder="Class Name">
+        <input class="formInput" id="hours" placeholder="Hours">
+        <input class="formInput" id="location" placeholder="Location">
+        <input class="formInput" id="TAs" placeholder="TAs">
+        <br/><br/>
+        <span>CSV of Students</span>
+        <input id="studentList" type="file" accept="text/csv" name="studentList" style="margin: 0 auto; width: 200px;">
+        <button type="submit" id="createClassSubmit" onclick="submitCreateClass()" class="largeButton">Submit</button><br/>
+        <button type="button" id="cancelCreateClass" ng-click="vm.cancel()" class="largeButton grey">Cancel</button><br/>
+    </div>
+
+</div>
+
+<script src="../javascript/createclass.js"></script>

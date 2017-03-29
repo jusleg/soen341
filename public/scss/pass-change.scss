@@ -10,21 +10,18 @@
 
 #passResetContainer {
   width: 310px;
-  background-color: white;
+  background-color: rgba(255,255,255,0.8);
   border-radius: 10px;
   padding-bottom: 20px;
 }
 
 #pass {
-  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
-  border-bottom: none;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;  }
 
 #pass2 {
-  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   border-bottom-right-radius: 5px;
