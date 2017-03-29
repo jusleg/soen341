@@ -33,8 +33,14 @@ module.exports = function(passport) {
                 }
                 if (!user.validPassword(password)) {
                     return done(null, false, req.flash('loginMessage', 'Invalid password.'));
+                } else{
+                    user.online = true;
+                    user.save((err) => {
+                        if (err)
+                            throw err;
+                        done(null, user);
+                    });
                 }
-                user.online = true;
                 return done(null, user);
             });
         }

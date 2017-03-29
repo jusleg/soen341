@@ -14,10 +14,10 @@ let User = mongoose.Schema({
     id: String,
     name: String,
     pass: String,
-    online: Boolean,
+    online: {type:Boolean, default: false},
+    role: {type:Number, default: 0},
     classUser: [{type: String, ref: 'class'}],
     classMod: [{type: String, ref: 'class'}],
-    role: Number,
 });
 
 // Schema methods ==============================================================================

@@ -85,6 +85,7 @@ module.exports = function(app, passport) {
                 if (user.online = true) {
                     console.log('logging out');
                     user.online = false;
+                    user.save();
                     req.session.online = false;
                 }
             });
@@ -129,7 +130,6 @@ module.exports = function(app, passport) {
     });
 
     app.get('/home', isLoggedIn, function (req, res) {
-        console.log(req.user);
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
