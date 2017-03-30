@@ -90,7 +90,7 @@ module.exports = function(app, passport) {
                 }
             });
             req.logout();
-            res.redirect('/');
+            res.redirect('/?m=1');
         });
 
     app.post('/reset', function(req, res) {
@@ -104,7 +104,7 @@ module.exports = function(app, passport) {
         console.log(email);
         User.findOne({id: email}, (err, user) => {
             if (err){
-                res.send("Oh hey. I did not find your account.");
+                res.redirect("/?m=3");
                 return done(err);
             }
             if (user) {
@@ -114,9 +114,9 @@ module.exports = function(app, passport) {
                         throw err;
 
                 });
-                res.send("Oh hey you just changed you password! Shine on you crazy diamond!");
+                res.redirect("/?m=1");
             } else {
-                res.send("Oh hey. I did not find your account2.");
+                res.redirect("/?m=3");
             }
 
         })
@@ -151,11 +151,11 @@ module.exports = function(app, passport) {
 
                 });
                 //TODO FRONT END WHEN ACCOUNT IS VERIFIED
-                res.send("Your account was validated");
+                res.redirect("/?m=4");
 
             } else {
                 //TODO FRONT END WHEN ACCOUNT IS NOT FOUND
-                res.send("Could not find your account");
+                res.redirect("/?m=3");
             }
         });
 
@@ -171,7 +171,7 @@ module.exports = function(app, passport) {
             req.session.online = true;
             return next();
         } else {
-            res.send('You are not logged in. Please login before you access the chat!');
+            res.redirect('/?m=2');
         }
     };
 
