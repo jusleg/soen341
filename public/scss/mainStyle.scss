@@ -8,6 +8,7 @@
 @import 'sideBar';
 @import 'classroom.scss';
 @import 'landing.scss';
+@import 'createClass.scss';
 @font-face {
   font-family: "Nova";
   src: url(../fonts/ProximaNova-Regular.otf);
@@ -34,24 +35,8 @@ body{
     margin:0;
     height:100%;
     width:100%;
-  }
-  .content-container{
-    height:100%;
-    overflow:hidden;
-    padding-left:0px;
-    padding-right:0px;
-    transition:transform ease-in 0.5s;
-    .navbar-toggle{
-      border:0;
-    }
-    .navbar{
-      background-color:#F9F7F7;
-      border:0;
-      border-radius:0;
-      margin-bottom:0px;
-    }
     .content{
-      height:100%;
+      height: calc(100% - 70px);
     }
   }
 }

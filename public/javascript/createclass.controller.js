@@ -30,27 +30,60 @@ angular.module('app.createclass', ['ngRoute'])
 
     .controller('createClassCtrl', createClassCtrl);
 
-function createClassCtrl ($rootScope, $http){
+function createClassCtrl ($scope, $http){
     //variables
     var vm = this;
+    vm.class = {
+        Code : "",
+        Name : "",
+        Location: "",
+        Hours : "",
+        Tas : ""
+    };
     vm.submitCreateClass = submitCreateClass;
-    vm.validClassCode = validClassCode;
-    vm.TAFieldValid = TAFieldValid;
-    vm.validEmail = validEmail;
     //functions
     function submitCreateClass() {
-        $http.post('/createclass', formData).then(function success(response){
-            alert("Class successfully created.");
-            window.location.href = "/home";
-        },function faillure(err) {
-            alert("Invalid field data."); //TODO: Do this properly
-        })
-    };
+        var valid = true;
+        var file = $('#studentList').get(0).files[0];
 
+        if(TAFieldValid(vm.class.Tas)!== true){
+            $scope.createClassForm.Tas.$setValidity("Tas",false);
+            valid = false;
+        }
+        if(validClassCode(vm.class.Code)){
+            $scope.createClassForm.Code.$setValidity("Code",false);
+            valid=false;
+        }
+        if(file == undefined){
+            valid = false;
+        }
+
+        if(valid){
+            // Prepare payload; send file as data
+            var formData = new FormData();
+            console.log('in')
+            formData.append('classcode', vm.class.Code);
+            formData.append('classname', vm.class.Name);
+            formData.append('hours', vm.class.Hours);
+            formData.append('location', vm.class.Location);
+            formData.append('TAs', vm.class.Tas);
+            formData.append('studentList', file, file.name);
+
+            $http.post('/createclass', formData).then(function success(response){
+                alert("Class successfully created.");
+                window.location.href = "/home";
+            },function faillure(err) {
+                alert("Invalid field data."); //TODO: Do this properly
+            })
+        }
+    };
     function validClassCode(val) {
-        return val.match(/^ *$/) !== null;
-    };
+        return val.match(/^[A-Z]{4}[0-9]{3,4}([a-zA-Z0-9]| |-)*$/) == null;
+    }
 
+    function isEmpty(val) {
+        return val.match(/^ *$/) !== null;
+    }
 // Does each TA subfield have a valid email address?
     function TAFieldValid(val) {
         return val.split(',').every((e) => (validEmail(e.split(":")[0])) && !isEmpty(e.split(":")[1] || ""));

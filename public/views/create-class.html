@@ -1,15 +1,17 @@
-<div>
-    <div>
-        <input class="formInput" placeholder="Class Code">
-        <input class="formInput" placeholder="Class Name">
-        <input class="formInput" placeholder="Hours">
-        <input class="formInput" placeholder="Location">
-        <input class="formInput" placeholder="TAs">
-        <br/><br/>
-        <span>CSV of Students</span>
-        <input id="studentList" type="file" accept="text/csv" name="studentList" style="margin: 0 auto; width: 200px;">
-        <button type="submit" ng-click="submitCreateClass()" class="largeButton">Submit</button><br/>
-        <button type="button" ng-click="vm.cancel()" class="largeButton grey">Cancel</button><br/>
+<div class="createClassContainer">
+    <div class="createClassWrapper">
+        <form class="createClassForm" name="createClassForm">
+            <h1>Create Class Form</h1>
+            <input class="formInput" placeholder="Class Code" ng-model="vm.class.Code" ng-required="true" name="Code">
+            <input class="formInput" placeholder="Class Name" ng-model="vm.class.Name" ng-required="true">
+            <input class="formInput" placeholder="Hours"      ng-model="vm.class.Hours" ng-required="true">
+            <input class="formInput" placeholder="Location"   ng-model="vm.class.Location" ng-required="true">
+            <input class="formInput" placeholder="TAs"        ng-model="vm.class.Tas" ng-required="true" name="Tas">
+            <span>CSV of Students</span>
+            <input id="studentList" type="file" accept="text/csv" name="studentList" style="margin: 0 auto; width: 200px;" ng-required="true">
+            <button type="submit" ng-click="vm.submitCreateClass()" class="largeButton">Submit</button>
+            <button type="button" ng-click="vm.cancel()" class="largeButton grey">Cancel</button>
+        </form>
     </div>
 </div>
 
