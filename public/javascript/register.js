@@ -93,13 +93,12 @@ function submitRegister() {
         check++;  // checked
     }
     //if not add css class, make the border red
-    if ($("#termCheck").is('checked') == false){
+    else if ($("#termCheck").is('checked') == false){
         $("#border").addClass('changedRed');
     }
 
     //checking changes on the id #termCheck
     $("#termCheck").change(function() {
-        //clicking on the checkbox after failing once
         if ($("#termCheck").is(':checked') == true) {
             //remove changedRed class
             $("#border").removeClass('changedRed');
