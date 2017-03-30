@@ -81,9 +81,31 @@ function submitRegister() {
     } else {
         $("#pass2").css("border-color", "red");
     }
-    if($("#termCheck:checked").length > 0) {
-        check++;
+
+    // if($("#termCheck:checked").length > 0) {
+    //     check++;
+    // }else {
+    //     $("#border").css("border-color", "red");
+    // }
+
+   //checking to see if the checkbox is checked, if it is checked go here
+    if ($("#termCheck").is(':checked') == true) {
+        check++;  // checked
     }
+    //if not add css class, make the border red
+    if ($("#termCheck").is('checked') == false){
+        $("#border").addClass('changedRed');
+    }
+
+    //checking changes on the id #termCheck
+    $("#termCheck").change(function() {
+        //clicking on the checkbox after failing once
+        if ($("#termCheck").is(':checked') == true) {
+            //remove changedRed class
+            $("#border").removeClass('changedRed');
+            check++;  // checked
+        }
+    });
 
     if(check == 5) {
         //Form is completely validated
