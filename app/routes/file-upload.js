@@ -44,13 +44,17 @@ module.exports = function(app) {
 
 				var TAEmailList = ((list) => (list.map((e) => e.email)))(TAs);
 
+				var now = Date.now();
+
 				var newClass = new classroom({
 					_id:        classCode,
 					active:     false,
 					name:       req.body.classname,
 					professor:  profEmail,
-					classroom:  req.body.location
-					//TODO: add time
+					classroom:  req.body.location,
+					//TODO: add class hours
+					createdAt:  now,
+					updatedAt:  now,
 				});
 
 				var newUsers;
