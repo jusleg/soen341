@@ -82,12 +82,6 @@ function submitRegister() {
         $("#pass2").css("border-color", "red");
     }
 
-    // if($("#termCheck:checked").length > 0) {
-    //     check++;
-    // }else {
-    //     $("#border").css("border-color", "red");
-    // }
-
    //checking to see if the checkbox is checked, if it is checked go here
     if ($("#termCheck").is(':checked') == true) {
         check++;  // checked
