@@ -30,7 +30,7 @@ angular.module('app.createclass', ['ngRoute'])
 
     .controller('createClassCtrl', createClassCtrl);
 
-function createClassCtrl ($scope, $http){
+function createClassCtrl ($scope, $http, $rootScope){
     //variables
     var vm = this;
     vm.class = {
@@ -40,7 +40,11 @@ function createClassCtrl ($scope, $http){
         Hours : "",
         Tas : ""
     };
+    //sets which url is active
+    $rootScope.createClass = true;
+    $rootScope.currentClassId = '';
     vm.submitCreateClass = submitCreateClass;
+
     //functions
     function submitCreateClass() {
         var valid = true;
@@ -69,7 +73,16 @@ function createClassCtrl ($scope, $http){
             formData.append('TAs', vm.class.Tas);
             formData.append('studentList', file, file.name);
 
-            $http.post('/createclass', formData).then(function success(response){
+            var req = {
+                method: 'POST',
+                url: '/createclass',
+                headers: {
+                    'Content-Type': undefined
+                },
+                data: formData
+            };
+
+            $http(req).then(function success(response){
                 alert("Class successfully created.");
                 window.location.href = "/home";
             },function faillure(err) {
