@@ -8,9 +8,10 @@ const classroom = require('../models/Classes.js');
 const crypto = require('crypto-js');
 const parseMePLzr = require('body-parser');
 const email = require('./email');
+const flash = require('connect-flash');
 
 module.exports = function(app, passport) {
-
+    app.use(flash());
     var hashCode = function hashCode(s){
         if(s == null){
             return null;
@@ -24,7 +25,9 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        if (req.isAuthenticated()) {
+        if (req.flash()["signupMessage"]=="That email is already taken."){
+            res.redirect('/register?m=taken');
+        } else if (req.isAuthenticated()) {
             res.redirect('/home');
         } else {
             res.sendFile(path.join(__dirname, '../../public/views/login.html'));
@@ -90,7 +93,7 @@ module.exports = function(app, passport) {
                 }
             });
             req.logout();
-            res.redirect('/?m=1');
+            res.redirect('/');
         });
 
     app.post('/reset', function(req, res) {
