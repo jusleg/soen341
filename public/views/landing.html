@@ -38,6 +38,9 @@
 	            	message = "Your account was validated. Have fun.";
 	            	type = "success";
 	            	valid = true;
+	            } else if(queryDict["m"]==404){
+	            	message = 'ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH<br><br><img src="http://i.imgur.com/lXU0HTy.jpg">';
+	            	valid=true;
 	            }
 	            if(valid){swal({
 				    type: type,
