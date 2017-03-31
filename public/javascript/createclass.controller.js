@@ -49,14 +49,16 @@ function createClassCtrl ($scope, $http, $rootScope){
     function submitCreateClass() {
         var valid = true;
         var file = $('#studentList').get(0).files[0];
-
+        var errorMsg = "\n";
         if(TAFieldValid(vm.class.Tas)!== true){
             $scope.createClassForm.Tas.$setValidity("Tas",false);
             valid = false;
+            errorMsg += "TAs field must follow the format 'email@addr:name,email@addr:name', etc.\n";
         }
         if(validClassCode(vm.class.Code)){
             $scope.createClassForm.Code.$setValidity("Code",false);
             valid=false;
+            errorMsg += "Class Code field must 4 alphabetic characters, 3 digits, and optional extra alphabetic characters, e.g. 'ABCD123'.\n";
         }
         if(file == undefined){
             valid = false;
@@ -86,8 +88,10 @@ function createClassCtrl ($scope, $http, $rootScope){
                 alert("Class successfully created.");
                 window.location.href = "/home";
             },function faillure(err) {
-                alert("Invalid field data."); //TODO: Do this properly
+                $.notify("Failed to Create Class", { position:"bottom-right", className:"error"});
             })
+        }else{
+            $.notify("Failed to Create Class: "+errorMsg, { position:"bottom-right", className:"error"});
         }
     };
     function validClassCode(val) {
