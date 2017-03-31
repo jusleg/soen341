@@ -8,7 +8,7 @@ const classroom = require('../models/Classes.js');
 const crypto = require('crypto-js');
 const parseMePLzr = require('body-parser');
 const email = require('./email');
-const flash = require('connect-flash');
+const flash = require('req-flash');
 
 module.exports = function(app, passport) {
     app.use(flash());
@@ -25,10 +25,18 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        if (req.flash()["signupMessage"]=="That email is already taken."){
+        if (req.flash()["message"]=='That email is already taken.'){
+            req.flash('message','');
             res.redirect('/register?m=taken');
+        } else if (req.flash()["message"]=="wrong"){
+            req.flash('message','');
+            res.redirect('/login?m=1');
+        } else if (req.flash()["message"]=="unvalidated."){
+            req.flash('message','');
+            res.redirect('/login?m=2');
         } else if (req.isAuthenticated()) {
             res.redirect('/home');
+            req.flash('message','');
         } else {
             res.sendFile(path.join(__dirname, '../../public/views/login.html'));
         }

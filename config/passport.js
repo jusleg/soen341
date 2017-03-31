@@ -29,13 +29,13 @@ module.exports = function(passport) {
                     return done(err);
                 }
                 if (!user) {
-                    return done(null, false, req.flash('loginMessage', 'wrong'));
+                    return done(null, false, req.flash('message', 'wrong'));
                 }
-                if(!user.checkValidated){
-                    return done(null, false, req.flash('loginMessage', 'unvalidated.'));
+                if(!user.checkValidated()){
+                    return done(null, false, req.flash('message', 'unvalidated.'));
                 }
                 if (!user.validPassword(password)) {
-                    return done(null, false, req.flash('loginMessage', 'wrong'));
+                    return done(null, false, req.flash('message', 'wrong'));
                 } else{
                     user.online = true;
                     user.save((err) => {
@@ -62,7 +62,7 @@ module.exports = function(passport) {
                     if (err)
                         return done(err);
                     if (user) {
-                        return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                        return done(null, false, req.flash('message', 'That email is already taken.'));
                     } else {
                         const newUser = new User();
                         newUser.id = email;
