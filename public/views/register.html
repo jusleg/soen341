@@ -6,6 +6,7 @@
     <!-- for IE support -->
     <script src="../bower_components/es6-promise/es6-promise.auto.min.js"></script>
 
+    <script src="bower_components/angular/angular.js"></script>
     <script src="../bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="../bower_components/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../css/mainStyle.css">
@@ -72,7 +73,7 @@
         <input class="formInput" id="email" type="email" placeholder="Email Address">
         <input class="formInput pass" id="pass" type="password" placeholder="Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
         <input class="formInput pass" id="pass2" type="password" placeholder="Verify Password" name="passwordRepeat"><br>
-        <input id="termCheck" type="checkbox" name="agreeTerms" value="true"> <span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
+        <input id="termCheck" type="checkbox" name="agreeTerms" value="true"/><label for="termCheck" id="border" style="height:20px;padding-top:12px;"></label><span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
         <button type="submit" id="registerSubmit" onclick="submitRegister()">Submit</button><br/>
         <span style="font-size:0.75em; color:dimgray">Already have an account?<a href="../login"> Login</a>.</span><br>
         <span class="registrationTeacher" onclick="swal('You\'re a TEACHER?','Email us a proof of employment at a registered STEM Organization to validate your teacher account garbage@famingo.com');">I am a teacher.</span>
