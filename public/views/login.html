@@ -32,7 +32,11 @@
                     type = "error";
                     message="This account is not validated yet. Please validate it using the link provided in the email.";
                     valid=true;
-                } 
+                } else if (queryDict["m"]==3){
+                    type = "success";
+                    message="Account created. Please validate it using the link provided in the email.";
+                    valid=true;
+                }
                 if(valid){
                     swal({type: type,html: message});
                 }

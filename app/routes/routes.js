@@ -25,7 +25,10 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        if (req.flash()["message"]=='That email is already taken.'){
+        if(req.flash()["message"]=='new-unvalidated'){
+            req.flash('message','');
+            res.redirect('/login?m=3');
+        } else if (req.flash()["message"]=='That email is already taken.'){
             req.flash('message','');
             res.redirect('/register?m=taken');
         } else if (req.flash()["message"]=="wrong"){

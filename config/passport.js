@@ -75,6 +75,7 @@ module.exports = function(passport) {
                                 throw err;
                             done(null, newUser);
                         });
+                        return done(null, false, req.flash('message', 'new-unvalidated'));
                         mailer.newAccount(newUser.id);
                     }
                 });
