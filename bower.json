@@ -29,6 +29,6 @@
     "font-awesome": "^4.7.0",
     "angular-bootstrap": "^2.5.0",
     "sweetalert2": "^6.4.4",
-    "notifyjs":"0.4.1"
+    "notifyjs": "^0.4.2"
   }
 }
