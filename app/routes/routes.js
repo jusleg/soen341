@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
     app.post('/login',
         passport.authenticate('local-login', {
             successRedirect: '/home',
-            failureRedirect: '/login',
+            failureRedirect: '/login?m=1',
             failureFlash: true,
             session: true
         }));
@@ -163,7 +163,7 @@ module.exports = function(app, passport) {
 
     //Unknown routes
     app.get('*', function (req, res) {
-        res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
+        res.redirect('/?m=404');
     });
 
     function isLoggedIn(req, res, next) {
