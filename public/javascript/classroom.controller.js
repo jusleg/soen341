@@ -86,7 +86,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             $rootScope.currentClassName = vm.className;
             $(".sendMsg").notify("Connected to "+vm.classId, { position:"top-right", className:"success"});
         }, function failure(err){
-            $.notify("Fail to Connect to "+vm.classId, { position:"bottom-right", className:"Warning"});
+            $.notify("Fail to Connect to "+vm.classId, { position:"bottom-right", className:"warning"});
         })
     }
 
