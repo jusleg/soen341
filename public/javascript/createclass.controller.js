@@ -67,7 +67,6 @@ function createClassCtrl ($scope, $http, $rootScope){
         if(valid){
             // Prepare payload; send file as data
             var formData = new FormData();
-            console.log('in')
             formData.append('classcode', vm.class.Code);
             formData.append('classname', vm.class.Name);
             formData.append('hours', vm.class.Hours);
