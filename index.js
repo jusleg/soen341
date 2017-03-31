@@ -12,7 +12,7 @@ const ObjectId = Schema.ObjectId;
 const logger = require('morgan');
 const session = require('express-session');
 const api = require('./app/routes/api');
-const flash = require('connect-flash');
+const flash = require('req-flash');
 const db = require('./config/db.js');
 const cookieParser = require('cookie-parser');
 
@@ -37,8 +37,8 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'));
 // for cookies (for authentication)
 app.use(cookieParser());
 
-//Passport authentication middlewares
-app.use(session({ secret: 'Harambe2k17HowBouDah' }));
+//Passport authentication middlewares, Cookie expires after 15min
++app.use(session({ secret: 'Harambe2k17HowBouDah', cookie:{maxAge: 900000}}));
 app.use(passport.initialize());
 app.use(passport.session());
 // to have a flash message for login/register

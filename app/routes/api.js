@@ -1,6 +1,10 @@
 const express = require('express');
 const User = require('../models/user.js');
 const classroom = require('../models/Classes.js');
+const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+
+
 
 module.exports = function(app) {
     // get all messages in a class
@@ -34,8 +38,18 @@ module.exports = function(app) {
     app.get('/api/classrooms', function(req, res) {
         classroom.find({}).exec(function(err, data) {
             res.send(data);
-        })
-    })
+        });
+    });
+
+    let promise1 = User.find({online:true}).count();
+    // get amount of users online
+    app.get('/api/getOnlineUsers', function(req, res){
+        promise1.then(function(count){
+            res.send(String(count));
+        });
+    });
+
+
 
     app.get('/api/test',function(req,res){
         res.send('You got it');
