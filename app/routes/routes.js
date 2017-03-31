@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
     app.post('/login',
         passport.authenticate('local-login', {
             successRedirect: '/home',
-            failureRedirect: '/login?m=1',
+            failureRedirect: '/login',
             failureFlash: true,
             session: true
         }));
@@ -150,11 +150,8 @@ module.exports = function(app, passport) {
                         throw err;
 
                 });
-                //TODO FRONT END WHEN ACCOUNT IS VERIFIED
                 res.redirect("/?m=4");
-
             } else {
-                //TODO FRONT END WHEN ACCOUNT IS NOT FOUND
                 res.redirect("/?m=3");
             }
         });

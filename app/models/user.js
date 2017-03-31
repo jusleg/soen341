@@ -37,6 +37,14 @@ User.methods.validPassword = function(password) {
     }
 };
 
+User.methods.checkValidated = function(){
+    if(this.validated == true){
+        return true;
+    } else {
+        return false;
+    }
+};
+
 
 var hashCode = function hashCode(s){
     if(s == null){

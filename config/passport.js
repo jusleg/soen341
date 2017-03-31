@@ -29,7 +29,10 @@ module.exports = function(passport) {
                     return done(err);
                 }
                 if (!user) {
-                    return done(null, false, req.flash('loginMessage', 'No user found.'));
+                    return done(null, false, req.flash('wrong', 'wrong'));
+                }
+                if(!user.checkValidated){
+                    return done(null, false, req.flash('unvalidated', 'unvalidated.'));
                 }
                 if (!user.validPassword(password)) {
                     return done(null, false, req.flash('loginMessage', 'Invalid password.'));
