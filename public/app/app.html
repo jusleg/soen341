@@ -35,6 +35,17 @@
         <div id="menu">
             <div id="menu_items">
                 <div id="classList" class="classList">
+                    <a ng-repeat="class in vm.currentUser.classUser" ng-href="#/class/{{class._id}}">
+                        <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == '{{class._id}}' }">
+                            <p class="menu_class_title">{{class._id}}</p>
+                            <p class="menu_class_subtitle">{{class.name}}</p>
+                            <div>Status: <span class="menu_class_status">Active</span></div>
+                        </div>
+                    </a>
+                    <!--TO DO : CHANGE THIS SO IT DOESN'T SHOW 2 SECTION-->
+                    <div>
+                        <hr ng-if="vm.currentUser.classMod.length > 0">
+                    </div>
                     <a ng-repeat="class in vm.currentUser.classMod" ng-href="#/class/{{class._id}}">
                         <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == '{{class._id}}' }">
                             <p class="menu_class_title">{{class._id}}</p>
@@ -42,8 +53,8 @@
                             <div>Status: <span class="menu_class_status">Active</span></div>
                         </div>
                     </a>
-                    <hr>
                     <a href="#/createclass" ng-if="$root.currentUser.role == 2">
+                        <hr>
                         <div class="menu_class" ng-class="{'activeClass' : $root.createClass == true }">
                             <p class="menu_class_title">Create Class</p>
                         </div>
