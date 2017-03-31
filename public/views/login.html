@@ -28,6 +28,10 @@
                     type = "error";
                     message="The email and password combination was not valid.";
                     valid=true;
+                } else if (queryDict["m"]==2){
+                    type = "error";
+                    message="This account is not validated yet. Please validate it using the link provided in the email.";
+                    valid=true;
                 } 
                 if(valid){
                     swal({type: type,html: message});

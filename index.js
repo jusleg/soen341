@@ -12,7 +12,7 @@ const ObjectId = Schema.ObjectId;
 const logger = require('morgan');
 const session = require('express-session');
 const api = require('./app/routes/api');
-const flash = require('connect-flash');
+const flash = require('req-flash');
 const db = require('./config/db.js');
 const cookieParser = require('cookie-parser');
 
