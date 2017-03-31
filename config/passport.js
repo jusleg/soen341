@@ -29,13 +29,13 @@ module.exports = function(passport) {
                     return done(err);
                 }
                 if (!user) {
-                    return done(null, false, req.flash('wrong', 'wrong'));
+                    return done(null, false, req.flash('loginMessage', 'wrong'));
                 }
                 if(!user.checkValidated){
-                    return done(null, false, req.flash('unvalidated', 'unvalidated.'));
+                    return done(null, false, req.flash('loginMessage', 'unvalidated.'));
                 }
                 if (!user.validPassword(password)) {
-                    return done(null, false, req.flash('loginMessage', 'Invalid password.'));
+                    return done(null, false, req.flash('loginMessage', 'wrong'));
                 } else{
                     user.online = true;
                     user.save((err) => {
