@@ -19,10 +19,10 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
     /*---------------
      |   VARIABLES  |
      ---------------*/
-    console.log('hi');
     var vm = this;
     vm.classId = $routeParams.classId.toUpperCase();
     $rootScope.currentClassId = vm.classId;
+    $rootScope.createClass = false;
     vm.className = ""
     vm.messages = []; //get msgs in DB and assign them here
     vm.m = "";
