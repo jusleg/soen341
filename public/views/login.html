@@ -28,13 +28,17 @@
                     type = "error";
                     message="The email and password combination was not valid.";
                     valid=true;
-                } else if (queryDict["m"]==2){
+                } else if (queryDict["m"]=="unvalidated"){
                     type = "error";
-                    message="This account is not validated yet. Please validate it using the link provided in the email.";
+                    message='This account is not validated yet. Please validate it using the link provided in the email. Click <a href="/reverify/'+queryDict["email"]+'">here</a> to resend the email.';
                     valid=true;
                 } else if (queryDict["m"]==3){
                     type = "success";
                     message="Account created. Please validate it using the link provided in the email.";
+                    valid=true;
+                } else if (queryDict["m"]=="resent"){
+                    type = "success";
+                    message="A new verification link was sent.";
                     valid=true;
                 }
                 if(valid){

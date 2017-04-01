@@ -31,9 +31,6 @@ module.exports = function(passport) {
                 if (!user) {
                     return done(null, false, req.flash('message', 'wrong'));
                 }
-                if(!user.checkValidated()){
-                    return done(null, false, req.flash('message', 'unvalidated.'));
-                }
                 if (!user.validPassword(password)) {
                     return done(null, false, req.flash('message', 'wrong'));
                 } else{
@@ -43,6 +40,9 @@ module.exports = function(passport) {
                             throw err;
                         done(null, user);
                     });
+                }
+                if(!user.checkValidated()){
+                    return done(null, false, req.flash('message', 'unvalidated&email='+email));
                 }
                 return done(null, user);
             });
@@ -75,8 +75,9 @@ module.exports = function(passport) {
                                 throw err;
                             done(null, newUser);
                         });
+                        console.log("sent to "+email);
+                        mailer.newAccount(email);
                         return done(null, false, req.flash('message', 'new-unvalidated'));
-                        mailer.newAccount(newUser.id);
                     }
                 });
             });
