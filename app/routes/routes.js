@@ -25,18 +25,20 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        if(req.flash()["message"]=='new-unvalidated'){
+        var message = ""+req.flash()["message"];
+        if(message=='new-unvalidated'){
             req.flash('message','');
             res.redirect('/login?m=3');
-        } else if (req.flash()["message"]=='That email is already taken.'){
+        } else if (message=='That email is already taken.'){
             req.flash('message','');
             res.redirect('/register?m=taken');
-        } else if (req.flash()["message"]=="wrong"){
+        } else if (message=="wrong"){
             req.flash('message','');
             res.redirect('/login?m=1');
-        } else if (req.flash()["message"]=="unvalidated."){
+        } else if (message.includes("unvalidated")){
+            var messagePath = "/login?m="+message;
             req.flash('message','');
-            res.redirect('/login?m=2');
+            res.redirect(messagePath);
         } else if (req.isAuthenticated()) {
             res.redirect('/home');
             req.flash('message','');
@@ -149,6 +151,11 @@ module.exports = function(app, passport) {
 
     app.get('/resetpassword', function (req, res) {
         res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
+    });
+
+    app.get('/reverify/:id', function (req, res) {
+        email.newAccount(req.params.id);
+        res.redirect("/login?m=resent");
     });
 
     app.get('/verify/:id', function (req, res) {

@@ -68,7 +68,7 @@ module.exports = {
             if (error) {
                 return console.log(error);
             }
-            console.log('Message %s sent: %s', info.messageId, info.response);
+            console.log('Message %s sent: %s to %s', info.messageId, info.response, email);
         });
    }
 };
