@@ -1058,8 +1058,9 @@ input::-webkit-input-placeholder {
           z-index: 1;
           left: -8px;
           top: 12px; }
-        .classroom .window .message-list .message .fa {
-          color: #706d6d; }
+        .classroom .window .message-list .message img {
+          width: 27px;
+          margin-top: 3px; }
       .classroom .window .message-list .message2 {
         margin-right: -45px;
         float: right;
@@ -1094,8 +1095,9 @@ input::-webkit-input-placeholder {
           z-index: 1;
           right: -8px;
           top: 12px; }
-        .classroom .window .message-list .message2 .fa {
-          color: #0084FF;
+        .classroom .window .message-list .message2 img {
+          margin-top: 3px;
+          width: 27px;
           float: right;
           clear: both; }
       .classroom .window .message-list .sender {

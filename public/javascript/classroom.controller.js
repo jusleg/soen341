@@ -92,7 +92,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
 
     function sendMsg(){
         var room = vm.classId;
-        var msgObj = {'class':room, '_id': $rootScope.currentUser.email,'time': new Date().getTime().toString(), 'name': $rootScope.currentUser.username, 'message':vm.m};
+        var msgObj = {'class':room, '_id': $rootScope.currentUser.email,'time': new Date().getTime().toString(), 'name': $rootScope.currentUser.username, 'message':vm.m, 'imglink': $rootScope.currentUser.imglink};
         if(msgObj.message == ""){
             return false;
         }else{

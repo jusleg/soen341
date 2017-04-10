@@ -4,7 +4,8 @@ let chatSchema = new Schema({
     _id: String,
     name: String,
     time: String,
-    message: String
+    message: String,
+    imglink:String
 });
 
 let classSchema = new Schema({
