@@ -94,7 +94,7 @@ function createClassCtrl ($scope, $http, $rootScope){
         }
     };
     function validClassCode(val) {
-        return val.match(/^[A-Z]{4}[0-9]{3,4}([a-zA-Z0-9]| |-)*$/) == null;
+        return val.match(/^([A-Za-z]{4})[ ]?([0-9]{3,4})([ -]?([a-zA-Z]{1,2}([-][a-zA-Z])?))?$/) == null;
     }
 
     function isEmpty(val) {
