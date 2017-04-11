@@ -188,6 +188,21 @@ describe('Authentication tests', function() {
                 done();
             });
     });
+});
+
+describe('Database fields validatiion', function(){
+
+    it('should login', function(done) {
+        request.post('/login')
+            .send({email: 'kevin1@email.com', password: 'Kevin1111'})
+            .end(function (err, res) {
+                User.findOne({id: 'kevin1@email.com'}, function (err, user) {
+                    console.log(user);
+                    // expect(user.online).to.be.false;
+                    done();
+                });
+            });
+    }).timeout(10000);
 
 });
 

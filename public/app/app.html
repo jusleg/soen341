@@ -10,11 +10,15 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <link rel="stylesheet" href="../bower_components/notifyjs/dist/styles/metro/notify-metro.css">
+
     <link rel="stylesheet" href="../css/mainStyle.css">
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/notifyjs/dist/notify.js"></script>
+    <script src="../bower_components/notifyjs/dist/styles/metro/notify-metro.js"></script>
 </head>
 <body ng-app="app" ng-controller="appCtrl as vm">
 <div class="outer-container">
@@ -23,13 +27,26 @@
 
         <div id="left_top">
             <div id="search">
-                <input type="text" name="classSearch" id="classSearch" placeholder="Search Classes">
+                <input type="text" name="classSearch" id="classSearch" placeholder="Search Classes"/>
+                <!--<h3>Number of users "{{vm.numUsers}}"</h3>-->
+
             </div>
         </div>
 
         <div id="menu">
             <div id="menu_items">
-                <div id="classList">
+                <div id="classList" class="classList">
+                    <a ng-repeat="class in vm.currentUser.classUser" ng-href="#/class/{{class._id}}">
+                        <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == '{{class._id}}' }">
+                            <p class="menu_class_title">{{class._id}}</p>
+                            <p class="menu_class_subtitle">{{class.name}}</p>
+                            <div>Status: <span class="menu_class_status">Active</span></div>
+                        </div>
+                    </a>
+                    <!--TO DO : CHANGE THIS SO IT DOESN'T SHOW 2 SECTION-->
+                    <div>
+                        <hr ng-if="vm.currentUser.classMod.length > 0">
+                    </div>
                     <a ng-repeat="class in vm.currentUser.classMod" ng-href="#/class/{{class._id}}">
                         <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == '{{class._id}}' }">
                             <p class="menu_class_title">{{class._id}}</p>
@@ -37,14 +54,14 @@
                             <div>Status: <span class="menu_class_status">Active</span></div>
                         </div>
                     </a>
+                    <a href="#/createclass" ng-if="$root.currentUser.role == 2">
+                        <hr>
+                        <div class="menu_class" ng-class="{'activeClass' : $root.createClass == true }">
+                            <p class="menu_class_title">Create Class</p>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <a ng-click="vm.openCreateClassModal('md')" ng-if="$root.currentUser.role == 2">Create Class</a>
-        </div>
-        <hr>
-        <!--TODO: do properly with angular routing-->
-        <div id="teacher-links-section" style="padding-left: 20px;">
-            <p><a href="/createclass">Create Class</a></p>
         </div>
     </div>
 
@@ -66,16 +83,13 @@
             </div>
         </div>
         <div id="shadow"></div>
-        <div style="background-color:#D8DEE5" class="content" ng-view>
-
-        </div>
+        <div class="content" ng-view></div>
 
     </div>
 </div>
 <script>
     //for the menu collapse feature in mobile
     $('#sideBar-toggle').click(function () {
-        console.log('hi')
         $('#leftMenu').toggleClass('sideBarOpen');
         $('#rightContent').toggleClass('content-container-moveX');
         $('#shadow').toggleClass('shadow-active');

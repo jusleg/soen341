@@ -229,12 +229,13 @@ button.btn-5:focus {
   background: url(http://sarzh.ru/i/guest.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
-  border-bottom: none;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px; }
 
+.no_border {
+  border-bottom: none !important; }
+
 #password {
-  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   border-bottom-right-radius: 5px;
@@ -471,20 +472,17 @@ input::-webkit-input-placeholder {
 
 #passResetContainer {
   width: 310px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   padding-bottom: 20px; }
 
 #pass {
-  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
-  border-bottom: none;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px; }
 
 #pass2 {
-  background: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698630-icon-114-lock-128.png) no-repeat 5px center;
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   border-bottom-right-radius: 5px;
@@ -679,6 +677,13 @@ input::-webkit-input-placeholder {
   padding-top: 20px;
   padding-bottom: 20px; }
 
+.registrationTeacher {
+  font-size: 0.75em;
+  color: #0275d8;
+  cursor: pointer; }
+  .registrationTeacher:hover {
+    text-decoration: underline; }
+
 .formInput {
   width: 300px;
   height: 40px;
@@ -728,6 +733,49 @@ input::-webkit-input-placeholder {
   -webkit-background-size: 20px 20px;
   background-size: 20px 20px;
   background-color: rgba(255, 255, 255, 0.8); }
+
+label {
+  display: inline-block;
+  padding-bottom: 5px; }
+
+label:after {
+  border-radius: 3px;
+  border: 1px solid #ebebeb;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  content: '';
+  text-align: center;
+  padding-bottom: 1px;
+  font-size: 0px;
+  padding-right: 3px;
+  position: absolute;
+  width: 20px;
+  height: 20px; }
+
+label:hover,
+input[type="checkbox"]:hover {
+  cursor: pointer; }
+
+input[type="checkbox"]:hover + label:after,
+label:hover:after {
+  background: #f9f9f9; }
+
+input[type="checkbox"]:checked + label:after {
+  background: url('data:image/svg+xml;utf8,<svg  xmlns="http://www.w3.org/2000/svg" width="11.642px" height="8.747px" viewBox="44.045 45.648 11.642 8.747" enable-background="new 44.045 45.648 11.642 8.747" xml:space="preserve"><path fill="#0EC78C" d="M53.938,45.648l1.75,1.75l-5.25,5.246l-1.751,1.75l-1.745-1.75l-2.629-2.624l1.75-1.75l2.623,2.623 L53.938,45.648z"/></svg>') center no-repeat; }
+
+input[type="checkbox"] {
+  opacity: 0;
+  position: relative;
+  z-index: 1; }
+
+label {
+  padding-right: 20px; }
+
+#border.changedRed:after {
+  border: 1px solid red; }
+
+#border.changedGray:after {
+  border: 1px solid gray; }
 
 input::-webkit-input-placeholder {
   font-size: .9em; }
@@ -1272,6 +1320,19 @@ button.btn-5:focus {
   100% {
     -webkit-transform: translateY(-1200px) rotate(600deg);
     transform: translateY(-1200px) rotate(600deg); } }
+.createClassContainer {
+  height: 100%; }
+  .createClassContainer .createClassWrapper {
+    height: 100%; }
+    .createClassContainer .createClassWrapper .createClassForm {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .createClassContainer .createClassWrapper .createClassForm .ng-invalid {
+        border-color: #ff8471 !important; }
+
 @font-face {
   font-family: "Nova";
   src: url(../fonts/ProximaNova-Regular.otf); }
@@ -1296,21 +1357,8 @@ body {
     margin: 0;
     height: 100%;
     width: 100%; }
-  body .content-container {
-    height: 100%;
-    overflow: hidden;
-    padding-left: 0px;
-    padding-right: 0px;
-    transition: transform ease-in 0.5s; }
-    body .content-container .navbar-toggle {
-      border: 0; }
-    body .content-container .navbar {
-      background-color: #F9F7F7;
-      border: 0;
-      border-radius: 0;
-      margin-bottom: 0px; }
-    body .content-container .content {
-      height: 100%; }
+    body .outer-container .content {
+      height: calc(100% - 70px); }
 
 #leftMenu {
   width: 25%;
@@ -1435,5 +1483,3 @@ body {
           color: #0084FF; }
       #rightContent #right_top #top_right_rhs div:hover {
         background-color: #F3F3F3; }
-
-/*# sourceMappingURL=mainStyle.css.map */

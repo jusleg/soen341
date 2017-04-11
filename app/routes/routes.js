@@ -8,9 +8,10 @@ const classroom = require('../models/Classes.js');
 const crypto = require('crypto-js');
 const parseMePLzr = require('body-parser');
 const email = require('./email');
+const flash = require('req-flash');
 
 module.exports = function(app, passport) {
-
+    app.use(flash());
     var hashCode = function hashCode(s){
         if(s == null){
             return null;
@@ -24,8 +25,23 @@ module.exports = function(app, passport) {
     });
 
     app.get('/login', (req, res) => {
-        if (req.isAuthenticated()) {
+        var message = ""+req.flash()["message"];
+        if(message=='new-unvalidated'){
+            req.flash('message','');
+            res.redirect('/login?m=3');
+        } else if (message=='That email is already taken.'){
+            req.flash('message','');
+            res.redirect('/register?m=taken');
+        } else if (message=="wrong"){
+            req.flash('message','');
+            res.redirect('/login?m=1');
+        } else if (message.includes("unvalidated")){
+            var messagePath = "/login?m="+message;
+            req.flash('message','');
+            res.redirect(messagePath);
+        } else if (req.isAuthenticated()) {
             res.redirect('/home');
+            req.flash('message','');
         } else {
             res.sendFile(path.join(__dirname, '../../public/views/login.html'));
         }
@@ -85,6 +101,7 @@ module.exports = function(app, passport) {
                 if (user.online = true) {
                     console.log('logging out');
                     user.online = false;
+                    user.save();
                     req.session.online = false;
                 }
             });
@@ -103,7 +120,7 @@ module.exports = function(app, passport) {
         console.log(email);
         User.findOne({id: email}, (err, user) => {
             if (err){
-                res.send("Oh hey. I did not find your account.");
+                res.redirect("/?m=3");
                 return done(err);
             }
             if (user) {
@@ -113,9 +130,9 @@ module.exports = function(app, passport) {
                         throw err;
 
                 });
-                res.send("Oh hey you just changed you password! Shine on you crazy diamond!");
+                res.redirect("/?m=1");
             } else {
-                res.send("Oh hey. I did not find your account2.");
+                res.redirect("/?m=3");
             }
 
         })
@@ -129,12 +146,16 @@ module.exports = function(app, passport) {
     });
 
     app.get('/home', isLoggedIn, function (req, res) {
-        console.log(req.user);
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
     app.get('/resetpassword', function (req, res) {
         res.sendFile(path.join(__dirname, '../../public/views/pass-change.html'));
+    });
+
+    app.get('/reverify/:id', function (req, res) {
+        email.newAccount(req.params.id);
+        res.redirect("/login?m=resent");
     });
 
     app.get('/verify/:id', function (req, res) {
@@ -150,12 +171,9 @@ module.exports = function(app, passport) {
                         throw err;
 
                 });
-                //TODO FRONT END WHEN ACCOUNT IS VERIFIED
-                res.send("Your account was validated");
-
+                res.redirect("/?m=4");
             } else {
-                //TODO FRONT END WHEN ACCOUNT IS NOT FOUND
-                res.send("Could not find your account");
+                res.redirect("/?m=3");
             }
         });
 
@@ -163,7 +181,7 @@ module.exports = function(app, passport) {
 
     //Unknown routes
     app.get('*', function (req, res) {
-        res.send('ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH', 404);
+        res.redirect('/?m=404');
     });
 
     function isLoggedIn(req, res, next) {
@@ -171,7 +189,7 @@ module.exports = function(app, passport) {
             req.session.online = true;
             return next();
         } else {
-            res.send('You are not logged in. Please login before you access the chat!');
+            res.redirect('/?m=2');
         }
     };
 

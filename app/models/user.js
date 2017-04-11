@@ -10,13 +10,14 @@ mongoose.Promise = global.Promise;
 
 let User = mongoose.Schema({
     validated:Boolean,
+    imglink:String,
     id: String,
     name: String,
     pass: String,
-    online: Boolean,
+    online: {type:Boolean, default: false},
+    role: {type:Number, default: 0},
     classUser: [{type: String, ref: 'class'}],
     classMod: [{type: String, ref: 'class'}],
-    role: Number,
 });
 
 // Schema methods ==============================================================================
@@ -30,6 +31,14 @@ User.methods.generateHash = (password) => {
 User.methods.validPassword = function(password) {
     var hashedPass = hashCode(password);
     if(this.pass == hashedPass){
+        return true;
+    } else {
+        return false;
+    }
+};
+
+User.methods.checkValidated = function(){
+    if(this.validated == true){
         return true;
     } else {
         return false;

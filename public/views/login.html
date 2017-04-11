@@ -10,17 +10,61 @@
         <link rel="stylesheet" href="../css/animate.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
+        <!-- for IE support -->
+		<script src="../bower_components/es6-promise/es6-promise.auto.min.js"></script>
+
+		<script src="../bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+		<link rel="stylesheet" href="../bower_components/sweetalert2/dist/sweetalert2.min.css">
+        <script>
+            function scrapeParams() {
+                var queryDict = {};
+                location.search.substr(1).split("&").forEach(function (item) {
+                    queryDict[item.split("=")[0]] = item.split("=")[1]
+                });
+                var type;
+                var message;
+                var valid = false;
+                if (queryDict["m"]==1){
+                    type = "error";
+                    message="The email and password combination was not valid.";
+                    valid=true;
+                } else if (queryDict["m"]=="unvalidated"){
+                    type = "error";
+                    message='This account is not validated yet. Please validate it using the link provided in the email. Click <a href="/reverify/'+queryDict["email"]+'">here</a> to resend the email.';
+                    valid=true;
+                } else if (queryDict["m"]==3){
+                    type = "success";
+                    message="Account created. Please validate it using the link provided in the email.";
+                    valid=true;
+                } else if (queryDict["m"]=="resent"){
+                    type = "success";
+                    message="A new verification link was sent.";
+                    valid=true;
+                }
+                if(valid){
+                    swal({type: type,html: message});
+                }
+            }
+        </script>
         <script>
             function resetPassword(){
-                var email = prompt("Please enter the email associated with your account.");
-                console.log(email);
-                alert("Please check your mailbox for reset instructions.");
-                $.get( "emailreset", {email:email} );
+            	swal({
+				  title: 'Input email address',
+				  input: 'email'
+				}).then(function (email) {
+					$.get( "emailreset", {email:email} );
+					console.log(email);
+				  swal({
+				    type: 'success',
+				    html: 'Please check your mailbox for reset instructions.'
+				  })
+				});
             }
+
         </script>
         <title>SOEN341 - Login</title>
     </head>
-    <body ng-controller="mainController as vm">
+    <body ng-controller="mainController as vm" onload="scrapeParams()">
     <div class="wrapper">
         <ul class="bg-bubbles">
             <li></li>
@@ -56,8 +100,8 @@
                 </div>
                 <p class="descriptiveText">Enter your login credentials</p>
                 <form action="/login" method="post" id="login">
-                    <input class="loginFormInput" type="text" id="email" name="email" ng-model="email" placeholder="Email Address"><br>
-                    <input class="loginFormInput" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
+                    <input class="loginFormInput no_border" type="text" id="email" name="email" ng-model="email" placeholder="Email Address"><br>
+                    <input class="loginFormInput pass" type="password" id="password" name="password" ng-model="password" placeholder="Password"><br>
                     <button id="loginSubmit" type="submit" value="submit" class="btn btn-primary" ng-click="vm.submit(email, password)">Connect</button>
                 </form>
                 <span id="forgotPass" onclick="resetPassword()">Forgot your password?</span>

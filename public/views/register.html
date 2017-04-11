@@ -3,7 +3,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOEN341 - Register</title>
+    <!-- for IE support -->
+    <script src="../bower_components/es6-promise/es6-promise.auto.min.js"></script>
 
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="../bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../bower_components/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../css/mainStyle.css">
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -11,8 +16,32 @@
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>    <meta charset="UTF-8">
     <script src="../javascript/register.js"></script>
+    <!-- for IE support -->
+        <script src="../bower_components/es6-promise/es6-promise.auto.min.js"></script>
+
+        <script src="../bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="../bower_components/sweetalert2/dist/sweetalert2.min.css">
+        <script>
+            function scrapeParams() {
+                var queryDict = {};
+                location.search.substr(1).split("&").forEach(function (item) {
+                    queryDict[item.split("=")[0]] = item.split("=")[1]
+                });
+                var type;
+                var message;
+                var valid = false;
+                if (queryDict["m"]=="taken"){
+                    type = "error";
+                    message="That email is already taken.";
+                    valid=true;
+                } 
+                if(valid){
+                    swal({type: type,html: message});
+                }
+            }
+        </script>
 </head>
-<body>
+<body onload="scrapeParams()">
 <div class="wrapper">
     <ul class="bg-bubbles">
         <li></li>
@@ -44,9 +73,11 @@
         <input class="formInput" id="email" type="email" placeholder="Email Address">
         <input class="formInput pass" id="pass" type="password" placeholder="Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
         <input class="formInput pass" id="pass2" type="password" placeholder="Verify Password" name="passwordRepeat"><br>
-        <input id="termCheck" type="checkbox" name="agreeTerms" value="true"> <span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
+        <input id="termCheck" type="checkbox" name="agreeTerms" value="true"/><label for="termCheck" id="border" style="height:20px;padding-top:12px;"></label><span style="font-size: 0.8em; padding-left: 3px;">I agree to the SOEN341 <a href="#">Terms & Conditions</a>.</span><br>
         <button type="submit" id="registerSubmit" onclick="submitRegister()">Submit</button><br/>
-        <span style="font-size:0.75em; color:dimgray">Already have an account?<a href="../login"> Login</a>.</span>
+        <span style="font-size:0.75em; color:dimgray">Already have an account?<a href="../login"> Login</a>.</span><br>
+        <span class="registrationTeacher" onclick="swal('You\'re a TEACHER?','Email us a proof of employment at a registered STEM Organization to validate your teacher account garbage@famingo.com');">I am a teacher.</span>
+
     </div>
 
     <div id="registerRightContainer">
