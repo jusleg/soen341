@@ -19,12 +19,19 @@
         .controller('appCtrl', function($scope, $rootScope, $http, $routeParams, $uibModal,$log) {
             var vm = this;
             vm.currentClassId = '';
+            vm.numberOnlineUsers = '';
+
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 vm.currentUser = $rootScope.currentUser;
             });
             $rootScope.$watch('currentClassId',function(New){
                 vm.currentClassId = New;
+            });
+
+            //GETTING NUMBER OF USERS ONLINE
+            $http.get('/api/getOnlineUsers').then(function success(response) {
+                vm.numberOnlineUsers = response.data;
             });
 
             //USER MODAL
