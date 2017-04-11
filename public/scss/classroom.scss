@@ -65,7 +65,7 @@
     background-color: $bg_light;
     height: calc(100vh - 120px);
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
 
 
     .message-list{
@@ -127,9 +127,9 @@
           left: -8px;
           top: 12px;
         }
-
-        .fa {
-          color: $border_color;
+        img {
+          width: 26px;
+          margin-top: 4px;
         }
       }
       .message2 {
@@ -171,8 +171,9 @@
           right: -8px;
           top: 12px;
         }
-        .fa {
-          color: $lead_blue;
+        img {
+          margin-top: 4px;
+          width: 26px;
           float: right;
           clear: both;
         }

@@ -50,10 +50,11 @@ function classCtrl($http, $routeParams, $rootScope, $scope) {
             var height = 0;
             vm.messages.forEach(function () {
                 height += 55;
-            });
-            setTimeout(function () {
-                $(".window").animate({ scrollTop: height }, 0);
+            })
+            setTimeout(function() {
+                $(".window").animate({ scrollTop: height}, height/10);
             }, 0);
+          
             $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });
@@ -73,7 +74,7 @@ function classCtrl($http, $routeParams, $rootScope, $scope) {
 
     function sendMsg() {
         var room = vm.classId;
-        var msgObj = { 'class': room, '_id': $rootScope.currentUser.email, 'time': new Date().getTime().toString(), 'name': $rootScope.currentUser.username, 'message': vm.m };
+        var msgObj = {'class':room, '_id': $rootScope.currentUser.email, 'imglink': $rootScope.currentUser.imglink, 'time': new Date().getTime().toString(), 'name': $rootScope.currentUser.username, 'message':vm.m};
         if (msgObj.message == "") {
             return false;
         } else {
@@ -109,7 +110,8 @@ function classCtrl($http, $routeParams, $rootScope, $scope) {
         var height = 0;
         vm.messages.forEach(function () {
             height += 55;
-        });
-        $(".window").animate({ scrollTop: height }, 200);
+        })
+        $(".window").animate({ scrollTop: height}, 300);
+        // $('#messages').append($('<li>').text(msg.user +' :    '+msg.message));
     });
 }

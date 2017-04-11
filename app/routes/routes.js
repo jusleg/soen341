@@ -88,7 +88,8 @@ module.exports = function (app, passport) {
                 online: req.user.online,
                 role: req.user.role,
                 classUser: user.classUser,
-                classMod: user.classMod
+                classMod: user.classMod,
+                imglink: user.imglink
             };
             res.send(data);
         });
