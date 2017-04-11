@@ -4,7 +4,6 @@
   "description": "Soen 341 chat app",
   "main": "index.js",
   "dependencies": {
-    "badwords-list": "^1.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",
@@ -16,7 +15,6 @@
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
     "express": "^4.14.1",
-    "express-redirect": "^1.2.2",
     "express-session": "^1.15.1",
     "lodash": "^4.17.4",
     "memcached": "^2.2.2",
@@ -34,7 +32,6 @@
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.7.2",
     "supertest-session": "^3.0.0",
-    "wordfilter": "^0.2.6"
   },
   "devDependencies": {},
   "scripts": {
