@@ -77,9 +77,21 @@
                 <div class="responsive_right_top_settings">
                     <i id="right_top_settings" class="fa fa-cog fa-2x"></i>
                 </div>
+
+                <div class="dropdown" id="right_top_userMenu">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownmenu" data-toggle="dropdown">
+                        <i class="fa fa-user-circle fa-2x"></i>
+                        <!--<span class="caret"></span> -->
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+
                 <div id="right_top_userMenu" ng-click="vm.openUserModal('md')">
                     <i class="fa fa-user-circle fa-2x"></i>
                 </div>
+
             </div>
         </div>
         <div id="shadow"></div>
