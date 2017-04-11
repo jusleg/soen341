@@ -1,6 +1,3 @@
-/**
- * Created by Kim on 1/31/2017.
- */
 'use strict';
 const path = require('path');
 const User = require('../models/user');
@@ -19,6 +16,25 @@ module.exports = function(app, passport) {
         let tempString = s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
         return tempString;
     };
+
+    app.get('/bannedAF/:email/:class', isLoggedIn,function(req, res) {
+        var email = req.params.email;
+        var room = req.params.class;
+        var trueEmail = req.user.id;
+        res.send(email + " " + trueEmail + "" + room);
+        if (email == trueEmail) {
+            User.findOne({id: email}, (err, user) => {
+                var classes = user.classUser;
+                var index = classes.indexOf(room);
+                classes.splice(index, 1);
+                user.classUser= classes;
+                user.save();
+                console.log("User has been banned !!!");
+            });
+        }
+    });
+
+
 
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../../public/views/landing.html'));
@@ -141,7 +157,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/emailreset', function (req,res){
-       console.log(req.query.email);
+        console.log(req.query.email);
         email.forgotPass(req.query.email);
     });
 
