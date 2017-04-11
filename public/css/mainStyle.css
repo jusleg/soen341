@@ -1059,8 +1059,8 @@ input::-webkit-input-placeholder {
           left: -8px;
           top: 12px; }
         .classroom .window .message-list .message img {
-          width: 27px;
-          margin-top: 3px; }
+          width: 26px;
+          margin-top: 4px; }
       .classroom .window .message-list .message2 {
         margin-right: -45px;
         float: right;
@@ -1096,8 +1096,8 @@ input::-webkit-input-placeholder {
           right: -8px;
           top: 12px; }
         .classroom .window .message-list .message2 img {
-          margin-top: 3px;
-          width: 27px;
+          margin-top: 4px;
+          width: 26px;
           float: right;
           clear: both; }
       .classroom .window .message-list .sender {
@@ -1416,7 +1416,7 @@ body {
       padding-left: calc(5% - 5px) !important;
       background-color: #3d4856; }
     #leftMenu #classList .menu_class {
-      transition: border-color 0.5s ease-in;
+      transition: border-color 0.25s ease-in;
       border-color: transparent;
       padding-top: 10px;
       padding-bottom: 10px;

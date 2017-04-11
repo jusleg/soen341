@@ -23,7 +23,6 @@
                         <div ng-if="message.name == $root.currentUser.username"class="messageBubble" ng-class="{bubbleArrow : message.name != vm.messages[$index -1].name}">{{message.message}}</div>
                         <div class="sendInfo">
                             <img src='{{message.imglink}}' ng-if="message.name != vm.messages[$index -1].name" class="img-circle" data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'>
-                            <!--<div ng-if="message.name != vm.messages[$index -1].name" ng-if="message.name != vm.messages[$index -1].name" class="sender"> {{message.name}}</div>-->
                         </div>
                         <div class="bubble_group">
                             <span ng-if="message.name != $root.currentUser.username && message.name != vm.messages[$index -1].name">{{message.name}}</span>
