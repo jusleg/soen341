@@ -1394,6 +1394,14 @@ body {
       #leftMenu #left_top #search input:focus {
         outline: none;
         border: 1px solid #0084FF; }
+      #leftMenu #left_top #search #numOfUserText{
+        text-align: left;
+        padding-left: 5%;
+        font-family: "Nova";
+      }
+      #leftMenu #left_top #search #numOfUserText span{
+        color:limegreen;
+      }
   #leftMenu #menu {
     overflow: scroll;
     height: calc(100vh - 70px); }
