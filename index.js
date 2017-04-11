@@ -16,6 +16,7 @@ const flash = require('req-flash');
 const db = require('./config/db.js');
 const cookieParser = require('cookie-parser');
 
+
 mongoose.Promise = global.Promise;
 mongoose.connect(db.uri ,{auth:{authdb:"admin"}});
 require('./config/passport')(passport);
