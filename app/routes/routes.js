@@ -17,25 +17,6 @@ module.exports = function(app, passport) {
         return tempString;
     };
 
-    app.get('/bannedAF/:email/:class', isLoggedIn,function(req, res) {
-        var email = req.params.email;
-        var room = req.params.class;
-        var trueEmail = req.user.id;
-        res.send(email + " " + trueEmail + "" + room);
-        if (email == trueEmail) {
-            User.findOne({id: email}, (err, user) => {
-                var classes = user.classUser;
-                var index = classes.indexOf(room);
-                classes.splice(index, 1);
-                user.classUser= classes;
-                user.save();
-                console.log("User has been banned !!!");
-            });
-        }
-    });
-
-
-
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../../public/views/landing.html'));
     });
@@ -144,16 +125,28 @@ module.exports = function(app, passport) {
                 user.save((err) => {
                     if (err)
                         throw err;
-
                 });
                 res.redirect("/?m=1");
             } else {
                 res.redirect("/?m=3");
             }
-
         })
+    });
 
-
+    app.get('/bannedAF/:email/:class', isLoggedIn,function(req, res) {
+        var email = req.params.email;
+        var room = req.params.class;
+        var trueEmail = req.user.id;
+        if (email == trueEmail) {
+            User.findOne({id: email}, (err, user) => {
+                var classes = user.classUser;
+                var index = classes.indexOf(room);
+                classes.splice(index, 1);
+                user.classUser= classes;
+                user.save();
+            });
+        }
+        res.redirect("/?banned="+room);
     });
 
     app.get('/emailreset', function (req,res){
