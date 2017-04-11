@@ -65,6 +65,8 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
             vm.professor = response.data[0].professor;
             vm.classroom = response.data[0].classroom;
             vm.className = response.data[0].name;
+            vm.createdAt = response.data[0].createdAt;
+            console.log(response.data[0]);
 
             var height = 0;
             vm.messages.forEach(function() {
