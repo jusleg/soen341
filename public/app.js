@@ -33,11 +33,7 @@
                 vm.currentClassId = New;
             });
 
-            //GETTING NUMBER OF USERS ONLINE
-            $http.get('/api/getOnlineUsers').then(function success(response) {
-                vm.numberOnlineUsers = response.data;
-            });
-
+           
             //USER MODAL
             vm.openUserModal = function (size, parentSelector) {
                 var modalInstance = $uibModal.open({
