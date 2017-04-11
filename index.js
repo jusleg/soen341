@@ -1,25 +1,24 @@
 'use strict';
 
-const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-const logger = require('morgan');
-const session = require('express-session');
-const api = require('./app/routes/api');
-const flash = require('req-flash');
-const db = require('./config/db.js');
-const cookieParser = require('cookie-parser');
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+var logger = require('morgan');
+var session = require('express-session');
+var api = require('./app/routes/api');
+var flash = require('req-flash');
+var db = require('./config/db.js');
+var cookieParser = require('cookie-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(db.uri ,{auth:{authdb:"admin"}});
+mongoose.connect(db.uri, { auth: { authdb: "admin" } });
 require('./config/passport')(passport);
-
 
 //Middlewares
 //in order to parse body responses
@@ -37,12 +36,11 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use(cookieParser());
 
 //Passport authentication middlewares, Cookie expires after 15min
-+app.use(session({ secret: 'Harambe2k17HowBouDah', cookie:{maxAge: 900000}}));
++app.use(session({ secret: 'Harambe2k17HowBouDah', cookie: { maxAge: 900000 } }));
 app.use(passport.initialize());
 app.use(passport.session());
 // to have a flash message for login/register
 app.use(flash());
-
 
 //Error handling middlewares
 
@@ -61,12 +59,12 @@ io.on('connection', function (socket) {
     //user is connected...
     console.log("A User connected");
     //join a room
-    socket.on('join room', function(room) {
+    socket.on('join room', function (room) {
         console.log('joining room', room);
         socket.join(room);
     });
     //leave a room
-    socket.on('leave room', function(room) {
+    socket.on('leave room', function (room) {
         console.log('leaving room', room);
         socket.leave(room);
     });
@@ -79,10 +77,9 @@ io.on('connection', function (socket) {
 
     //when user leaves, do something
     socket.on('disconnect', function () {
-        console.log('user disconnected')
+        console.log('user disconnected');
     });
 });
-
 
 http.listen(9001, function () {
     console.log('listening on*: 9001');
