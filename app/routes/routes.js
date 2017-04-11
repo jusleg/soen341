@@ -7,6 +7,8 @@ var crypto = require('crypto-js');
 var parseMePLzr = require('body-parser');
 var email = require('./email');
 var flash = require('req-flash');
+var schedule = require('node-schedule');
+
 
 module.exports = function (app, passport) {
     app.use(flash());
@@ -153,6 +155,15 @@ module.exports = function (app, passport) {
     });
 
     app.get('/home', isLoggedIn, function (req, res) {
+        var j = schedule.scheduleJob('*14 * * * *', function(){
+            User.findOne({ id: req.session.passport.user }, function (err, user) {
+                if (user.online = true) {
+                    user.online = false;
+                    user.save();
+                    req.session.online = false;
+                }
+            });
+        });
         res.sendFile(path.join(__dirname, '/../../public/app/app.html'));
     });
 
