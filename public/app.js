@@ -1,6 +1,3 @@
-/**
- * Created by ericxiao on 2017-01-31.
- */
 (function(){
     'use strict';
     // Declare app level module which depends on views, and components
@@ -25,7 +22,6 @@
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 vm.currentUser = $rootScope.currentUser;
-                console.log('Current User ',vm.currentUser)
             });
             $rootScope.$watch('currentClassId',function(New){
                 vm.currentClassId = New;
