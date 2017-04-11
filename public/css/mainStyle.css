@@ -1374,11 +1374,11 @@ body {
       height: 100%;
       text-align: center; }
       #leftMenu #left_top #search input {
-        /*position: relative;*/
-        /*top: 50%;*/
-        /*-webkit-transform: translateY(-50%);*/
-        /*-ms-transform: translateY(-50%);*/
-        /*transform: translateY(-50%);*/
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         width: 90%;
         height: 34px;
         border-radius: 17px;
@@ -1394,6 +1394,7 @@ body {
       #leftMenu #left_top #search input:focus {
         outline: none;
         border: 1px solid #0084FF; }
+
   #leftMenu #menu {
     overflow: scroll;
     height: calc(100vh - 70px); }
