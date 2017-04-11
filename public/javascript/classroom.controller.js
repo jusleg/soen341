@@ -94,7 +94,7 @@ function classCtrl ($http, $routeParams, $rootScope, $scope){
                 });
             }
             if(badCounter >= 3){
-                alert("banned");
+                badCounter = 0;
                 window.location.href = "/bannedAF/"+ $rootScope.currentUser.email + "/" + msgObj.class;
             }
             return false;
