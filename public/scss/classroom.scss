@@ -65,7 +65,7 @@
     background-color: $bg_light;
     height: calc(100vh - 120px);
     position: relative;
-    overflow: scroll;
+    overflow-y: scroll;
 
 
     .message-list{
