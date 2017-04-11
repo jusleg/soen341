@@ -41,6 +41,9 @@
 	            } else if(queryDict["m"]==404){
 	            	message = 'ERROR 404 NOT FOUND, NO SUCH PAGE PLS GO BACK TO MAIN PAGE BRUH<br><br><img src="http://i.imgur.com/lXU0HTy.jpg">';
 	            	valid=true;
+	            } else if (queryDict["banned"].length>0){
+	            	message = "You have been banned from " + queryDict["banned"];
+	            	valid=true;
 	            }
 	            if(valid){swal({
 				    type: type,
