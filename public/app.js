@@ -22,6 +22,9 @@
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 vm.currentUser = $rootScope.currentUser;
+                if(vm.currentUser.classMod.length > 0) {
+                    insertClassModMenu();
+                }
             });
             $rootScope.$watch('currentClassId',function(New){
                 vm.currentClassId = New;
@@ -75,3 +78,8 @@
 
     
 })();
+
+function insertClassModMenu() {
+    console.log("classMod detected");
+    $("#menu_items").prepend("<div id='classTypeSelection'><div>User</div><div onclick='toggleClassSelection()'>Mod</div></div>");
+}

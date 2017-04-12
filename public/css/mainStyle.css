@@ -1107,6 +1107,14 @@ input::-webkit-input-placeholder {
   .classroom .bulletPoint {
     list-style-type: none; }
 
+#classTypeSelection {
+  color: white;
+  text-align: center; }
+  #classTypeSelection div {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid white; }
+
 @media only screen and (max-width: 420px) and (max-height: 735px) {
   .classroom > .window {
     bottom: 6%; }
