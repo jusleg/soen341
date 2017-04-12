@@ -956,6 +956,24 @@ input::-webkit-input-placeholder {
     .responsive_right_top .responsive_right_top_toggle {
       display: flex !important;
       align-items: center; } }
+#classTypeSelection {
+  margin: 8px 0;
+  color: white;
+  text-align: center; }
+  #classTypeSelection div {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid white;
+    transition: 0.3s;
+    padding: 3px; }
+  #classTypeSelection div:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black; }
+  #classTypeSelection .classTypeSelected {
+    background-color: white;
+    color: black; }
+
 .tooltip.left .tooltip-inner {
   background-color: #706d6d;
   z-index: 99999; }
@@ -1446,6 +1464,8 @@ body {
       font-size: .9em; }
     #leftMenu #classList p {
       margin: 0; }
+    #leftMenu #classList .classRoom2 {
+      display: none; }
 
 #rightContent {
   width: 75%;

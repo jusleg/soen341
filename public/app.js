@@ -24,6 +24,9 @@
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 vm.currentUser = $rootScope.currentUser;
+                if(vm.currentUser.classMod.length > 0) {
+                    insertClassModMenu();
+                }
             });
             $rootScope.$watch('currentClassId',function(New){
                 vm.currentClassId = New;
@@ -78,3 +81,29 @@
 
     
 })();
+
+function insertClassModMenu() {
+    console.log("classMod detected");
+    $("#menu_items").prepend("<div id='classTypeSelection'>" +
+        "<div class='classTypeSelected' onclick='toggleUserSelection()' style='border-top-left-radius: 3px;border-bottom-left-radius: 3px;'>User</div>" +
+        "<div onclick='toggleModSelection()'style='border-top-right-radius: 3px;border-bottom-right-radius: 3px; border-left: none'>Mod</div>" +
+        "</div>");
+}
+
+function toggleUserSelection() {
+    if(!$('#classTypeSelection div:first-child').hasClass('classTypeSelected')) {
+        $('.classRoom').css('display', 'block');
+        $('.classRoom2').css('display', 'none');
+        $('#classTypeSelection div').removeClass('classTypeSelected');
+        $('#classTypeSelection div:first-child').addClass('classTypeSelected');
+    }
+}
+
+function toggleModSelection() {
+    if($('#classTypeSelection div:first-child').hasClass('classTypeSelected')) {
+        $('.classRoom').css('display', 'none');
+        $('.classRoom2').css('display', 'block');
+        $('#classTypeSelection div').removeClass('classTypeSelected');
+        $('#classTypeSelection div:nth-child(2)').addClass('classTypeSelected');
+    }
+}
