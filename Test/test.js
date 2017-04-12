@@ -101,6 +101,18 @@ describe('RestApi Routes must all be Functional', function () {
     })
 });
 
+describe('Sprint 5 testing',function() {
+
+    it('Should pass if reverification page is redirected to', function () {
+        chai.request('http://localhost:9001')
+            .get('/reverify/bob@bob')
+            .end(function (err, res) {
+                res.should.have.status(302);
+                console.log(err.body);
+            });
+    });
+});
+
 describe('Password tests', function () {
 
     function hashCode(s) {
@@ -176,7 +188,6 @@ describe('Authentication tests', function() {
                 done();
             });
     });
-
 });
 
 describe('Database fields validatiion', function(){
@@ -194,3 +205,18 @@ describe('Database fields validatiion', function(){
     }).timeout(10000);
 
 });
+
+describe('Database fields validatiion', function(){
+
+    it('should login', function(done) {
+        request.post('/login')
+            .send({email: 'kevin1@email.com', password: 'Kevin1111'})
+            .end(function (err, res) {
+                User.findOne({id: 'kevin1@email.com'}, function (err, user) {
+                    console.log(user);
+                    // expect(user.online).to.be.false;
+                    done();
+                });
+            });
+    }).timeout(10000);
+    });
