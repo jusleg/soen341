@@ -112,7 +112,7 @@ body{
       background-color: $bg_dark_selection;
     }
     .menu_class {
-      transition: border-color 0.5s ease-in;
+      transition: border-color 0.25s ease-in;
       border-color:transparent;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -140,7 +140,11 @@ body{
     p {
       margin: 0;
     }
+    .classRoom2 {
+      display: none;
+    }
   }
+
 }
 
 #rightContent {

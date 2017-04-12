@@ -1,6 +1,3 @@
-/**
- * Created by ericxiao on 2017-01-31.
- */
 (function(){
     'use strict';
     // Declare app level module which depends on views, and components
@@ -27,7 +24,9 @@
             $http.get('/currentUser').then(function(res,err){
                 $rootScope.currentUser = res.data
                 vm.currentUser = $rootScope.currentUser;
-                console.log('Current User ',vm.currentUser)
+                if(vm.currentUser.classMod.length > 0) {
+                    insertClassModMenu();
+                }
             });
             $rootScope.$watch('currentClassId',function(New){
                 vm.currentClassId = New;
@@ -37,7 +36,6 @@
             $http.get('/api/getOnlineUsers').then(function success(response) {
                 vm.numberOnlineUsers = response.data;
             });
-            
 
             //USER MODAL
             vm.openUserModal = function (size, parentSelector) {
@@ -87,3 +85,29 @@
 
     
 })();
+
+function insertClassModMenu() {
+    console.log("classMod detected");
+    $("#menu_items").prepend("<div id='classTypeSelection'>" +
+        "<div class='classTypeSelected' onclick='toggleUserSelection()' style='border-top-left-radius: 3px;border-bottom-left-radius: 3px;'>User</div>" +
+        "<div onclick='toggleModSelection()'style='border-top-right-radius: 3px;border-bottom-right-radius: 3px; border-left: none'>Mod</div>" +
+        "</div>");
+}
+
+function toggleUserSelection() {
+    if(!$('#classTypeSelection div:first-child').hasClass('classTypeSelected')) {
+        $('.classRoom').css('display', 'block');
+        $('.classRoom2').css('display', 'none');
+        $('#classTypeSelection div').removeClass('classTypeSelected');
+        $('#classTypeSelection div:first-child').addClass('classTypeSelected');
+    }
+}
+
+function toggleModSelection() {
+    if($('#classTypeSelection div:first-child').hasClass('classTypeSelected')) {
+        $('.classRoom').css('display', 'none');
+        $('.classRoom2').css('display', 'block');
+        $('#classTypeSelection div').removeClass('classTypeSelected');
+        $('#classTypeSelection div:nth-child(2)').addClass('classTypeSelected');
+    }
+}

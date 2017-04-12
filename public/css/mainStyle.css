@@ -907,34 +907,34 @@ input::-webkit-input-placeholder {
     transform: translateY(-1200px) rotate(600deg); } }
 .sideBar {
   z-index: 99;
-  transition: transform ease-in 0.5s; }
+  transition: transform ease-in 0.3s; }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 720px) {
   .shadow-active {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: background-color 0.4s;
+    background-color: rgba(0, 0, 0, 0.75);
+    transition: background-color 0.3s;
     z-index: 99; }
 
   .rightContent {
-    transition: transform 0.5s ease-in;
-    transform: translateX(-70%);
+    transition: transform 0.3s ease-in;
+    transform: translateX(-60%);
     position: absolute;
     width: 100% !important; }
 
   .content-container-moveX {
     transform: translateX(0%) !important; } }
-@media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+@media screen and (max-width: 720px) and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   .rightContent {
     transform: translateX(0%); }
 
   .content-container-moveX {
-    transform: translateX(70%) !important; } }
-@media screen and (max-width: 767px) {
+    transform: translateX(60%) !important; } }
+@media screen and (max-width: 720px) {
   .sideBar {
-    width: 70% !important;
+    width: 60% !important;
     transform: translateX(-100%); }
 
   .sideBarOpen {
@@ -956,6 +956,24 @@ input::-webkit-input-placeholder {
     .responsive_right_top .responsive_right_top_toggle {
       display: flex !important;
       align-items: center; } }
+#classTypeSelection {
+  margin: 8px 0;
+  color: white;
+  text-align: center; }
+  #classTypeSelection div {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid white;
+    transition: 0.3s;
+    padding: 3px; }
+  #classTypeSelection div:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black; }
+  #classTypeSelection .classTypeSelected {
+    background-color: white;
+    color: black; }
+
 .tooltip.left .tooltip-inner {
   background-color: #706d6d;
   z-index: 99999; }
@@ -1008,7 +1026,7 @@ input::-webkit-input-placeholder {
     background-color: #EAEDF1;
     height: calc(100vh - 120px);
     position: relative;
-    overflow: scroll; }
+    overflow-y: scroll; }
     .classroom .window .message-list {
       list-style: none;
       padding-left: 60px;
@@ -1058,8 +1076,9 @@ input::-webkit-input-placeholder {
           z-index: 1;
           left: -8px;
           top: 12px; }
-        .classroom .window .message-list .message .fa {
-          color: #706d6d; }
+        .classroom .window .message-list .message img {
+          width: 26px;
+          margin-top: 4px; }
       .classroom .window .message-list .message2 {
         margin-right: -45px;
         float: right;
@@ -1094,8 +1113,9 @@ input::-webkit-input-placeholder {
           z-index: 1;
           right: -8px;
           top: 12px; }
-        .classroom .window .message-list .message2 .fa {
-          color: #0084FF;
+        .classroom .window .message-list .message2 img {
+          margin-top: 4px;
+          width: 26px;
           float: right;
           clear: both; }
       .classroom .window .message-list .sender {
@@ -1418,7 +1438,7 @@ body {
       padding-left: calc(5% - 5px) !important;
       background-color: #3d4856; }
     #leftMenu #classList .menu_class {
-      transition: border-color 0.5s ease-in;
+      transition: border-color 0.25s ease-in;
       border-color: transparent;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -1440,6 +1460,8 @@ body {
       font-size: .9em; }
     #leftMenu #classList p {
       margin: 0; }
+    #leftMenu #classList .classRoom2 {
+      display: none; }
 
 #rightContent {
   width: 75%;

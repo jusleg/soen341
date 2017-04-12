@@ -1,22 +1,22 @@
 @import 'variables.scss';
 .sideBar {
   z-index: 99;
-  transition: transform ease-in 0.5s;
+  transition: transform ease-in 0.3s;
 }
 //for phones
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 720px) {
   .shadow-active{
     position:absolute;
     width:100%;
     height:100%;
-    background-color:rgba(0,0,0,0.8);
-    transition: background-color 0.4s;
+    background-color:rgba(0,0,0,0.75);
+    transition: background-color 0.3s;
     z-index:99;
 
   }
   .rightContent{
-    transition: transform 0.5s ease-in;
-    transform:translateX(-70%);
+    transition: transform 0.3s ease-in;
+    transform:translateX(-60%);
     position:absolute;
     width:100% !important;
   }
@@ -29,11 +29,11 @@
       transform:translateX(0%);
     }
     .content-container-moveX{
-      transform: translateX(70%) !important;
+      transform: translateX(60%) !important;
     }
   }
   .sideBar{
-    width:70% !important;
+    width:60% !important;
     transform: translateX(-100%);
   }
   .sideBarOpen{
@@ -60,6 +60,29 @@
       display: flex !important;
       align-items:center;
     }
+  }
+}
+
+
+#classTypeSelection {
+  margin:8px 0;
+  color: white;
+  text-align: center;
+  div {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid white;
+    transition: 0.3s;
+    padding: 3px;
+  }
+  div:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+  }
+  .classTypeSelected {
+    background-color: white;
+    color: black;
   }
 }
 

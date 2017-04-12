@@ -19,7 +19,7 @@ module.exports = function(app) {
         var msgObj = req.body;
         var selection = {'_id': req.params.classId.toUpperCase()};
         var updateQuery = { $push: { chat: msgObj} };
-        var options = { safe: true, upsert: true };
+        var options = { safe: false, upsert: true };
 
         classroom.update(selection, updateQuery, options, function(err,data){
             res.send(data);
