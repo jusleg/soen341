@@ -81,8 +81,16 @@ module.exports = function (app) {
                         if (err) console.error(err);
                         console.log(classroom);
 
-                        User.find({}).exec(function (err, userList) {
+                        User.find({}).exec(postClassCreation).then(function () {
+                            var newUserEmails = function (list) {
+                                return list.map(function (e) {
+                                    return e.email;
+                                });
+                            }(newUsers);
+                            res.send("success");
+                        });
 
+                        function postClassCreation (err, userList) {
                             var existingStudents = function (list) {
                                 return list.filter(function (e) {
                                     return userExists(e, userList);
@@ -146,14 +154,7 @@ module.exports = function (app) {
                                 }
                                 return false; //user not found
                             }
-                        }).then(function () {
-                            var newUserEmails = function (list) {
-                                return list.map(function (e) {
-                                    return e.email;
-                                });
-                            }(newUsers);
-                            res.send("success");
-                        });
+                        }
                     });
                 }
             });
