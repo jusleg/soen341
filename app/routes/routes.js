@@ -9,7 +9,6 @@ var email = require('./email');
 var flash = require('req-flash');
 var schedule = require('node-schedule');
 
-
 module.exports = function (app, passport) {
     app.use(flash());
     var hashCode = function hashCode(s) {
@@ -98,7 +97,6 @@ module.exports = function (app, passport) {
     app.get('/logout', function (req, res) {
         User.findOne({ id: req.session.passport.user }, function (err, user) {
             if (user.online = true) {
-                console.log('logging out');
                 user.online = false;
                 user.save();
                 req.session.online = false;
@@ -110,13 +108,10 @@ module.exports = function (app, passport) {
 
     app.post('/reset', function (req, res) {
         var token = req.body.token;
-        console.log(token);
         var pass = req.body.password;
         pass = hashCode(pass);
         var text = token + " " + pass;
-        console.log(text);
         var email = crypto.AES.decrypt(decodeURIComponent(token), "ch3vald3gu3rr3ftwgr8b8m8").toString(crypto.enc.Utf8);
-        console.log(email);
         User.findOne({ id: email }, function (err, user) {
             if (err) {
                 res.redirect("/?m=3");
@@ -151,12 +146,11 @@ module.exports = function (app, passport) {
     });
 
     app.get('/emailreset', function (req, res) {
-        console.log(req.query.email);
         email.forgotPass(req.query.email);
     });
 
     app.get('/home', isLoggedIn, function (req, res) {
-        var j = schedule.scheduleJob('*14 * * * *', function(){
+        var j = schedule.scheduleJob('*14 * * * *', function () {
             User.findOne({ id: req.session.passport.user }, function (err, user) {
                 if (user.online = true) {
                     user.online = false;
@@ -179,7 +173,6 @@ module.exports = function (app, passport) {
 
     app.get('/verify/:id', function (req, res) {
         var email = crypto.AES.decrypt(decodeURIComponent(req.params.id), "ch3vald3gu3rr3ftwgr8b8m8").toString(crypto.enc.Utf8);
-        console.log(email);
         User.findOne({ id: email }, function (err, user) {
             if (err) return done(err);
             if (user) {
