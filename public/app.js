@@ -37,7 +37,6 @@
             $http.get('/api/getOnlineUsers').then(function success(response) {
                 vm.numberOnlineUsers = response.data;
             });
-
             
 
             //USER MODAL
