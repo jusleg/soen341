@@ -38,6 +38,8 @@
                 vm.numberOnlineUsers = response.data;
             });
 
+            
+
             //USER MODAL
             vm.openUserModal = function (size, parentSelector) {
                 var modalInstance = $uibModal.open({
