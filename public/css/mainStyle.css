@@ -1108,12 +1108,23 @@ input::-webkit-input-placeholder {
     list-style-type: none; }
 
 #classTypeSelection {
+  margin-top: 8px;
   color: white;
   text-align: center; }
   #classTypeSelection div {
     display: inline-block;
     vertical-align: top;
-    border: 1px solid white; }
+    border: 1px solid white;
+    transition: 0.3s;
+    padding: 3px; }
+  #classTypeSelection div:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black; }
+
+.classTypeSelected {
+  background-color: white;
+  color: black; }
 
 @media only screen and (max-width: 420px) and (max-height: 735px) {
   .classroom > .window {

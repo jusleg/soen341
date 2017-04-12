@@ -81,5 +81,5 @@
 
 function insertClassModMenu() {
     console.log("classMod detected");
-    $("#menu_items").prepend("<div id='classTypeSelection'><div>User</div><div onclick='toggleClassSelection()'>Mod</div></div>");
+    $("#menu_items").prepend("<div id='classTypeSelection'><div class='classTypeSelected' onclick='toggleUserSelection()' style='border-top-left-radius: 3px;border-bottom-left-radius: 3px;'>User</div><div onclick='toggleModSelection()'style='border-top-right-radius: 3px;border-bottom-right-radius: 3px; border-left: none'>Mod</div></div>");
 }
