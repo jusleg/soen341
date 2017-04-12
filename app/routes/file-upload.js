@@ -1,6 +1,7 @@
 'use strict';
 
 //DB requirements
+
 var mongoose = require('mongoose');
 var User = require('../models/user.js');
 var classroom = require('../models/Classes.js');
@@ -23,13 +24,13 @@ module.exports = function (app) {
             var classCode = req.body.classcode; // The code of the class to create
 
             classroom.find({}).exec(function (err, classList) {
-                for(var i in classList) {
-                    if(classList[i]._id === classCode) {
+                for (var i in classList) {
+                    if (classList[i]._id === classCode) {
                         classAlreadyExists = true;
                     }
                 }
             }).then(function () {
-                if(classAlreadyExists) {
+                if (classAlreadyExists) {
                     res.send('Error: Class already exists.');
                 } else {
                     var profEmail = req.user.id;
@@ -90,7 +91,7 @@ module.exports = function (app) {
                             res.send("success");
                         });
 
-                        function postClassCreation (err, userList) {
+                        function postClassCreation(err, userList) {
                             var existingStudents = function (list) {
                                 return list.filter(function (e) {
                                     return userExists(e, userList);
