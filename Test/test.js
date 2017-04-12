@@ -105,7 +105,7 @@ describe('Sprint 5 testing',function() {
 
     it('Should pass if reverification page is redirected to', function () {
         chai.request('http://localhost:9001')
-            .get('/reverify/bob@bob')
+            .get('/reverify/steven@hotmail.com')
             .end(function (err, res) {
                 res.should.have.status(302);
                 console.log(err.body);
