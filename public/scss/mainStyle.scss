@@ -163,6 +163,9 @@ body{
         border-left: 1px solid $border_color;
         height: 100%;
         color: $border_color;
+        div {
+          border-left: 0px;
+        }
         .fa {
           @include vertical-align();
         }

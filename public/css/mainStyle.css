@@ -1472,6 +1472,8 @@ body {
         -ms-transition: .2s;
         -o-transition: .2s;
         transition: .2s; }
+        #rightContent #right_top #top_right_rhs div div {
+          border-left: 0px; }
         #rightContent #right_top #top_right_rhs div .fa {
           position: relative;
           top: 50%;
