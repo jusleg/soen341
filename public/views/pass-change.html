@@ -3,7 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOEN341 - Reset Password</title>
-
     <link rel="stylesheet" href="../css/mainStyle.css">
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -37,9 +36,7 @@
     </ul>
 </div>
 
-
 <div id="passResetContainer" class="animated fadeIn centered">
-
     <div id="topBanner">
         <span style="font-weight: 700; font-size: 2em;">SOEN341</span>
         <hr style="border-color: white; margin-top: 0; margin-bottom: 10px;"/>
@@ -49,15 +46,12 @@
     <div style="text-align: center; margin-top: 20px;">
         <form onsubmit="validatePass()" action="/reset" method="POST">
             <input type="hidden" id="token" name="token" value="INSERT_TOKEN_HERE">
-            <input class="formInput" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
-            <input class="formInput" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
+            <input class="formInput pass" type="password" id="pass"  placeholder="New Password" name="password" data-toggle="manual" data-placement="top" data-content="Password must contain at least 8 characters, an uppercase letter and a digit"><br/>
+            <input class="formInput pass" type="password" id="pass2" name="password2" ng-model="password" placeholder="Repeat Password"><br>
             <p id="formMessage"></p>
             <button id="resetSubmit" type="submit" value="submit" class="btn btn-primary">Reset</button>
         </form>
     </div>
-
 </div>
-
-
 </body>
 </html>

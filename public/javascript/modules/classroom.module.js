@@ -1,7 +1,5 @@
-/**
- * Created by ericxiao on 2017-01-31.
- */
-(function(){
-    'use strict';
-    angular.module('app.classroom',[]);
+'use strict';
+
+(function () {
+    angular.module('app.classroom', []);
 })();

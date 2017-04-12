@@ -13,7 +13,7 @@
                             <h5>{{vm.className}}</h5>
                             <h5>Teacher: {{vm.professor}}</h5>
                             <h5>Room: {{vm.classroom}}</h5>
-                            <span class="right-float">( Time Stamp )</span>
+                            <span class="right-float"> Created at ({{vm.createdAt | date: "MMM dd,y"}})</span>
                         </div>
                     </div>
                     <hr class="seperator">
@@ -22,8 +22,7 @@
                     <div ng-class="{message : message.name != $root.currentUser.username, message2 : message.name == $root.currentUser.username ,nonRecurrentMessage : message.name != vm.messages[$index -1].name}" class="animated fadeIn">
                         <div ng-if="message.name == $root.currentUser.username"class="messageBubble" ng-class="{bubbleArrow : message.name != vm.messages[$index -1].name}">{{message.message}}</div>
                         <div class="sendInfo">
-                            <i ng-if="message.name != vm.messages[$index -1].name" class="fa fa-user-circle fa-2x" data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'></i>
-                            <!--<div ng-if="message.name != vm.messages[$index -1].name" ng-if="message.name != vm.messages[$index -1].name" class="sender"> {{message.name}}</div>-->
+                            <img src='{{message.imglink}}' ng-if="message.name != vm.messages[$index -1].name" class="img-circle" data-toggle="tooltip" data-placement="bottom" data-container='body' title='{{message.time |date :"MMM dd, H:mm"}}'>
                         </div>
                         <div class="bubble_group">
                             <span ng-if="message.name != $root.currentUser.username && message.name != vm.messages[$index -1].name">{{message.name}}</span>

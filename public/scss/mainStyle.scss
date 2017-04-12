@@ -8,6 +8,7 @@
 @import 'sideBar';
 @import 'classroom.scss';
 @import 'landing.scss';
+@import 'createClass.scss';
 @font-face {
   font-family: "Nova";
   src: url(../fonts/ProximaNova-Regular.otf);
@@ -34,24 +35,8 @@ body{
     margin:0;
     height:100%;
     width:100%;
-  }
-  .content-container{
-    height:100%;
-    overflow:hidden;
-    padding-left:0px;
-    padding-right:0px;
-    transition:transform ease-in 0.5s;
-    .navbar-toggle{
-      border:0;
-    }
-    .navbar{
-      background-color:#F9F7F7;
-      border:0;
-      border-radius:0;
-      margin-bottom:0px;
-    }
     .content{
-      height:100%;
+      height: calc(100% - 70px);
     }
   }
 }
@@ -70,6 +55,7 @@ body{
     #search {
       height: 100%;
       text-align: center;
+      padding:2%;
       input {
         @include vertical-align();
         width: 90%;
@@ -88,6 +74,14 @@ body{
       input:focus {
         outline: none;
         border: 1px solid $lead_blue;
+      }
+      #numOfUserText{
+        text-align: left;
+        padding-left: 5%;
+        font-family: "Nova";
+        span{
+          color:limegreen;
+        }
       }
     }
   }
@@ -110,7 +104,6 @@ body{
     color: white;
     text-decoration: none;
   }
-
   #classList{
     z-index: 100;
     .activeClass{
@@ -119,7 +112,7 @@ body{
       background-color: $bg_dark_selection;
     }
     .menu_class {
-      transition: border-color 0.5s ease-in;
+      transition: border-color 0.25s ease-in;
       border-color:transparent;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -147,7 +140,11 @@ body{
     p {
       margin: 0;
     }
+    .classRoom2 {
+      display: none;
+    }
   }
+
 }
 
 #rightContent {
@@ -179,6 +176,9 @@ body{
         border-left: 1px solid $border_color;
         height: 100%;
         color: $border_color;
+        div {
+          border-left: 0px;
+        }
         .fa {
           @include vertical-align();
         }

@@ -1,47 +1,55 @@
-/**
- * Created by Kim on 1/31/2017.
- */
 'use strict';
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 //Mongoose Schema ==============================================================================
 
-let User = mongoose.Schema({
-    validated:Boolean,
+var User = mongoose.Schema({
+    validated: Boolean,
+    imglink: String,
     id: String,
     name: String,
     pass: String,
-    online: Boolean,
-    classUser: [{type: String, ref: 'class'}],
-    classMod: [{type: String, ref: 'class'}],
-    role: Number,
+    online: { type: Boolean, default: false },
+    role: { type: Number, default: 0 },
+    classUser: [{ type: String, ref: 'class' }],
+    classMod: [{ type: String, ref: 'class' }]
 });
 
 // Schema methods ==============================================================================
 // Generate password hash
-User.methods.generateHash = (password) => {
+User.methods.generateHash = function (password) {
     var hashedPassword = hashCode(password);
     return hashedPassword;
 };
 
 // Validate password
-User.methods.validPassword = function(password) {
+User.methods.validPassword = function (password) {
     var hashedPass = hashCode(password);
-    if(this.pass == hashedPass){
+    if (this.pass == hashedPass) {
         return true;
     } else {
         return false;
     }
 };
 
+User.methods.checkValidated = function () {
+    if (this.validated == true) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
-var hashCode = function hashCode(s){
-    if(s == null){
+var hashCode = function hashCode(s) {
+    if (s == null) {
         return null;
     }
-    let tempString = s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+    var tempString = s.split("").reduce(function (a, b) {
+        a = (a << 5) - a + b.charCodeAt(0);return a & a;
+    }, 0);
     return tempString;
 };
 
