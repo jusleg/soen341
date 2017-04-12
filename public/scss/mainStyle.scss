@@ -55,6 +55,7 @@ body{
     #search {
       height: 100%;
       text-align: center;
+      padding:2%;
       input {
         @include vertical-align();
         width: 90%;
@@ -73,6 +74,14 @@ body{
       input:focus {
         outline: none;
         border: 1px solid $lead_blue;
+      }
+      #numOfUserText{
+        text-align: left;
+        padding-left: 5%;
+        font-family: "Nova";
+        span{
+          color:limegreen;
+        }
       }
     }
   }
