@@ -1,44 +1,32 @@
-/**
- * Created by ericxiao on 2017-03-23.
- */
-/**
- * Created by ericxiao on 2017-02-09.
- */
 'use strict';
 
-angular.module('app.createclass', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/createclass', {
-            templateUrl: 'views/create-class.html',
-            controller: 'createClassCtrl',
-            controllerAs:'vm',
-            resolve:{
-                "check":function($location,$rootScope,$http){
-                    $http.get('/currentUser').then(function(res,err){
-                        if($rootScope.currentUser.role == 2){
-
-                        }else{
-                            $location.path('/');    //redirect user to home.
-                            alert("You don't have access here");
-                        }
-                    });
-                }
+angular.module('app.createclass', ['ngRoute']).config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/createclass', {
+        templateUrl: 'views/create-class.html',
+        controller: 'createClassCtrl',
+        controllerAs: 'vm',
+        resolve: {
+            "check": function check($location, $rootScope, $http) {
+                $http.get('/currentUser').then(function (res, err) {
+                    if ($rootScope.currentUser.role == 2) {} else {
+                        $location.path('/'); //redirect user to home.
+                        alert("You don't have access here");
+                    }
+                });
             }
-        });
-    }])
+        }
+    });
+}]).controller('createClassCtrl', createClassCtrl);
 
-    .controller('createClassCtrl', createClassCtrl);
-
-function createClassCtrl ($scope, $http, $rootScope){
+function createClassCtrl($scope, $http, $rootScope) {
     //variables
     var vm = this;
     vm.class = {
-        Code : "",
-        Name : "",
+        Code: "",
+        Name: "",
         Location: "",
-        Hours : "",
-        Tas : ""
+        Hours: "",
+        Tas: ""
     };
     //sets which url is active
     $rootScope.createClass = true;
@@ -50,21 +38,21 @@ function createClassCtrl ($scope, $http, $rootScope){
         var valid = true;
         var file = $('#studentList').get(0).files[0];
         var errorMsg = "\n";
-        if(TAFieldValid(vm.class.Tas)!== true){
-            $scope.createClassForm.Tas.$setValidity("Tas",false);
+        if (TAFieldValid(vm.class.Tas) !== true) {
+            $scope.createClassForm.Tas.$setValidity("Tas", false);
             valid = false;
             errorMsg += "TAs field must follow the format 'email@addr:name,email@addr:name', etc.\n";
         }
-        if(validClassCode(vm.class.Code)){
-            $scope.createClassForm.Code.$setValidity("Code",false);
-            valid=false;
+        if (validClassCode(vm.class.Code)) {
+            $scope.createClassForm.Code.$setValidity("Code", false);
+            valid = false;
             errorMsg += "Class Code field must 4 alphabetic characters, 3 digits, and optional extra alphabetic characters, e.g. 'ABCD123'.\n";
         }
-        if(file == undefined){
+        if (file == undefined) {
             valid = false;
         }
 
-        if(valid){
+        if (valid) {
             // Prepare payload; send file as data
             var formData = new FormData();
             formData.append('classcode', vm.class.Code);
@@ -83,14 +71,14 @@ function createClassCtrl ($scope, $http, $rootScope){
                 data: formData
             };
 
-            $http(req).then(function success(response){
+            $http(req).then(function success(response) {
                 alert("Class successfully created.");
                 window.location.href = "/home";
-            },function faillure(err) {
-                $.notify("Failed to Create Class", { position:"bottom-right", className:"error"});
-            })
-        }else{
-            $.notify("Failed to Create Class: "+errorMsg, { position:"bottom-right", className:"error"});
+            }, function faillure(err) {
+                $.notify("Failed to Create Class", { position: "bottom-right", className: "error" });
+            });
+        } else {
+            $.notify("Failed to Create Class: " + errorMsg, { position: "bottom-right", className: "error" });
         }
     };
     function validClassCode(val) {
@@ -100,9 +88,11 @@ function createClassCtrl ($scope, $http, $rootScope){
     function isEmpty(val) {
         return val.match(/^ *$/) !== null;
     }
-// Does each TA subfield have a valid email address?
+    // Does each TA subfield have a valid email address?
     function TAFieldValid(val) {
-        return val.split(',').every((e) => (validEmail(e.split(":")[0])) && !isEmpty(e.split(":")[1] || ""));
+        return val.split(',').every(function (e) {
+            return validEmail(e.split(":")[0]) && !isEmpty(e.split(":")[1] || "");
+        });
     };
 
     function validEmail(email) {

@@ -1,14 +1,17 @@
-const mongoose = require('mongoose'),Schema = mongoose.Schema;
+'use strict';
 
-let chatSchema = new Schema({
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+var chatSchema = new Schema({
     _id: String,
     name: String,
     time: String,
     message: String,
-    imglink:String
+    imglink: String
 });
 
-let classSchema = new Schema({
+var classSchema = new Schema({
     _id: String,
     active: Boolean,
     time: Date,
@@ -16,11 +19,10 @@ let classSchema = new Schema({
     professor: String,
     classroom: String,
     chat: [chatSchema]
-},
-{
+}, {
     timestamps: true
 });
 
-let Class = mongoose.model('class',classSchema);
+var Class = mongoose.model('class', classSchema);
 
 module.exports = Class;
