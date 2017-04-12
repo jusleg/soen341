@@ -89,7 +89,8 @@ function insertClassModMenu() {
 
 function toggleUserSelection() {
     if(!$('#classTypeSelection div:first-child').hasClass('classTypeSelected')) {
-        $('#classList .classroom').remove();
+        $('.classRoom').css('display', 'block');
+        $('.classRoom2').css('display', 'none');
         $('#classTypeSelection div').removeClass('classTypeSelected');
         $('#classTypeSelection div:first-child').addClass('classTypeSelected');
     }
@@ -97,7 +98,8 @@ function toggleUserSelection() {
 
 function toggleModSelection() {
     if($('#classTypeSelection div:first-child').hasClass('classTypeSelected')) {
-        $('.classRoom').remove();
+        $('.classRoom').css('display', 'none');
+        $('.classRoom2').css('display', 'block');
         $('#classTypeSelection div').removeClass('classTypeSelected');
         $('#classTypeSelection div:nth-child(2)').addClass('classTypeSelected');
     }

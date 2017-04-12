@@ -190,29 +190,6 @@
   }
 }
 
-#classTypeSelection {
-  margin-top:8px;
-  color: white;
-  text-align: center;
-  div {
-    display: inline-block;
-    vertical-align: top;
-    border: 1px solid white;
-    transition: 0.3s;
-    padding: 3px;
-  }
-  div:hover {
-    cursor: pointer;
-    background-color: white;
-    color: black;
-  }
-}
-
-.classTypeSelected {
-  background-color: white;
-  color: black;
-}
-
 @media only screen and (max-width: 420px) and (max-height: 735px){
   .classroom >.window{
     bottom: 6%;
