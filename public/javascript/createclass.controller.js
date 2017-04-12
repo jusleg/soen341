@@ -72,10 +72,14 @@ function createClassCtrl($scope, $http, $rootScope) {
             };
 
             $http(req).then(function success(response) {
-                alert("Class successfully created.");
+                if (response.data.indexOf("Class already exists") > -1) {
+                    alert("Error: That class already exists.");
+                } else {
+                    alert("Class successfully created.");
+                }
                 window.location.href = "/home";
             }, function faillure(err) {
-                $.notify("Failed to Create Class", { position: "bottom-right", className: "error" });
+                $.notify("Failed to Create Class: That class already exists", { position: "bottom-right", className: "error" });
             });
         } else {
             $.notify("Failed to Create Class: " + errorMsg, { position: "bottom-right", className: "error" });
