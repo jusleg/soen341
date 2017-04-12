@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <title>Soen 341 Chat App</title>
-
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="../bower_components/notifyjs/dist/styles/metro/notify-metro.css">
-
     <link rel="stylesheet" href="../css/mainStyle.css">
-
     <script src="/socket.io/socket.io.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -26,9 +22,7 @@
 </head>
 <body ng-app="app" ng-controller="appCtrl as vm">
 <div class="outer-container">
-
     <div id="leftMenu" class="sideBar">
-
         <div id="left_top">
             <div id="search">
                 <h4>Famingo</h4>
@@ -39,7 +33,6 @@
         <div id="menu">
             <div id="menu_items">
                 <div id="classList" class="classList">
-
                     <a class="classRoom" ng-repeat="class in vm.currentUser.classUser" ng-href="#/class/{{class._id}}">
                         <div class="menu_class" ng-class="{'activeClass' : vm.currentClassId == '{{class._id}}' }">
                             <p class="menu_class_title">{{class._id}}</p>
@@ -67,15 +60,12 @@
     </div>
 
     <div id="rightContent" class="rightContent">
-
         <div id="right_top" class="responsive_right_top">
             <div class="responsive_right_top_toggle" id="sideBar-toggle">
                 <i class="fa fa-bars" style="font-size:2em" aria-hidden="true"></i>
             </div>
             <p id="className"></p>
-
             <div id="top_right_rhs" class="responsive_top_right_rhs">
-
                 <div class="dropdown">
                     <div class="default dropdown-toggle" type="button" id="dropdownmenu" data-toggle="dropdown">
                         <span class="fa fa-user-circle fa-2x" title="Toggle dropdown menu"></span>
@@ -84,19 +74,10 @@
                         <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
-
-
-
-
-
-
-
-
             </div>
         </div>
         <div id="shadow"></div>
         <div class="content" ng-view></div>
-
     </div>
 </div>
 <script>
@@ -112,8 +93,6 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
-
 <!--MODULES-->
 <script src="../app.js"></script>
 <script src="../javascript/modules/header.module.js"></script>
@@ -125,6 +104,5 @@
 <script src="../javascript/classroom.controller.js"></script>
 <script src="../javascript/homepage.controller.js"></script>
 <script src="../javascript/createclass.controller.js"></script>
-
 </body>
 </html>
