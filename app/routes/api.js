@@ -2,7 +2,7 @@
 
 var express = require('express');
 var User = require('../models/user.js');
-var classroom = require('../models/Classes.js');
+var classroom = require('../models/classes.js');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
