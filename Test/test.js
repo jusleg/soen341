@@ -78,6 +78,16 @@ describe('Sprint 5 testing', function () {
             console.log(err.body);
         });
     });
+
+    it('Should match with regex if email is valid',function(){
+        var email = "email@hotmail.com";
+        var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/igm;
+
+        var badEmail = "asidjasdasd$#424245$525";
+
+        //assert(regex.exec(email),'Good email!');
+        //assert.isNotOk(regex.exec(badEmail),'Bad Email!');
+    });
 });
 
 describe('Password tests', function () {
