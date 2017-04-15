@@ -15,9 +15,9 @@ see or for someone to explain a concept to students who aren't able to understan
 be adding the ability for teachers to moderate the chatrooms and to be able to 
 start and stop the chatroom whenever they feel it is necessary to do so.
 
-## Block Diagram
+## Architecture Diagram
 
-![thatwaseasy.png](https://github.com/jusleg/soen341/blob/master/wiki/block_diagram.png)
+![thatwaseasy.png](https://github.com/jusleg/soen341/blob/master/wiki/architecture_diagram.png)
 
 
 ## Members
