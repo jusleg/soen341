@@ -3,7 +3,7 @@
 //DB requirements
 var mongoose = require('mongoose');
 var User = require('../models/user.js');
-var classroom = require('../models/Classes.js');
+var classroom = require('../models/classes.js');
 
 //File upload requirements
 var express = require('express');
