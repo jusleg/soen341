@@ -2,7 +2,7 @@
 
 var path = require('path');
 var User = require('../models/user');
-var classroom = require('../models/Classes.js');
+var classroom = require('../models/classes.js');
 var crypto = require('crypto-js');
 var parseMePLzr = require('body-parser');
 var email = require('./email');
