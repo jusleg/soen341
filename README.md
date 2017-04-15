@@ -8,12 +8,7 @@ SOEN 341 project
 [View Wiki](https://github.com/jusleg/soen341/wiki)
 
 ## Introduction
-Our project is a hyperlocalized chatroom which will allow people in the same classroom to 
-be able to exchange thoughts and ideas about the current lecture together. For example, this
-will allow people to share images of a whiteboard for students further back who aren't able to 
-see or for someone to explain a concept to students who aren't able to understand. We will also 
-be adding the ability for teachers to moderate the chatrooms and to be able to 
-start and stop the chatroom whenever they feel it is necessary to do so.
+Our project is a hyper localized chatroom which will allow people in the same classroom to be able to exchange thoughts and ideas about the current lecture together. For example, this will allow people to share what is written on the board for students further back who aren't able to see or for someone to explain a concept to students who aren't able to understand. Chatrooms are auto-moderated to prevent class disruptions and allow the professor to focus on lecturing. Teachers are also able to add their classes and a list of TAs who will be able to participate in the chatroom and facilitate student learning.
 
 ## Architecture Diagram
 
