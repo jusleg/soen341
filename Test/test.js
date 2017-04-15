@@ -13,6 +13,7 @@ var url = 'mongodb://chevaldeguerre.xyz:27017/famongo';
 var session = require('supertest-session');
 var myApp = require('./../index.js');
 var request = require('superagent');
+var crypto = require('crypto-js');
 
 var api = require('../app/routes/api');
 var chai = require('chai'),
@@ -33,26 +34,6 @@ exports.login = function (request, done) {
     });
 };
 
-// // var request = require('supertest')(app); var login = require('/login');
-//
-// describe('MyApp', function () {
-//
-//     var agent;
-//
-//     before(function (done) {
-//         login.login(request, function (loginAgent) {
-//             agent = loginAgent;
-//             done();
-//         });
-//     });
-//
-//     it('should allow access to admin when logged in', function (done) {
-//             var req = request.get('/admin');
-//             agent.attachCookies(req);
-//             req.expect(200, done);
-//         }
-//     );
-// });
 
 describe('RestApi Routes must all be Functional', function () {
     it('it should GET all Users', function () {
@@ -112,34 +93,6 @@ describe('Password tests', function () {
         return tempString;
     };
 
-    // it('Should pass if value within database is the same as hashed value',function(done){
-    //
-    //     var pass = "TestPass";
-    //     var user = new User();
-    //     var hashedResult = hashCode(pass);
-    //
-    //     user.pass = user.generateHash(pass);
-    //     user.name = "JIm";
-    //     user.id = ("kimthong@example.com");
-    //
-    //     user.save((err) => {
-    //         if (err)
-    //             throw err;
-    //         else{
-    //             console.log("Saved");
-    //         }
-    //     });
-    //     User.findOne({ id :  "Timorthy@example.com" }, (err, queriedUser) => {
-    //         if (err)
-    //             return done(err);
-    //         if (queriedUser) {
-    //             console.log(queriedUser.pass + queriedUser.name);
-    //             assert.equals("hashedResult", queriedUser.pass);
-    //             done();
-    //         }
-    //     });
-    //
-    // }).timeout(50000);
 
     it('Should pass if hashCode function outputs correct value', function (done) {
 
@@ -153,11 +106,11 @@ describe('Password tests', function () {
     });
 
     it('Should pass if encrypted string matches the correct value', function (done) {
-        var correctString;
         var encryptee = "This is a test";
-        var encryptedOutput;
+        var encryptedOutput = encodeURIComponent(crypto.AES.encrypt(encryptee, "ch3vald3gu3rr3ftwgr8b8m8").toString());
+        var decryptedOutput = crypto.AES.decrypt(decodeURIComponent(encryptedOutput), "ch3vald3gu3rr3ftwgr8b8m8").toString(crypto.enc.Utf8);
 
-        assert.equal(correctString, encryptedOutput);
+        assert.equal(encryptee, decryptedOutput);
 
         done();
     });
@@ -172,18 +125,6 @@ describe('Authentication tests', function () {
     });
 });
 
-describe('Database fields validatiion', function () {
-
-    it('should login', function (done) {
-        request.post('/login').send({ email: 'kevin1@email.com', password: 'Kevin1111' }).end(function (err, res) {
-            User.findOne({ id: 'kevin1@email.com' }, function (err, user) {
-                console.log(user);
-                // expect(user.online).to.be.false;
-                done();
-            });
-        });
-    }).timeout(10000);
-});
 
 describe('Database fields validatiion', function () {
 
